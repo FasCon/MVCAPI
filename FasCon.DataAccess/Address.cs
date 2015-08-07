@@ -27,7 +27,7 @@ namespace FasCon.DataAccess
         public string Company { get; set; }
         public Nullable<int> DistrictId { get; set; }
         public Nullable<int> StateProvinceId { get; set; }
-        public string Address1 { get; set; }
+        public string Street { get; set; }
         public string PhoneNumber { get; set; }
         public string FaxNumber { get; set; }
         public System.DateTime CreatedOnUtc { get; set; }

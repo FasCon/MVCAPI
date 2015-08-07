@@ -16,8 +16,8 @@ namespace FasCon.DataAccess
     {
         public Picture()
         {
-            this.Categories = new HashSet<Category>();
             this.Product_Picture_Mapping = new HashSet<Product_Picture_Mapping>();
+            this.Categories = new HashSet<Category>();
         }
     
         public System.Guid PictureId { get; set; }
@@ -27,7 +27,7 @@ namespace FasCon.DataAccess
         public Nullable<bool> IsNew { get; set; }
         public string OriginURL { get; set; }
     
-        public virtual ICollection<Category> Categories { get; set; }
         public virtual ICollection<Product_Picture_Mapping> Product_Picture_Mapping { get; set; }
+        public virtual ICollection<Category> Categories { get; set; }
     }
 }

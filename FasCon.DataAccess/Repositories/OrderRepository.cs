@@ -7,28 +7,28 @@ using System.Threading.Tasks;
 
 namespace FasCon.DataAccess.Repositories
 {
-    public class CategoryRepository
+    public class OrderRepository:BaseRepository
     {
 
-        public CategoryRepository()
+        public OrderRepository()
             : base()
         {
 
         }
-        public static Boolean UpdateCategory(CategoryModel orderItemModel)
+        public static Boolean UpdateOrder(OrderModel orderModel)
         {
 
             return true;
         }
-        public static Boolean DeleteCategory(CategoryModel orderItemModel)
+        public static Boolean DeleteOrder(OrderModel orderModel)
         {
 
             return true;
         }
 
-        public static List<CategoryModel> FindCategoryByCustomerId(Guid orderId)
+        public static List<OrderModel> FindOrderItemByCustomerId(Guid customerId)
         {
-            List<CategoryModel> rs = new List<CategoryModel>();
+            List<OrderModel> rs = new List<OrderModel>();
 
             return rs ;
         }

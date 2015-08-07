@@ -16,8 +16,8 @@ namespace FasCon.DataAccess
     {
         public StateProvince()
         {
-            this.Addresses = new HashSet<Address>();
             this.Districts = new HashSet<District>();
+            this.Addresses = new HashSet<Address>();
         }
     
         public int StateProvinceId { get; set; }
@@ -25,7 +25,7 @@ namespace FasCon.DataAccess
         public bool Published { get; set; }
         public int DisplayOrder { get; set; }
     
-        public virtual ICollection<Address> Addresses { get; set; }
         public virtual ICollection<District> Districts { get; set; }
+        public virtual ICollection<Address> Addresses { get; set; }
     }
 }

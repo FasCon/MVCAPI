@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DB_9CF878_fasconModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DB_9CF878_fasconModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Addresses">
           <Key>
             <PropertyRef Name="AddressId" />
@@ -16,7 +16,7 @@
           <Property Name="Company" Type="nvarchar" MaxLength="4000" />
           <Property Name="DistrictId" Type="int" />
           <Property Name="StateProvinceId" Type="int" />
-          <Property Name="Address" Type="nvarchar" MaxLength="4000" />
+          <Property Name="Street" Type="nvarchar" MaxLength="4000" />
           <Property Name="PhoneNumber" Type="nvarchar" MaxLength="4000" />
           <Property Name="FaxNumber" Type="nvarchar" MaxLength="4000" />
           <Property Name="CreatedOnUtc" Type="datetime" Nullable="false" />
@@ -110,6 +110,7 @@
           <Property Name="FullName" Type="nvarchar" MaxLength="400" />
           <Property Name="BottomDescription" Type="nvarchar(max)" />
           <Property Name="Hits" Type="int" />
+          <Property Name="StoreId" Type="uniqueidentifier" />
         </EntityType>
         <EntityType Name="CustomerAddresses">
           <Key>
@@ -821,31 +822,10 @@
             <End Role="Users1" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="FasConDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Address">
-          <Key>
-            <PropertyRef Name="AddressId" />
-          </Key>
-          <Property Name="AddressId" Type="Guid" Nullable="false" />
-          <Property Name="FirstName" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="LastName" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="Email" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="Company" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="DistrictId" Type="Int32" />
-          <Property Name="StateProvinceId" Type="Int32" />
-          <Property Name="Address1" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="PhoneNumber" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="FaxNumber" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="CreatedOnUtc" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="District" Relationship="Self.FK_dbo_Address_dbo_Districts_DistrictId" FromRole="Addresses" ToRole="Districts" />
-          <NavigationProperty Name="StateProvince" Relationship="Self.FK_dbo_Address_dbo_StateProvinces_StateProvinceId" FromRole="Addresses" ToRole="StateProvinces" />
-          <NavigationProperty Name="Orders" Relationship="Self.FK_dbo_Order_dbo_Address_ShippingAddressId" FromRole="Addresses" ToRole="Orders" />
-          <NavigationProperty Name="Customers" Relationship="Self.CustomerAddresses" FromRole="Addresses" ToRole="Customers" />
-        </EntityType>
         <EntityType Name="AspNetRole">
           <Key>
             <PropertyRef Name="Id" />
@@ -934,31 +914,6 @@
           <NavigationProperty Name="AspNetUser2" Relationship="Self.FK_AspNetUsers_AspNetUsers_Update" FromRole="AspNetUsers1" ToRole="AspNetUsers" />
           <NavigationProperty Name="Users" Relationship="Self.FK_AspNetUsers_Users" FromRole="AspNetUsers" ToRole="Users" />
         </EntityType>
-        <EntityType Name="Category">
-          <Key>
-            <PropertyRef Name="CategoryId" />
-          </Key>
-          <Property Name="CategoryId" Type="Guid" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="400" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Alias" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="MetaKeywords" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
-          <Property Name="MetaDescription" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="MetaTitle" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
-          <Property Name="ParentCategoryId" Type="Guid" />
-          <Property Name="PictureId" Type="Guid" />
-          <Property Name="ShowOnHomePage" Type="Boolean" />
-          <Property Name="Published" Type="Boolean" />
-          <Property Name="Deleted" Type="Boolean" />
-          <Property Name="DisplayOrder" Type="Int32" />
-          <Property Name="CreatedOnUtc" Type="DateTime" Precision="3" />
-          <Property Name="UpdatedOnUtc" Type="DateTime" Precision="3" />
-          <Property Name="FullName" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
-          <Property Name="BottomDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Hits" Type="Int32" />
-          <NavigationProperty Name="Picture" Relationship="Self.FK_dbo_Category_dbo_Picture_PictureId" FromRole="Categories" ToRole="Pictures" />
-          <NavigationProperty Name="Products" Relationship="Self.FK_Products_Categories" FromRole="Categories" ToRole="Products" />
-        </EntityType>
         <EntityType Name="Customer">
           <Key>
             <PropertyRef Name="CustomerId" />
@@ -966,7 +921,7 @@
           <Property Name="CustomerId" Type="Guid" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Orders" Relationship="Self.FK_dbo_Order_dbo_Customer_CustomerId" FromRole="Customers" ToRole="Orders" />
-          <NavigationProperty Name="Addresses" Relationship="Self.CustomerAddresses" FromRole="Customers" ToRole="Addresses" />
+          <NavigationProperty Name="Addresses" Relationship="FasConDBModel.CustomerAddresses" FromRole="Customer" ToRole="Address" />
         </EntityType>
         <EntityType Name="District">
           <Key>
@@ -977,8 +932,8 @@
           <Property Name="StateProvinceId" Type="Int32" />
           <Property Name="Published" Type="Boolean" Nullable="false" />
           <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Addresses" Relationship="Self.FK_dbo_Address_dbo_Districts_DistrictId" FromRole="Districts" ToRole="Addresses" />
           <NavigationProperty Name="StateProvince" Relationship="Self.FK_Districts_StateProvinces" FromRole="Districts" ToRole="StateProvinces" />
+          <NavigationProperty Name="Addresses" Relationship="FasConDBModel.FK_dbo_Address_dbo_Districts_DistrictId" FromRole="District" ToRole="Address" />
         </EntityType>
         <EntityType Name="OrderItem">
           <Key>
@@ -1032,10 +987,10 @@
           <Property Name="CreatedOnUtc" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="UpdatedOnUtc" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="CustomerOrderComment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Address" Relationship="Self.FK_dbo_Order_dbo_Address_ShippingAddressId" FromRole="Orders" ToRole="Addresses" />
           <NavigationProperty Name="Customer" Relationship="Self.FK_dbo_Order_dbo_Customer_CustomerId" FromRole="Orders" ToRole="Customers" />
           <NavigationProperty Name="OrderItems" Relationship="Self.FK_dbo_OrderItems_dbo_Orders_OrderId" FromRole="Orders" ToRole="OrderItems" />
           <NavigationProperty Name="OrderNotes" Relationship="Self.FK_dbo_OrderNote_dbo_Orders_OrderId" FromRole="Orders" ToRole="OrderNotes" />
+          <NavigationProperty Name="Address" Relationship="FasConDBModel.FK_dbo_Order_dbo_Address_ShippingAddressId" FromRole="Order" ToRole="Address" />
         </EntityType>
         <EntityType Name="Picture">
           <Key>
@@ -1047,8 +1002,8 @@
           <Property Name="SeoFilename" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
           <Property Name="IsNew" Type="Boolean" />
           <Property Name="OriginURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Categories" Relationship="Self.FK_dbo_Category_dbo_Picture_PictureId" FromRole="Pictures" ToRole="Categories" />
           <NavigationProperty Name="Product_Picture_Mapping" Relationship="Self.FK_dbo_Product_Picture_Mapping_dbo_Picture_PictureId" FromRole="Pictures" ToRole="Product_Picture_Mapping" />
+          <NavigationProperty Name="Categories" Relationship="FasConDBModel.FK_dbo_Category_dbo_Picture_PictureId" FromRole="Picture" ToRole="Category" />
         </EntityType>
         <EntityType Name="Product_Picture_Mapping">
           <Key>
@@ -1129,11 +1084,11 @@
           <Property Name="ProductImage" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="CategoryID" Type="Guid" />
           <Property Name="StoreId" Type="Guid" />
-          <NavigationProperty Name="Category" Relationship="Self.FK_Products_Categories" FromRole="Products" ToRole="Categories" />
           <NavigationProperty Name="OrderItems" Relationship="Self.FK_dbo_OrderItems_dbo_Products_ProductId" FromRole="Products" ToRole="OrderItems" />
           <NavigationProperty Name="Product_Picture_Mapping" Relationship="Self.FK_dbo_Product_Picture_Mapping_dbo_Product_ProductId" FromRole="Products" ToRole="Product_Picture_Mapping" />
           <NavigationProperty Name="ProductReviews" Relationship="Self.FK_dbo_ProductReview_dbo_Product_ProductId" FromRole="Products" ToRole="ProductReview" />
           <NavigationProperty Name="Store" Relationship="Self.FK_Products_Stores" FromRole="Products" ToRole="Store" />
+          <NavigationProperty Name="Category" Relationship="FasConDBModel.FK_Products_Categories" FromRole="Product" ToRole="Category" />
         </EntityType>
         <EntityType Name="StateProvince">
           <Key>
@@ -1143,8 +1098,8 @@
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Published" Type="Boolean" Nullable="false" />
           <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Addresses" Relationship="Self.FK_dbo_Address_dbo_StateProvinces_StateProvinceId" FromRole="StateProvinces" ToRole="Addresses" />
           <NavigationProperty Name="Districts" Relationship="Self.FK_Districts_StateProvinces" FromRole="StateProvinces" ToRole="Districts" />
+          <NavigationProperty Name="Addresses" Relationship="FasConDBModel.FK_dbo_Address_dbo_StateProvinces_StateProvinceId" FromRole="StateProvince" ToRole="Address" />
         </EntityType>
         <EntityType Name="Store">
           <Key>
@@ -1186,42 +1141,6 @@
           <NavigationProperty Name="Users11" Relationship="Self.FK_Users_Users_Update" FromRole="Users" ToRole="Users1" />
           <NavigationProperty Name="User2" Relationship="Self.FK_Users_Users_Update" FromRole="Users1" ToRole="Users" />
         </EntityType>
-        <Association Name="FK_dbo_Address_dbo_Districts_DistrictId">
-          <End Role="Districts" Type="Self.District" Multiplicity="0..1" />
-          <End Role="Addresses" Type="Self.Address" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Districts">
-              <PropertyRef Name="DistrictId" />
-            </Principal>
-            <Dependent Role="Addresses">
-              <PropertyRef Name="DistrictId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_Address_dbo_StateProvinces_StateProvinceId">
-          <End Role="StateProvinces" Type="Self.StateProvince" Multiplicity="0..1" />
-          <End Role="Addresses" Type="Self.Address" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="StateProvinces">
-              <PropertyRef Name="StateProvinceId" />
-            </Principal>
-            <Dependent Role="Addresses">
-              <PropertyRef Name="StateProvinceId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_Order_dbo_Address_ShippingAddressId">
-          <End Role="Addresses" Type="Self.Address" Multiplicity="0..1" />
-          <End Role="Orders" Type="Self.Order" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Addresses">
-              <PropertyRef Name="AddressId" />
-            </Principal>
-            <Dependent Role="Orders">
-              <PropertyRef Name="ShippingAddressId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_AspNetUserRoles_AspNetRoles">
           <End Role="AspNetRoles" Type="Self.AspNetRole" Multiplicity="1" />
           <End Role="AspNetUserRoles" Type="Self.AspNetUserRole" Multiplicity="*" />
@@ -1351,30 +1270,6 @@
             </Principal>
             <Dependent Role="Users">
               <PropertyRef Name="AspNetUserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_Category_dbo_Picture_PictureId">
-          <End Role="Pictures" Type="Self.Picture" Multiplicity="0..1" />
-          <End Role="Categories" Type="Self.Category" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Pictures">
-              <PropertyRef Name="PictureId" />
-            </Principal>
-            <Dependent Role="Categories">
-              <PropertyRef Name="PictureId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Products_Categories">
-          <End Role="Categories" Type="Self.Category" Multiplicity="0..1" />
-          <End Role="Products" Type="Self.Product" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Categories">
-              <PropertyRef Name="CategoryId" />
-            </Principal>
-            <Dependent Role="Products">
-              <PropertyRef Name="CategoryID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1524,18 +1419,12 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="CustomerAddresses">
-          <End Role="Addresses" Type="Self.Address" Multiplicity="*" />
-          <End Role="Customers" Type="Self.Customer" Multiplicity="*" />
-        </Association>
         <EntityContainer Name="FasConDBEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Addresses" EntityType="Self.Address" />
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
           <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
           <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
           <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRole" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
-          <EntitySet Name="Categories" EntityType="Self.Category" />
           <EntitySet Name="Customers" EntityType="Self.Customer" />
           <EntitySet Name="Districts" EntityType="Self.District" />
           <EntitySet Name="OrderItems" EntityType="Self.OrderItem" />
@@ -1548,18 +1437,6 @@
           <EntitySet Name="StateProvinces" EntityType="Self.StateProvince" />
           <EntitySet Name="Stores" EntityType="Self.Store" />
           <EntitySet Name="Users" EntityType="Self.User" />
-          <AssociationSet Name="FK_dbo_Address_dbo_Districts_DistrictId" Association="Self.FK_dbo_Address_dbo_Districts_DistrictId">
-            <End Role="Districts" EntitySet="Districts" />
-            <End Role="Addresses" EntitySet="Addresses" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_Address_dbo_StateProvinces_StateProvinceId" Association="Self.FK_dbo_Address_dbo_StateProvinces_StateProvinceId">
-            <End Role="StateProvinces" EntitySet="StateProvinces" />
-            <End Role="Addresses" EntitySet="Addresses" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_Order_dbo_Address_ShippingAddressId" Association="Self.FK_dbo_Order_dbo_Address_ShippingAddressId">
-            <End Role="Addresses" EntitySet="Addresses" />
-            <End Role="Orders" EntitySet="Orders" />
-          </AssociationSet>
           <AssociationSet Name="FK_AspNetUserRoles_AspNetRoles" Association="Self.FK_AspNetUserRoles_AspNetRoles">
             <End Role="AspNetRoles" EntitySet="AspNetRoles" />
             <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
@@ -1603,14 +1480,6 @@
           <AssociationSet Name="FK_AspNetUsers_Users" Association="Self.FK_AspNetUsers_Users">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="Users" EntitySet="Users" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_Category_dbo_Picture_PictureId" Association="Self.FK_dbo_Category_dbo_Picture_PictureId">
-            <End Role="Pictures" EntitySet="Pictures" />
-            <End Role="Categories" EntitySet="Categories" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Products_Categories" Association="Self.FK_Products_Categories">
-            <End Role="Categories" EntitySet="Categories" />
-            <End Role="Products" EntitySet="Products" />
           </AssociationSet>
           <AssociationSet Name="FK_dbo_Order_dbo_Customer_CustomerId" Association="Self.FK_dbo_Order_dbo_Customer_CustomerId">
             <End Role="Customers" EntitySet="Customers" />
@@ -1656,34 +1525,149 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="Users1" EntitySet="Users" />
           </AssociationSet>
-          <AssociationSet Name="CustomerAddresses" Association="Self.CustomerAddresses">
-            <End Role="Addresses" EntitySet="Addresses" />
-            <End Role="Customers" EntitySet="Customers" />
+          <EntitySet Name="Categories" EntityType="FasConDBModel.Category" />
+          <AssociationSet Name="FK_dbo_Category_dbo_Picture_PictureId" Association="FasConDBModel.FK_dbo_Category_dbo_Picture_PictureId">
+            <End Role="Picture" EntitySet="Pictures" />
+            <End Role="Category" EntitySet="Categories" />
           </AssociationSet>
-        </EntityContainer>
-      </Schema>
+          <AssociationSet Name="FK_Products_Categories" Association="FasConDBModel.FK_Products_Categories">
+            <End Role="Category" EntitySet="Categories" />
+            <End Role="Product" EntitySet="Products" />
+          </AssociationSet>
+          <EntitySet Name="Addresses" EntityType="FasConDBModel.Address" />
+          <AssociationSet Name="FK_dbo_Address_dbo_Districts_DistrictId" Association="FasConDBModel.FK_dbo_Address_dbo_Districts_DistrictId">
+            <End Role="District" EntitySet="Districts" />
+            <End Role="Address" EntitySet="Addresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Address_dbo_StateProvinces_StateProvinceId" Association="FasConDBModel.FK_dbo_Address_dbo_StateProvinces_StateProvinceId">
+            <End Role="StateProvince" EntitySet="StateProvinces" />
+            <End Role="Address" EntitySet="Addresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Order_dbo_Address_ShippingAddressId" Association="FasConDBModel.FK_dbo_Order_dbo_Address_ShippingAddressId">
+            <End Role="Address" EntitySet="Addresses" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="CustomerAddresses" Association="FasConDBModel.CustomerAddresses">
+            <End Role="Address" EntitySet="Addresses" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Alias" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MetaKeywords" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="MetaDescription" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="MetaTitle" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="ParentCategoryId" Type="Guid" />
+          <Property Name="PictureId" Type="Guid" />
+          <Property Name="ShowOnHomePage" Type="Boolean" />
+          <Property Name="Published" Type="Boolean" />
+          <Property Name="Deleted" Type="Boolean" />
+          <Property Name="DisplayOrder" Type="Int32" />
+          <Property Name="CreatedOnUtc" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedOnUtc" Type="DateTime" Precision="3" />
+          <Property Name="FullName" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="BottomDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Hits" Type="Int32" />
+          <Property Name="StoreId" Type="Guid" />
+          <NavigationProperty Name="Picture" Relationship="FasConDBModel.FK_dbo_Category_dbo_Picture_PictureId" FromRole="Category" ToRole="Picture" />
+          <NavigationProperty Name="Products" Relationship="FasConDBModel.FK_Products_Categories" FromRole="Category" ToRole="Product" />
+        </EntityType>
+        <Association Name="FK_dbo_Category_dbo_Picture_PictureId">
+          <End Type="FasConDBModel.Picture" Role="Picture" Multiplicity="0..1" />
+          <End Type="FasConDBModel.Category" Role="Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Picture">
+              <PropertyRef Name="PictureId" />
+            </Principal>
+            <Dependent Role="Category">
+              <PropertyRef Name="PictureId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_Categories">
+          <End Type="FasConDBModel.Category" Role="Category" Multiplicity="0..1" />
+          <End Type="FasConDBModel.Product" Role="Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Category">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="AddressId" />
+          </Key>
+          <Property Name="AddressId" Type="Guid" Nullable="false" />
+          <Property Name="FirstName" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="Company" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="DistrictId" Type="Int32" />
+          <Property Name="StateProvinceId" Type="Int32" />
+          <Property Name="Street" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="FaxNumber" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedOnUtc" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="District" Relationship="FasConDBModel.FK_dbo_Address_dbo_Districts_DistrictId" FromRole="Address" ToRole="District" />
+          <NavigationProperty Name="StateProvince" Relationship="FasConDBModel.FK_dbo_Address_dbo_StateProvinces_StateProvinceId" FromRole="Address" ToRole="StateProvince" />
+          <NavigationProperty Name="Orders" Relationship="FasConDBModel.FK_dbo_Order_dbo_Address_ShippingAddressId" FromRole="Address" ToRole="Order" />
+          <NavigationProperty Name="Customers" Relationship="FasConDBModel.CustomerAddresses" FromRole="Address" ToRole="Customer" />
+        </EntityType>
+        <Association Name="FK_dbo_Address_dbo_Districts_DistrictId">
+          <End Type="FasConDBModel.District" Role="District" Multiplicity="0..1" />
+          <End Type="FasConDBModel.Address" Role="Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="District">
+              <PropertyRef Name="DistrictId" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="DistrictId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Address_dbo_StateProvinces_StateProvinceId">
+          <End Type="FasConDBModel.StateProvince" Role="StateProvince" Multiplicity="0..1" />
+          <End Type="FasConDBModel.Address" Role="Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StateProvince">
+              <PropertyRef Name="StateProvinceId" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="StateProvinceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Order_dbo_Address_ShippingAddressId">
+          <End Type="FasConDBModel.Address" Role="Address" Multiplicity="0..1" />
+          <End Type="FasConDBModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Address">
+              <PropertyRef Name="AddressId" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="ShippingAddressId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="CustomerAddresses">
+          <End Type="FasConDBModel.Address" Role="Address" Multiplicity="*" />
+          <End Type="FasConDBModel.Customer" Role="Customer" Multiplicity="*" />
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="DB_9CF878_fasconModelStoreContainer" CdmEntityContainer="FasConDBEntities">
-          <EntitySetMapping Name="Addresses">
-            <EntityTypeMapping TypeName="FasConDBModel.Address">
-              <MappingFragment StoreEntitySet="Addresses">
-                <ScalarProperty Name="AddressId" ColumnName="AddressId" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Company" ColumnName="Company" />
-                <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
-                <ScalarProperty Name="StateProvinceId" ColumnName="StateProvinceId" />
-                <ScalarProperty Name="Address1" ColumnName="Address" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="FaxNumber" ColumnName="FaxNumber" />
-                <ScalarProperty Name="CreatedOnUtc" ColumnName="CreatedOnUtc" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="AspNetRoles">
             <EntityTypeMapping TypeName="FasConDBModel.AspNetRole">
               <MappingFragment StoreEntitySet="AspNetRoles">
@@ -1750,30 +1734,6 @@
                 <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
                 <ScalarProperty Name="CreateUserID" ColumnName="CreateUserID" />
                 <ScalarProperty Name="UpdateUserID" ColumnName="UpdateUserID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Categories">
-            <EntityTypeMapping TypeName="FasConDBModel.Category">
-              <MappingFragment StoreEntitySet="Categories">
-                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Alias" ColumnName="Alias" />
-                <ScalarProperty Name="MetaKeywords" ColumnName="MetaKeywords" />
-                <ScalarProperty Name="MetaDescription" ColumnName="MetaDescription" />
-                <ScalarProperty Name="MetaTitle" ColumnName="MetaTitle" />
-                <ScalarProperty Name="ParentCategoryId" ColumnName="ParentCategoryId" />
-                <ScalarProperty Name="PictureId" ColumnName="PictureId" />
-                <ScalarProperty Name="ShowOnHomePage" ColumnName="ShowOnHomePage" />
-                <ScalarProperty Name="Published" ColumnName="Published" />
-                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
-                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
-                <ScalarProperty Name="CreatedOnUtc" ColumnName="CreatedOnUtc" />
-                <ScalarProperty Name="UpdatedOnUtc" ColumnName="UpdatedOnUtc" />
-                <ScalarProperty Name="FullName" ColumnName="FullName" />
-                <ScalarProperty Name="BottomDescription" ColumnName="BottomDescription" />
-                <ScalarProperty Name="Hits" ColumnName="Hits" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1987,15 +1947,57 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="FasConDBModel.Category">
+              <MappingFragment StoreEntitySet="Categories">
+                <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+                <ScalarProperty Name="Hits" ColumnName="Hits" />
+                <ScalarProperty Name="BottomDescription" ColumnName="BottomDescription" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="UpdatedOnUtc" ColumnName="UpdatedOnUtc" />
+                <ScalarProperty Name="CreatedOnUtc" ColumnName="CreatedOnUtc" />
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Published" ColumnName="Published" />
+                <ScalarProperty Name="ShowOnHomePage" ColumnName="ShowOnHomePage" />
+                <ScalarProperty Name="PictureId" ColumnName="PictureId" />
+                <ScalarProperty Name="ParentCategoryId" ColumnName="ParentCategoryId" />
+                <ScalarProperty Name="MetaTitle" ColumnName="MetaTitle" />
+                <ScalarProperty Name="MetaDescription" ColumnName="MetaDescription" />
+                <ScalarProperty Name="MetaKeywords" ColumnName="MetaKeywords" />
+                <ScalarProperty Name="Alias" ColumnName="Alias" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Addresses">
+            <EntityTypeMapping TypeName="FasConDBModel.Address">
+              <MappingFragment StoreEntitySet="Addresses">
+                <ScalarProperty Name="CreatedOnUtc" ColumnName="CreatedOnUtc" />
+                <ScalarProperty Name="FaxNumber" ColumnName="FaxNumber" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="StateProvinceId" ColumnName="StateProvinceId" />
+                <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <AssociationSetMapping Name="CustomerAddresses" TypeName="FasConDBModel.CustomerAddresses" StoreEntitySet="CustomerAddresses">
-            <EndProperty Name="Addresses">
-              <ScalarProperty Name="AddressId" ColumnName="AddressId" />
-            </EndProperty>
-            <EndProperty Name="Customers">
+            <EndProperty Name="Customer">
               <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
             </EndProperty>
+            <EndProperty Name="Address">
+              <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+            </EndProperty>
           </AssociationSetMapping>
-        </EntityContainerMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

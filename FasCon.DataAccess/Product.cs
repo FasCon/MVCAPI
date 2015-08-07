@@ -73,10 +73,10 @@ namespace FasCon.DataAccess
         public Nullable<System.Guid> CategoryID { get; set; }
         public Nullable<System.Guid> StoreId { get; set; }
     
-        public virtual Category Category { get; set; }
         public virtual ICollection<OrderItem> OrderItems { get; set; }
         public virtual ICollection<Product_Picture_Mapping> Product_Picture_Mapping { get; set; }
         public virtual ICollection<ProductReview> ProductReviews { get; set; }
         public virtual Store Store { get; set; }
+        public virtual Category Category { get; set; }
     }
 }

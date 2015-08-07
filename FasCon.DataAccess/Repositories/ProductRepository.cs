@@ -15,6 +15,11 @@ namespace FasCon.DataAccess.Repositories
        {
            Mapper.CreateMap<Product, ProductModel>();
        }
+       public static Boolean UpdateProduct(ProductModel productModel)
+       {
+
+           return true;
+       }
        public static List<ProductModel> Products()
        {
            using (var db = new FasConDBEntities())

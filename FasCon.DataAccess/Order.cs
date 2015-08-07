@@ -43,9 +43,9 @@ namespace FasCon.DataAccess
         public System.DateTime UpdatedOnUtc { get; set; }
         public string CustomerOrderComment { get; set; }
     
-        public virtual Address Address { get; set; }
         public virtual Customer Customer { get; set; }
         public virtual ICollection<OrderItem> OrderItems { get; set; }
         public virtual ICollection<OrderNote> OrderNotes { get; set; }
+        public virtual Address Address { get; set; }
     }
 }

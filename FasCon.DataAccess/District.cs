@@ -25,7 +25,7 @@ namespace FasCon.DataAccess
         public bool Published { get; set; }
         public int DisplayOrder { get; set; }
     
-        public virtual ICollection<Address> Addresses { get; set; }
         public virtual StateProvince StateProvince { get; set; }
+        public virtual ICollection<Address> Addresses { get; set; }
     }
 }
