@@ -11,7 +11,7 @@ namespace Fascon.DataAccess.Test
     {
         static void Main(string[] args)
         {
-            //GenerateData.GenerateSampleData();
+              
              //GenerateData.GenerateCustomer();
             var rs=ProductRepository.Products();
             Console.Write(rs);

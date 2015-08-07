@@ -19,7 +19,8 @@ namespace FasCon.DataAccess.Repositories
                     {
                         CategoryId = Guid.NewGuid(),
                         Name= "Danh mục " + i.ToString() ,
-                        FullName = "Danh mục " + i.ToString() 
+                        FullName = "Danh mục " + i.ToString(),
+                        Alias="danh-muc-"+i.ToString()
                        
                     };
                     try
@@ -32,6 +33,7 @@ namespace FasCon.DataAccess.Repositories
                             {
                                 ProductID = Guid.NewGuid(),
                                 ProductName = "Sản phẩm " + i + j,
+                                Alias="san-pham-"+i+j,
                                 ProductThumb="http://sandichvu.com.vn/storage/app/uploads/public/556/889/db6/thumb_74_250x250_0_0_crop.jpg",
                                 Category = cat,
                                 ProductSKU="SKU "+i+j,
