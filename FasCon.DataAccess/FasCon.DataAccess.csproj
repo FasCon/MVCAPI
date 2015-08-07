@@ -55,68 +55,68 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Address.cs">
-      <DependentUpon>FasConDB.tt</DependentUpon>
+      <DependentUpon>FasconDB.tt</DependentUpon>
     </Compile>
     <Compile Include="AspNetRole.cs">
-      <DependentUpon>FasConDB.tt</DependentUpon>
+      <DependentUpon>FasconDB.tt</DependentUpon>
     </Compile>
     <Compile Include="AspNetUser.cs">
-      <DependentUpon>FasConDB.tt</DependentUpon>
+      <DependentUpon>FasconDB.tt</DependentUpon>
     </Compile>
     <Compile Include="AspNetUserClaim.cs">
-      <DependentUpon>FasConDB.tt</DependentUpon>
+      <DependentUpon>FasconDB.tt</DependentUpon>
     </Compile>
     <Compile Include="AspNetUserLogin.cs">
-      <DependentUpon>FasConDB.tt</DependentUpon>
+      <DependentUpon>FasconDB.tt</DependentUpon>
     </Compile>
     <Compile Include="AspNetUserRole.cs">
-      <DependentUpon>FasConDB.tt</DependentUpon>
+      <DependentUpon>FasconDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Category.cs">
-      <DependentUpon>FasConDB.tt</DependentUpon>
+      <DependentUpon>FasconDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Customer.cs">
-      <DependentUpon>FasConDB.tt</DependentUpon>
+      <DependentUpon>FasconDB.tt</DependentUpon>
     </Compile>
     <Compile Include="District.cs">
-      <DependentUpon>FasConDB.tt</DependentUpon>
+      <DependentUpon>FasconDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="FasConDB.Context.cs">
+    <Compile Include="FasconDB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>FasConDB.Context.tt</DependentUpon>
+      <DependentUpon>FasconDB.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="FasConDB.cs">
+    <Compile Include="FasconDB.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>FasConDB.tt</DependentUpon>
+      <DependentUpon>FasconDB.tt</DependentUpon>
     </Compile>
-    <Compile Include="FasConDB.Designer.cs">
+    <Compile Include="FasconDB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>FasConDB.edmx</DependentUpon>
+      <DependentUpon>FasconDB.edmx</DependentUpon>
     </Compile>
     <Compile Include="Order.cs">
-      <DependentUpon>FasConDB.tt</DependentUpon>
+      <DependentUpon>FasconDB.tt</DependentUpon>
     </Compile>
     <Compile Include="OrderItem.cs">
-      <DependentUpon>FasConDB.tt</DependentUpon>
+      <DependentUpon>FasconDB.tt</DependentUpon>
     </Compile>
     <Compile Include="OrderNote.cs">
-      <DependentUpon>FasConDB.tt</DependentUpon>
+      <DependentUpon>FasconDB.tt</DependentUpon>
     </Compile>
     <Compile Include="PagingExtension.cs" />
     <Compile Include="Picture.cs">
-      <DependentUpon>FasConDB.tt</DependentUpon>
+      <DependentUpon>FasconDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Product.cs">
-      <DependentUpon>FasConDB.tt</DependentUpon>
+      <DependentUpon>FasconDB.tt</DependentUpon>
     </Compile>
     <Compile Include="ProductReview.cs">
-      <DependentUpon>FasConDB.tt</DependentUpon>
+      <DependentUpon>FasconDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Product_Picture_Mapping.cs">
-      <DependentUpon>FasConDB.tt</DependentUpon>
+      <DependentUpon>FasconDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BaseReppository.cs" />
@@ -125,35 +125,35 @@
     <Compile Include="Repositories\GenerateData.cs" />
     <Compile Include="Repositories\ProductRepository.cs" />
     <Compile Include="StateProvince.cs">
-      <DependentUpon>FasConDB.tt</DependentUpon>
+      <DependentUpon>FasconDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Store.cs">
-      <DependentUpon>FasConDB.tt</DependentUpon>
+      <DependentUpon>FasconDB.tt</DependentUpon>
     </Compile>
     <Compile Include="User.cs">
-      <DependentUpon>FasConDB.tt</DependentUpon>
+      <DependentUpon>FasconDB.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <EntityDeploy Include="FasConDB.edmx">
+    <EntityDeploy Include="FasconDB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>FasConDB.Designer.cs</LastGenOutput>
+      <LastGenOutput>FasconDB.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="FasConDB.Context.tt">
+    <None Include="FasconDB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>FasConDB.edmx</DependentUpon>
-      <LastGenOutput>FasConDB.Context.cs</LastGenOutput>
+      <DependentUpon>FasconDB.edmx</DependentUpon>
+      <LastGenOutput>FasconDB.Context.cs</LastGenOutput>
     </None>
-    <None Include="FasConDB.edmx.diagram">
-      <DependentUpon>FasConDB.edmx</DependentUpon>
+    <None Include="FasconDB.edmx.diagram">
+      <DependentUpon>FasconDB.edmx</DependentUpon>
     </None>
-    <None Include="FasConDB.tt">
+    <None Include="FasconDB.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>FasConDB.edmx</DependentUpon>
-      <LastGenOutput>FasConDB.cs</LastGenOutput>
+      <DependentUpon>FasconDB.edmx</DependentUpon>
+      <LastGenOutput>FasconDB.cs</LastGenOutput>
     </None>
     <None Include="packages.config" />
   </ItemGroup>

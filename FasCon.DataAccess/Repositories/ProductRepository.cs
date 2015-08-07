@@ -17,7 +17,7 @@ namespace FasCon.DataAccess.Repositories
        }
        public static List<ProductModel> Products()
        {
-           using (var db = new FasConEntities())
+           using (var db = new FasConDBEntities())
            {
                var products = db.Products.ToList().OrderBy(p=>p.ProductName);
                return products.Select(p => new ProductModel {ProductID=p.ProductID,ProductName = p.ProductName,ShortDescription=p.ShortDescription,ProductThumb=p.ProductThumb,Price=p.Price }).ToList();
@@ -25,7 +25,7 @@ namespace FasCon.DataAccess.Repositories
        }
        public static  ProductModel  FindProductById(Guid ProductId)
        {
-           using (var db = new FasConEntities())
+           using (var db = new FasConDBEntities())
            {
                var p = db.Products.Where(pr => pr.ProductID == ProductId).FirstOrDefault();
                if (p == null) return null;
@@ -33,11 +33,11 @@ namespace FasCon.DataAccess.Repositories
                return  ( new ProductModel { CategoryID=p.CategoryID, ProductID = p.ProductID, ProductName = p.ProductName, ShortDescription = p.ShortDescription, ProductThumb = p.ProductThumb, Price = p.Price,FullDescription=p.FullDescription });
            }
        }
-       public static ProductModel FindProductBySEOURL(string SEOURL)
+       public static ProductModel FindProductByAlias(string Alias)
        {
-           using (var db = new FasConEntities())
+           using (var db = new FasConDBEntities())
            {
-               var p = db.Products.Where(pr => pr.SEOURL == SEOURL).FirstOrDefault();
+               var p = db.Products.Where(pr => pr.Alias == Alias).FirstOrDefault();
                if (p == null) return null;
                //return Mapper.Map<ProductModel>(product);
                return (new ProductModel { CategoryID = p.CategoryID, ProductID = p.ProductID, ProductName = p.ProductName, ShortDescription = p.ShortDescription, ProductThumb = p.ProductThumb, Price = p.Price, FullDescription = p.FullDescription });
@@ -45,7 +45,7 @@ namespace FasCon.DataAccess.Repositories
        }
        public static ProductModel FindProductByCategoryId(Guid CategoryId)
        {
-           using (var db = new FasConEntities())
+           using (var db = new FasConDBEntities())
            {
                var p = db.Products.Where(pr => pr.CategoryID == CategoryId).FirstOrDefault();
                if (p == null) return null;
@@ -54,11 +54,11 @@ namespace FasCon.DataAccess.Repositories
            }
        }
 
-       public static ProductModel FindProductByCategorySEOURL(string SEOURL)
+       public static ProductModel FindProductByCategoryAlias(string Alias)
        {
-           using (var db = new FasConEntities())
+           using (var db = new FasConDBEntities())
            {
-               var p = db.Products.Where(pr => pr.SEOURL == SEOURL).FirstOrDefault();
+               var p = db.Products.Where(pr => pr.Alias == Alias).FirstOrDefault();
                if (p == null) return null;
                //return Mapper.Map<ProductModel>(product);
                return (new ProductModel { CategoryID = p.CategoryID, ProductID = p.ProductID, ProductName = p.ProductName, ShortDescription = p.ShortDescription, ProductThumb = p.ProductThumb, Price = p.Price, FullDescription = p.FullDescription });

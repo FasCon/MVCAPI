@@ -11,7 +11,7 @@ namespace FasCon.DataAccess.Repositories
     {
         public static void GenerateSampleData()
         {
-            using (var db = new FasConEntities())
+            using (var db = new FasConDBEntities())
             {
                 for (int i = 0; i < 10; i++)
                 {
@@ -63,7 +63,7 @@ namespace FasCon.DataAccess.Repositories
         }
         public static void GenerateCustomer()
         {
-            using (var db = new FasConEntities())
+            using (var db = new FasConDBEntities())
             {
                 db.Customers.Add(new Customer
                 {

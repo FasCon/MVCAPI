@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="FasConModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="DB_9CF878_fasconModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="Addresses">
     <Key>
       <PropertyRef Name="AddressId" />
@@ -89,7 +89,6 @@
     </Key>
     <Property Name="CategoryId" Type="uniqueidentifier" Nullable="false" />
     <Property Name="Name" Type="nvarchar" MaxLength="400" Nullable="false" />
-    <Property Name="SEOURL" Type="nvarchar" MaxLength="400" />
     <Property Name="Description" Type="nvarchar(max)" />
     <Property Name="Alias" Type="nvarchar" MaxLength="100" />
     <Property Name="MetaKeywords" Type="nvarchar" MaxLength="400" />
@@ -141,12 +140,8 @@
     <Property Name="OrderId" Type="uniqueidentifier" Nullable="false" />
     <Property Name="ProductId" Type="uniqueidentifier" Nullable="false" />
     <Property Name="Quantity" Type="uniqueidentifier" Nullable="false" />
-    <Property Name="UnitPriceInclTax" Type="decimal" Precision="18" Scale="4" Nullable="false" />
-    <Property Name="UnitPriceExclTax" Type="decimal" Precision="18" Scale="4" Nullable="false" />
-    <Property Name="PriceInclTax" Type="decimal" Precision="18" Scale="4" Nullable="false" />
-    <Property Name="PriceExclTax" Type="decimal" Precision="18" Scale="4" Nullable="false" />
-    <Property Name="DiscountAmountInclTax" Type="decimal" Precision="18" Scale="4" Nullable="false" />
-    <Property Name="DiscountAmountExclTax" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="Price" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="DiscountAmount" Type="decimal" Precision="18" Scale="4" Nullable="false" />
     <Property Name="ProductCost" Type="decimal" Precision="18" Scale="4" Nullable="false" />
   </EntityType>
   <EntityType Name="OrderNotes">
@@ -173,8 +168,7 @@
     <Property Name="ShippingStatusId" Type="int" Nullable="false" />
     <Property Name="PaymentStatusId" Type="int" Nullable="false" />
     <Property Name="VatNumber" Type="nvarchar" MaxLength="4000" />
-    <Property Name="OrderSubtotalInclTax" Type="decimal" Precision="18" Scale="4" Nullable="false" />
-    <Property Name="OrderSubtotalExclTax" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+    <Property Name="OrderSubtotal" Type="decimal" Precision="18" Scale="4" Nullable="false" />
     <Property Name="OrderTax" Type="decimal" Precision="18" Scale="4" Nullable="false" />
     <Property Name="OrderDiscount" Type="decimal" Precision="18" Scale="4" Nullable="false" />
     <Property Name="OrderTotal" Type="decimal" Precision="18" Scale="4" Nullable="false" />
@@ -182,7 +176,6 @@
     <Property Name="PurchaseOrderNumber" Type="nvarchar" MaxLength="4000" />
     <Property Name="PaidDateUtc" Type="datetime" />
     <Property Name="ShippingMethod" Type="nvarchar" MaxLength="4000" />
-    <Property Name="ShippingRateComputationMethodSystemName" Type="nvarchar" MaxLength="4000" />
     <Property Name="Deleted" Type="bit" Nullable="false" />
     <Property Name="CreatedOnUtc" Type="datetime" Nullable="false" />
     <Property Name="UpdatedOnUtc" Type="datetime" Nullable="false" />
@@ -226,7 +219,7 @@
     </Key>
     <Property Name="ProductID" Type="uniqueidentifier" Nullable="false" />
     <Property Name="ProductSKU" Type="varchar" MaxLength="50" Nullable="false" />
-    <Property Name="SEOURL" Type="nvarchar" MaxLength="400" />
+    <Property Name="Alias" Type="nvarchar" MaxLength="400" />
     <Property Name="ProductName" Type="nvarchar" MaxLength="400" Nullable="false" />
     <Property Name="ShortDescription" Type="nvarchar" MaxLength="4000" Nullable="false" />
     <Property Name="FullDescription" Type="nvarchar(max)" />
@@ -240,7 +233,6 @@
     <Property Name="NotApprovedRatingSum" Type="int" />
     <Property Name="ApprovedTotalReviews" Type="int" />
     <Property Name="NotApprovedTotalReviews" Type="int" />
-    <Property Name="ManufacturerPartNumber" Type="nvarchar" MaxLength="400" />
     <Property Name="IsShipEnabled" Type="bit" />
     <Property Name="IsFreeShipping" Type="bit" />
     <Property Name="StockQuantity" Type="int" />
@@ -686,7 +678,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="FasConModelStoreContainer">
+  <EntityContainer Name="DB_9CF878_fasconModelStoreContainer">
     <EntitySet Name="Addresses" EntityType="Self.Addresses" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />

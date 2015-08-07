@@ -10,7 +10,7 @@ namespace FasCon.DataAccess.Repositories
 {
    public  class BaseRepository
     {
-         public void SetModifiedField<TEntity>(FasConEntities db, TEntity item, Expression<Func<TEntity, object>> setModifyProperty) where TEntity : class
+         public void SetModifiedField<TEntity>(FasConDBEntities db, TEntity item, Expression<Func<TEntity, object>> setModifyProperty) where TEntity : class
         {
             var entry = db.Entry(item);
             entry.Property(setModifyProperty).IsModified = true;
@@ -18,7 +18,7 @@ namespace FasCon.DataAccess.Repositories
 
         protected void SetValueAuditFields<T>(ref T obj)
         {
-            using (var db = new FasConEntities())
+            using (var db = new FasConDBEntities())
             {
                 //var systemUser = db.Users.FirstOrDefault(i => i.AspNetUser.UserName == "SYSTEM_USER");
                 //if (systemUser != null)

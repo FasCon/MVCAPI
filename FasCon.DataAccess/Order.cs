@@ -30,8 +30,7 @@ namespace FasCon.DataAccess
         public int ShippingStatusId { get; set; }
         public int PaymentStatusId { get; set; }
         public string VatNumber { get; set; }
-        public decimal OrderSubtotalInclTax { get; set; }
-        public decimal OrderSubtotalExclTax { get; set; }
+        public decimal OrderSubtotal { get; set; }
         public decimal OrderTax { get; set; }
         public decimal OrderDiscount { get; set; }
         public decimal OrderTotal { get; set; }
@@ -39,7 +38,6 @@ namespace FasCon.DataAccess
         public string PurchaseOrderNumber { get; set; }
         public Nullable<System.DateTime> PaidDateUtc { get; set; }
         public string ShippingMethod { get; set; }
-        public string ShippingRateComputationMethodSystemName { get; set; }
         public bool Deleted { get; set; }
         public System.DateTime CreatedOnUtc { get; set; }
         public System.DateTime UpdatedOnUtc { get; set; }

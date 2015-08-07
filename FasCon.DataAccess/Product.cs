@@ -23,7 +23,7 @@ namespace FasCon.DataAccess
     
         public System.Guid ProductID { get; set; }
         public string ProductSKU { get; set; }
-        public string SEOURL { get; set; }
+        public string Alias { get; set; }
         public string ProductName { get; set; }
         public string ShortDescription { get; set; }
         public string FullDescription { get; set; }
@@ -37,7 +37,6 @@ namespace FasCon.DataAccess
         public Nullable<int> NotApprovedRatingSum { get; set; }
         public Nullable<int> ApprovedTotalReviews { get; set; }
         public Nullable<int> NotApprovedTotalReviews { get; set; }
-        public string ManufacturerPartNumber { get; set; }
         public Nullable<bool> IsShipEnabled { get; set; }
         public Nullable<bool> IsFreeShipping { get; set; }
         public Nullable<int> StockQuantity { get; set; }

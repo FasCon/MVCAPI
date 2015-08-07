@@ -3,3 +3,8 @@ C:\Working\AngularJSAuthentication\FasCon.DataModel\bin\Debug\FasCon.DataModel.p
 C:\Working\AngularJSAuthentication\FasCon.DataModel\obj\Debug\FasCon.DataModel.dll
 C:\Working\AngularJSAuthentication\FasCon.DataModel\obj\Debug\FasCon.DataModel.pdb
 C:\Working\AngularJSAuthentication\FasCon.DataModel\obj\Debug\FasCon.DataModel.csprojResolveAssemblyReference.cache
+C:\Fascon\MVCAPI\FasCon.DataModel\bin\Debug\FasCon.DataModel.dll
+C:\Fascon\MVCAPI\FasCon.DataModel\bin\Debug\FasCon.DataModel.pdb
+C:\Fascon\MVCAPI\FasCon.DataModel\obj\Debug\FasCon.DataModel.csprojResolveAssemblyReference.cache
+C:\Fascon\MVCAPI\FasCon.DataModel\obj\Debug\FasCon.DataModel.dll
+C:\Fascon\MVCAPI\FasCon.DataModel\obj\Debug\FasCon.DataModel.pdb

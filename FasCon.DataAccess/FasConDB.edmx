@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="FasConModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="DB_9CF878_fasconModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Addresses">
           <Key>
             <PropertyRef Name="AddressId" />
@@ -94,7 +94,6 @@
           </Key>
           <Property Name="CategoryId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="400" Nullable="false" />
-          <Property Name="SEOURL" Type="nvarchar" MaxLength="400" />
           <Property Name="Description" Type="nvarchar(max)" />
           <Property Name="Alias" Type="nvarchar" MaxLength="100" />
           <Property Name="MetaKeywords" Type="nvarchar" MaxLength="400" />
@@ -146,12 +145,8 @@
           <Property Name="OrderId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="ProductId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Quantity" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="UnitPriceInclTax" Type="decimal" Precision="18" Scale="4" Nullable="false" />
-          <Property Name="UnitPriceExclTax" Type="decimal" Precision="18" Scale="4" Nullable="false" />
-          <Property Name="PriceInclTax" Type="decimal" Precision="18" Scale="4" Nullable="false" />
-          <Property Name="PriceExclTax" Type="decimal" Precision="18" Scale="4" Nullable="false" />
-          <Property Name="DiscountAmountInclTax" Type="decimal" Precision="18" Scale="4" Nullable="false" />
-          <Property Name="DiscountAmountExclTax" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="DiscountAmount" Type="decimal" Precision="18" Scale="4" Nullable="false" />
           <Property Name="ProductCost" Type="decimal" Precision="18" Scale="4" Nullable="false" />
         </EntityType>
         <EntityType Name="OrderNotes">
@@ -178,8 +173,7 @@
           <Property Name="ShippingStatusId" Type="int" Nullable="false" />
           <Property Name="PaymentStatusId" Type="int" Nullable="false" />
           <Property Name="VatNumber" Type="nvarchar" MaxLength="4000" />
-          <Property Name="OrderSubtotalInclTax" Type="decimal" Precision="18" Scale="4" Nullable="false" />
-          <Property Name="OrderSubtotalExclTax" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="OrderSubtotal" Type="decimal" Precision="18" Scale="4" Nullable="false" />
           <Property Name="OrderTax" Type="decimal" Precision="18" Scale="4" Nullable="false" />
           <Property Name="OrderDiscount" Type="decimal" Precision="18" Scale="4" Nullable="false" />
           <Property Name="OrderTotal" Type="decimal" Precision="18" Scale="4" Nullable="false" />
@@ -187,7 +181,6 @@
           <Property Name="PurchaseOrderNumber" Type="nvarchar" MaxLength="4000" />
           <Property Name="PaidDateUtc" Type="datetime" />
           <Property Name="ShippingMethod" Type="nvarchar" MaxLength="4000" />
-          <Property Name="ShippingRateComputationMethodSystemName" Type="nvarchar" MaxLength="4000" />
           <Property Name="Deleted" Type="bit" Nullable="false" />
           <Property Name="CreatedOnUtc" Type="datetime" Nullable="false" />
           <Property Name="UpdatedOnUtc" Type="datetime" Nullable="false" />
@@ -231,7 +224,7 @@
           </Key>
           <Property Name="ProductID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="ProductSKU" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="SEOURL" Type="nvarchar" MaxLength="400" />
+          <Property Name="Alias" Type="nvarchar" MaxLength="400" />
           <Property Name="ProductName" Type="nvarchar" MaxLength="400" Nullable="false" />
           <Property Name="ShortDescription" Type="nvarchar" MaxLength="4000" Nullable="false" />
           <Property Name="FullDescription" Type="nvarchar(max)" />
@@ -245,7 +238,6 @@
           <Property Name="NotApprovedRatingSum" Type="int" />
           <Property Name="ApprovedTotalReviews" Type="int" />
           <Property Name="NotApprovedTotalReviews" Type="int" />
-          <Property Name="ManufacturerPartNumber" Type="nvarchar" MaxLength="400" />
           <Property Name="IsShipEnabled" Type="bit" />
           <Property Name="IsFreeShipping" Type="bit" />
           <Property Name="StockQuantity" Type="int" />
@@ -691,7 +683,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="FasConModelStoreContainer">
+        <EntityContainer Name="DB_9CF878_fasconModelStoreContainer">
           <EntitySet Name="Addresses" EntityType="Self.Addresses" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
@@ -829,10 +821,11 @@
             <End Role="Users1" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="FasConModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="FasConDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Address">
           <Key>
             <PropertyRef Name="AddressId" />
@@ -941,6 +934,31 @@
           <NavigationProperty Name="AspNetUser2" Relationship="Self.FK_AspNetUsers_AspNetUsers_Update" FromRole="AspNetUsers1" ToRole="AspNetUsers" />
           <NavigationProperty Name="Users" Relationship="Self.FK_AspNetUsers_Users" FromRole="AspNetUsers" ToRole="Users" />
         </EntityType>
+        <EntityType Name="Category">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="400" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Alias" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MetaKeywords" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="MetaDescription" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="MetaTitle" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="ParentCategoryId" Type="Guid" />
+          <Property Name="PictureId" Type="Guid" />
+          <Property Name="ShowOnHomePage" Type="Boolean" />
+          <Property Name="Published" Type="Boolean" />
+          <Property Name="Deleted" Type="Boolean" />
+          <Property Name="DisplayOrder" Type="Int32" />
+          <Property Name="CreatedOnUtc" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedOnUtc" Type="DateTime" Precision="3" />
+          <Property Name="FullName" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="BottomDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Hits" Type="Int32" />
+          <NavigationProperty Name="Picture" Relationship="Self.FK_dbo_Category_dbo_Picture_PictureId" FromRole="Categories" ToRole="Pictures" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_Products_Categories" FromRole="Categories" ToRole="Products" />
+        </EntityType>
         <EntityType Name="Customer">
           <Key>
             <PropertyRef Name="CustomerId" />
@@ -971,15 +989,11 @@
           <Property Name="OrderId" Type="Guid" Nullable="false" />
           <Property Name="ProductId" Type="Guid" Nullable="false" />
           <Property Name="Quantity" Type="Guid" Nullable="false" />
-          <Property Name="UnitPriceInclTax" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
-          <Property Name="UnitPriceExclTax" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
-          <Property Name="PriceInclTax" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
-          <Property Name="PriceExclTax" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
-          <Property Name="DiscountAmountInclTax" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
-          <Property Name="DiscountAmountExclTax" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="DiscountAmount" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
           <Property Name="ProductCost" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
           <NavigationProperty Name="Order" Relationship="Self.FK_dbo_OrderItems_dbo_Orders_OrderId" FromRole="OrderItems" ToRole="Orders" />
-          <NavigationProperty Name="Product" Relationship="FasConModel.FK_dbo_OrderItems_dbo_Products_ProductId" FromRole="OrderItem" ToRole="Product" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_dbo_OrderItems_dbo_Products_ProductId" FromRole="OrderItems" ToRole="Products" />
         </EntityType>
         <EntityType Name="OrderNote">
           <Key>
@@ -1006,8 +1020,7 @@
           <Property Name="ShippingStatusId" Type="Int32" Nullable="false" />
           <Property Name="PaymentStatusId" Type="Int32" Nullable="false" />
           <Property Name="VatNumber" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="OrderSubtotalInclTax" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
-          <Property Name="OrderSubtotalExclTax" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="OrderSubtotal" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
           <Property Name="OrderTax" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
           <Property Name="OrderDiscount" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
           <Property Name="OrderTotal" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
@@ -1015,7 +1028,6 @@
           <Property Name="PurchaseOrderNumber" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
           <Property Name="PaidDateUtc" Type="DateTime" Precision="3" />
           <Property Name="ShippingMethod" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="ShippingRateComputationMethodSystemName" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
           <Property Name="Deleted" Type="Boolean" Nullable="false" />
           <Property Name="CreatedOnUtc" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="UpdatedOnUtc" Type="DateTime" Nullable="false" Precision="3" />
@@ -1025,6 +1037,19 @@
           <NavigationProperty Name="OrderItems" Relationship="Self.FK_dbo_OrderItems_dbo_Orders_OrderId" FromRole="Orders" ToRole="OrderItems" />
           <NavigationProperty Name="OrderNotes" Relationship="Self.FK_dbo_OrderNote_dbo_Orders_OrderId" FromRole="Orders" ToRole="OrderNotes" />
         </EntityType>
+        <EntityType Name="Picture">
+          <Key>
+            <PropertyRef Name="PictureId" />
+          </Key>
+          <Property Name="PictureId" Type="Guid" Nullable="false" />
+          <Property Name="PictureBinary" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="MimeType" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SeoFilename" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="IsNew" Type="Boolean" />
+          <Property Name="OriginURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Categories" Relationship="Self.FK_dbo_Category_dbo_Picture_PictureId" FromRole="Pictures" ToRole="Categories" />
+          <NavigationProperty Name="Product_Picture_Mapping" Relationship="Self.FK_dbo_Product_Picture_Mapping_dbo_Picture_PictureId" FromRole="Pictures" ToRole="Product_Picture_Mapping" />
+        </EntityType>
         <EntityType Name="Product_Picture_Mapping">
           <Key>
             <PropertyRef Name="Id" />
@@ -1033,8 +1058,8 @@
           <Property Name="ProductId" Type="Guid" Nullable="false" />
           <Property Name="PictureId" Type="Guid" Nullable="false" />
           <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Picture" Relationship="FasConModel.FK_dbo_Product_Picture_Mapping_dbo_Picture_PictureId" FromRole="Product_Picture_Mapping" ToRole="Picture" />
-          <NavigationProperty Name="Product" Relationship="FasConModel.FK_dbo_Product_Picture_Mapping_dbo_Product_ProductId" FromRole="Product_Picture_Mapping" ToRole="Product" />
+          <NavigationProperty Name="Picture" Relationship="Self.FK_dbo_Product_Picture_Mapping_dbo_Picture_PictureId" FromRole="Product_Picture_Mapping" ToRole="Pictures" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_dbo_Product_Picture_Mapping_dbo_Product_ProductId" FromRole="Product_Picture_Mapping" ToRole="Products" />
         </EntityType>
         <EntityType Name="ProductReview">
           <Key>
@@ -1047,7 +1072,68 @@
           <Property Name="Rating" Type="Int32" Nullable="false" />
           <Property Name="HelpfulYesTotal" Type="Int32" Nullable="false" />
           <Property Name="HelpfulNoTotal" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Product" Relationship="FasConModel.FK_dbo_ProductReview_dbo_Product_ProductId" FromRole="ProductReview" ToRole="Product" />
+          <NavigationProperty Name="Product" Relationship="Self.FK_dbo_ProductReview_dbo_Product_ProductId" FromRole="ProductReview" ToRole="Products" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="Guid" Nullable="false" />
+          <Property Name="ProductSKU" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Alias" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="ProductName" Type="String" MaxLength="400" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ShortDescription" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="FullDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AdminComment" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="ShowOnHomePage" Type="Boolean" />
+          <Property Name="MetaKeywords" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="MetaDescription" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="MetaTitle" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="AllowCustomerReviews" Type="Boolean" />
+          <Property Name="ApprovedRatingSum" Type="Int32" />
+          <Property Name="NotApprovedRatingSum" Type="Int32" />
+          <Property Name="ApprovedTotalReviews" Type="Int32" />
+          <Property Name="NotApprovedTotalReviews" Type="Int32" />
+          <Property Name="IsShipEnabled" Type="Boolean" />
+          <Property Name="IsFreeShipping" Type="Boolean" />
+          <Property Name="StockQuantity" Type="Int32" />
+          <Property Name="DisplayStockAvailability" Type="Boolean" />
+          <Property Name="DisplayStockQuantity" Type="Boolean" />
+          <Property Name="MinStockQuantity" Type="Int32" />
+          <Property Name="LowStockActivityId" Type="Int32" />
+          <Property Name="NotifyAdminForQuantityBelow" Type="Int32" />
+          <Property Name="OrderMinimumQuantity" Type="Int32" />
+          <Property Name="OrderMaximumQuantity" Type="Int32" />
+          <Property Name="AllowedQuantities" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="DisableBuyButton" Type="Boolean" />
+          <Property Name="DisableWishlistButton" Type="Boolean" />
+          <Property Name="CallForPrice" Type="Boolean" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="OldPrice" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="ProductCost" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="SpecialPrice" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="SpecialPriceStartDateTimeUtc" Type="DateTime" Precision="3" />
+          <Property Name="SpecialPriceEndDateTimeUtc" Type="DateTime" Precision="3" />
+          <Property Name="Weight" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="Length" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="Width" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="Height" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="AvailableStartDateTimeUtc" Type="DateTime" Precision="3" />
+          <Property Name="AvailableEndDateTimeUtc" Type="DateTime" Precision="3" />
+          <Property Name="DisplayOrder" Type="Int32" />
+          <Property Name="Published" Type="Boolean" />
+          <Property Name="Deleted" Type="Boolean" />
+          <Property Name="CreatedOnUtc" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedOnUtc" Type="DateTime" Precision="3" />
+          <Property Name="ProductThumb" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ProductImage" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CategoryID" Type="Guid" />
+          <Property Name="StoreId" Type="Guid" />
+          <NavigationProperty Name="Category" Relationship="Self.FK_Products_Categories" FromRole="Products" ToRole="Categories" />
+          <NavigationProperty Name="OrderItems" Relationship="Self.FK_dbo_OrderItems_dbo_Products_ProductId" FromRole="Products" ToRole="OrderItems" />
+          <NavigationProperty Name="Product_Picture_Mapping" Relationship="Self.FK_dbo_Product_Picture_Mapping_dbo_Product_ProductId" FromRole="Products" ToRole="Product_Picture_Mapping" />
+          <NavigationProperty Name="ProductReviews" Relationship="Self.FK_dbo_ProductReview_dbo_Product_ProductId" FromRole="Products" ToRole="ProductReview" />
+          <NavigationProperty Name="Store" Relationship="Self.FK_Products_Stores" FromRole="Products" ToRole="Store" />
         </EntityType>
         <EntityType Name="StateProvince">
           <Key>
@@ -1059,6 +1145,29 @@
           <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Addresses" Relationship="Self.FK_dbo_Address_dbo_StateProvinces_StateProvinceId" FromRole="StateProvinces" ToRole="Addresses" />
           <NavigationProperty Name="Districts" Relationship="Self.FK_Districts_StateProvinces" FromRole="StateProvinces" ToRole="Districts" />
+        </EntityType>
+        <EntityType Name="Store">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="400" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Url" Type="String" MaxLength="400" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LogoPictureId" Type="Guid" />
+          <Property Name="DisplayOrder" Type="Int32" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedUserId" Type="Guid" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateUserId" Type="Guid" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <Property Name="StartDate" Type="DateTime" Precision="0" />
+          <Property Name="EndDate" Type="DateTime" Precision="0" />
+          <Property Name="Actived" Type="Boolean" />
+          <Property Name="OwnerId" Type="Guid" />
+          <Property Name="Comment" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Products" Relationship="Self.FK_Products_Stores" FromRole="Store" ToRole="Products" />
         </EntityType>
         <EntityType Name="User">
           <Key>
@@ -1245,6 +1354,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_dbo_Category_dbo_Picture_PictureId">
+          <End Role="Pictures" Type="Self.Picture" Multiplicity="0..1" />
+          <End Role="Categories" Type="Self.Category" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pictures">
+              <PropertyRef Name="PictureId" />
+            </Principal>
+            <Dependent Role="Categories">
+              <PropertyRef Name="PictureId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_Categories">
+          <End Role="Categories" Type="Self.Category" Multiplicity="0..1" />
+          <End Role="Products" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Categories">
+              <PropertyRef Name="CategoryId" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_dbo_Order_dbo_Customer_CustomerId">
           <End Role="Customers" Type="Self.Customer" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -1285,6 +1418,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_dbo_OrderItems_dbo_Products_ProductId">
+          <End Role="Products" Type="Self.Product" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="OrderItems" Type="Self.OrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="OrderItems">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_dbo_OrderNote_dbo_Orders_OrderId">
           <End Role="Orders" Type="Self.Order" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -1296,6 +1443,60 @@
             </Principal>
             <Dependent Role="OrderNotes">
               <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Product_Picture_Mapping_dbo_Picture_PictureId">
+          <End Role="Pictures" Type="Self.Picture" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Product_Picture_Mapping" Type="Self.Product_Picture_Mapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pictures">
+              <PropertyRef Name="PictureId" />
+            </Principal>
+            <Dependent Role="Product_Picture_Mapping">
+              <PropertyRef Name="PictureId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Product_Picture_Mapping_dbo_Product_ProductId">
+          <End Role="Products" Type="Self.Product" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Product_Picture_Mapping" Type="Self.Product_Picture_Mapping" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="Product_Picture_Mapping">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_ProductReview_dbo_Product_ProductId">
+          <End Role="Products" Type="Self.Product" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="ProductReview" Type="Self.ProductReview" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="ProductReview">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Products_Stores">
+          <End Role="Store" Type="Self.Store" Multiplicity="0..1" />
+          <End Role="Products" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Store">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="StoreId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1327,21 +1528,25 @@
           <End Role="Addresses" Type="Self.Address" Multiplicity="*" />
           <End Role="Customers" Type="Self.Customer" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="FasConEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="FasConDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Addresses" EntityType="Self.Address" />
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
           <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaim" />
           <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogin" />
           <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRole" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
+          <EntitySet Name="Categories" EntityType="Self.Category" />
           <EntitySet Name="Customers" EntityType="Self.Customer" />
           <EntitySet Name="Districts" EntityType="Self.District" />
           <EntitySet Name="OrderItems" EntityType="Self.OrderItem" />
           <EntitySet Name="OrderNotes" EntityType="Self.OrderNote" />
           <EntitySet Name="Orders" EntityType="Self.Order" />
+          <EntitySet Name="Pictures" EntityType="Self.Picture" />
           <EntitySet Name="Product_Picture_Mapping" EntityType="Self.Product_Picture_Mapping" />
           <EntitySet Name="ProductReviews" EntityType="Self.ProductReview" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
           <EntitySet Name="StateProvinces" EntityType="Self.StateProvince" />
+          <EntitySet Name="Stores" EntityType="Self.Store" />
           <EntitySet Name="Users" EntityType="Self.User" />
           <AssociationSet Name="FK_dbo_Address_dbo_Districts_DistrictId" Association="Self.FK_dbo_Address_dbo_Districts_DistrictId">
             <End Role="Districts" EntitySet="Districts" />
@@ -1399,6 +1604,14 @@
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
+          <AssociationSet Name="FK_dbo_Category_dbo_Picture_PictureId" Association="Self.FK_dbo_Category_dbo_Picture_PictureId">
+            <End Role="Pictures" EntitySet="Pictures" />
+            <End Role="Categories" EntitySet="Categories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_Categories" Association="Self.FK_Products_Categories">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
           <AssociationSet Name="FK_dbo_Order_dbo_Customer_CustomerId" Association="Self.FK_dbo_Order_dbo_Customer_CustomerId">
             <End Role="Customers" EntitySet="Customers" />
             <End Role="Orders" EntitySet="Orders" />
@@ -1411,9 +1624,29 @@
             <End Role="Orders" EntitySet="Orders" />
             <End Role="OrderItems" EntitySet="OrderItems" />
           </AssociationSet>
+          <AssociationSet Name="FK_dbo_OrderItems_dbo_Products_ProductId" Association="Self.FK_dbo_OrderItems_dbo_Products_ProductId">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="OrderItems" EntitySet="OrderItems" />
+          </AssociationSet>
           <AssociationSet Name="FK_dbo_OrderNote_dbo_Orders_OrderId" Association="Self.FK_dbo_OrderNote_dbo_Orders_OrderId">
             <End Role="Orders" EntitySet="Orders" />
             <End Role="OrderNotes" EntitySet="OrderNotes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Product_Picture_Mapping_dbo_Picture_PictureId" Association="Self.FK_dbo_Product_Picture_Mapping_dbo_Picture_PictureId">
+            <End Role="Pictures" EntitySet="Pictures" />
+            <End Role="Product_Picture_Mapping" EntitySet="Product_Picture_Mapping" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Product_Picture_Mapping_dbo_Product_ProductId" Association="Self.FK_dbo_Product_Picture_Mapping_dbo_Product_ProductId">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="Product_Picture_Mapping" EntitySet="Product_Picture_Mapping" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_ProductReview_dbo_Product_ProductId" Association="Self.FK_dbo_ProductReview_dbo_Product_ProductId">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="ProductReview" EntitySet="ProductReviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Products_Stores" Association="Self.FK_Products_Stores">
+            <End Role="Store" EntitySet="Stores" />
+            <End Role="Products" EntitySet="Products" />
           </AssociationSet>
           <AssociationSet Name="FK_Users_Users_Create" Association="Self.FK_Users_Users_Create">
             <End Role="Users" EntitySet="Users" />
@@ -1427,263 +1660,15 @@
             <End Role="Addresses" EntitySet="Addresses" />
             <End Role="Customers" EntitySet="Customers" />
           </AssociationSet>
-          <EntitySet Name="Stores" EntityType="FasConModel.Store" />
-          <EntitySet Name="Categories" EntityType="FasConModel.Category" />
-          <EntitySet Name="Pictures" EntityType="FasConModel.Picture" />
-          <AssociationSet Name="FK_dbo_Category_dbo_Picture_PictureId" Association="FasConModel.FK_dbo_Category_dbo_Picture_PictureId">
-            <End Role="Picture" EntitySet="Pictures" />
-            <End Role="Category" EntitySet="Categories" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_Product_Picture_Mapping_dbo_Picture_PictureId" Association="FasConModel.FK_dbo_Product_Picture_Mapping_dbo_Picture_PictureId">
-            <End Role="Picture" EntitySet="Pictures" />
-            <End Role="Product_Picture_Mapping" EntitySet="Product_Picture_Mapping" />
-          </AssociationSet>
-          <EntitySet Name="Products" EntityType="FasConModel.Product" />
-          <AssociationSet Name="FK_Products_Categories" Association="FasConModel.FK_Products_Categories">
-            <End Role="Category" EntitySet="Categories" />
-            <End Role="Product" EntitySet="Products" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_OrderItems_dbo_Products_ProductId" Association="FasConModel.FK_dbo_OrderItems_dbo_Products_ProductId">
-            <End Role="Product" EntitySet="Products" />
-            <End Role="OrderItem" EntitySet="OrderItems" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_Product_Picture_Mapping_dbo_Product_ProductId" Association="FasConModel.FK_dbo_Product_Picture_Mapping_dbo_Product_ProductId">
-            <End Role="Product" EntitySet="Products" />
-            <End Role="Product_Picture_Mapping" EntitySet="Product_Picture_Mapping" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_ProductReview_dbo_Product_ProductId" Association="FasConModel.FK_dbo_ProductReview_dbo_Product_ProductId">
-            <End Role="Product" EntitySet="Products" />
-            <End Role="ProductReview" EntitySet="ProductReviews" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Products_Stores" Association="FasConModel.FK_Products_Stores">
-            <End Role="Store" EntitySet="Stores" />
-            <End Role="Product" EntitySet="Products" />
-          </AssociationSet>
-          </EntityContainer>
-        <EntityType Name="Store">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Guid" Nullable="false" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="400" FixedLength="false" Unicode="true" />
-          <Property Name="Url" Type="String" Nullable="false" MaxLength="400" FixedLength="false" Unicode="true" />
-          <Property Name="LogoPictureId" Type="Guid" />
-          <Property Name="DisplayOrder" Type="Int32" />
-          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
-          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="CreatedUserId" Type="Guid" />
-          <Property Name="CreateDate" Type="DateTime" Precision="3" />
-          <Property Name="UpdateUserId" Type="Guid" />
-          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
-          <Property Name="StartDate" Type="DateTime" Precision="0" />
-          <Property Name="EndDate" Type="DateTime" Precision="0" />
-          <Property Name="Actived" Type="Boolean" />
-          <Property Name="OwnerId" Type="Guid" />
-          <Property Name="Comment" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Products" Relationship="FasConModel.FK_Products_Stores" FromRole="Store" ToRole="Product" />
-        </EntityType>
-        <EntityType Name="Category">
-          <Key>
-            <PropertyRef Name="CategoryId" />
-          </Key>
-          <Property Name="CategoryId" Type="Guid" Nullable="false" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="400" FixedLength="false" Unicode="true" />
-          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Alias" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="MetaKeywords" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
-          <Property Name="MetaDescription" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="MetaTitle" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
-          <Property Name="ParentCategoryId" Type="Guid" />
-          <Property Name="PictureId" Type="Guid" />
-          <Property Name="ShowOnHomePage" Type="Boolean" />
-          <Property Name="Published" Type="Boolean" />
-          <Property Name="Deleted" Type="Boolean" />
-          <Property Name="DisplayOrder" Type="Int32" />
-          <Property Name="CreatedOnUtc" Type="DateTime" Precision="3" />
-          <Property Name="UpdatedOnUtc" Type="DateTime" Precision="3" />
-          <Property Name="FullName" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
-          <Property Name="BottomDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Hits" Type="Int32" />
-          <NavigationProperty Name="Picture" Relationship="FasConModel.FK_dbo_Category_dbo_Picture_PictureId" FromRole="Category" ToRole="Picture" />
-          <NavigationProperty Name="Products" Relationship="FasConModel.FK_Products_Categories" FromRole="Category" ToRole="Product" />
-          <Property Name="SEOURL" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <EntityType Name="Picture">
-          <Key>
-            <PropertyRef Name="PictureId" />
-          </Key>
-          <Property Name="PictureId" Type="Guid" Nullable="false" />
-          <Property Name="PictureBinary" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="MimeType" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
-          <Property Name="SeoFilename" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="IsNew" Type="Boolean" />
-          <Property Name="OriginURL" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Categories" Relationship="FasConModel.FK_dbo_Category_dbo_Picture_PictureId" FromRole="Picture" ToRole="Category" />
-          <NavigationProperty Name="Product_Picture_Mapping" Relationship="FasConModel.FK_dbo_Product_Picture_Mapping_dbo_Picture_PictureId" FromRole="Picture" ToRole="Product_Picture_Mapping" />
-        </EntityType>
-        <Association Name="FK_dbo_Category_dbo_Picture_PictureId">
-          <End Type="FasConModel.Picture" Role="Picture" Multiplicity="0..1" />
-          <End Type="FasConModel.Category" Role="Category" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Picture">
-              <PropertyRef Name="PictureId" />
-            </Principal>
-            <Dependent Role="Category">
-              <PropertyRef Name="PictureId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_Product_Picture_Mapping_dbo_Picture_PictureId">
-          <End Type="FasConModel.Picture" Role="Picture" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="FasConModel.Product_Picture_Mapping" Role="Product_Picture_Mapping" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Picture">
-              <PropertyRef Name="PictureId" />
-            </Principal>
-            <Dependent Role="Product_Picture_Mapping">
-              <PropertyRef Name="PictureId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="Product">
-          <Key>
-            <PropertyRef Name="ProductID" />
-          </Key>
-          <Property Name="ProductID" Type="Guid" Nullable="false" />
-          <Property Name="ProductSKU" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="SEOURL" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
-          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="400" FixedLength="false" Unicode="true" />
-          <Property Name="ShortDescription" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="FullDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="AdminComment" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="ShowOnHomePage" Type="Boolean" />
-          <Property Name="MetaKeywords" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
-          <Property Name="MetaDescription" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="MetaTitle" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
-          <Property Name="AllowCustomerReviews" Type="Boolean" />
-          <Property Name="ApprovedRatingSum" Type="Int32" />
-          <Property Name="NotApprovedRatingSum" Type="Int32" />
-          <Property Name="ApprovedTotalReviews" Type="Int32" />
-          <Property Name="NotApprovedTotalReviews" Type="Int32" />
-          <Property Name="ManufacturerPartNumber" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
-          <Property Name="IsShipEnabled" Type="Boolean" />
-          <Property Name="IsFreeShipping" Type="Boolean" />
-          <Property Name="StockQuantity" Type="Int32" />
-          <Property Name="DisplayStockAvailability" Type="Boolean" />
-          <Property Name="DisplayStockQuantity" Type="Boolean" />
-          <Property Name="MinStockQuantity" Type="Int32" />
-          <Property Name="LowStockActivityId" Type="Int32" />
-          <Property Name="NotifyAdminForQuantityBelow" Type="Int32" />
-          <Property Name="OrderMinimumQuantity" Type="Int32" />
-          <Property Name="OrderMaximumQuantity" Type="Int32" />
-          <Property Name="AllowedQuantities" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
-          <Property Name="DisableBuyButton" Type="Boolean" />
-          <Property Name="DisableWishlistButton" Type="Boolean" />
-          <Property Name="CallForPrice" Type="Boolean" />
-          <Property Name="Price" Type="Decimal" Precision="18" Scale="4" />
-          <Property Name="OldPrice" Type="Decimal" Precision="18" Scale="4" />
-          <Property Name="ProductCost" Type="Decimal" Precision="18" Scale="4" />
-          <Property Name="SpecialPrice" Type="Decimal" Precision="18" Scale="4" />
-          <Property Name="SpecialPriceStartDateTimeUtc" Type="DateTime" Precision="3" />
-          <Property Name="SpecialPriceEndDateTimeUtc" Type="DateTime" Precision="3" />
-          <Property Name="Weight" Type="Decimal" Precision="18" Scale="4" />
-          <Property Name="Length" Type="Decimal" Precision="18" Scale="4" />
-          <Property Name="Width" Type="Decimal" Precision="18" Scale="4" />
-          <Property Name="Height" Type="Decimal" Precision="18" Scale="4" />
-          <Property Name="AvailableStartDateTimeUtc" Type="DateTime" Precision="3" />
-          <Property Name="AvailableEndDateTimeUtc" Type="DateTime" Precision="3" />
-          <Property Name="DisplayOrder" Type="Int32" />
-          <Property Name="Published" Type="Boolean" />
-          <Property Name="Deleted" Type="Boolean" />
-          <Property Name="CreatedOnUtc" Type="DateTime" Precision="3" />
-          <Property Name="UpdatedOnUtc" Type="DateTime" Precision="3" />
-          <Property Name="ProductThumb" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="ProductImage" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="CategoryID" Type="Guid" />
-          <Property Name="StoreId" Type="Guid" />
-          <NavigationProperty Name="Category" Relationship="FasConModel.FK_Products_Categories" FromRole="Product" ToRole="Category" />
-          <NavigationProperty Name="OrderItems" Relationship="FasConModel.FK_dbo_OrderItems_dbo_Products_ProductId" FromRole="Product" ToRole="OrderItem" />
-          <NavigationProperty Name="Product_Picture_Mapping" Relationship="FasConModel.FK_dbo_Product_Picture_Mapping_dbo_Product_ProductId" FromRole="Product" ToRole="Product_Picture_Mapping" />
-          <NavigationProperty Name="ProductReviews" Relationship="FasConModel.FK_dbo_ProductReview_dbo_Product_ProductId" FromRole="Product" ToRole="ProductReview" />
-          <NavigationProperty Name="Store" Relationship="FasConModel.FK_Products_Stores" FromRole="Product" ToRole="Store" />
-        </EntityType>
-        <Association Name="FK_Products_Categories">
-          <End Type="FasConModel.Category" Role="Category" Multiplicity="0..1" />
-          <End Type="FasConModel.Product" Role="Product" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Category">
-              <PropertyRef Name="CategoryId" />
-            </Principal>
-            <Dependent Role="Product">
-              <PropertyRef Name="CategoryID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_OrderItems_dbo_Products_ProductId">
-          <End Type="FasConModel.Product" Role="Product" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="FasConModel.OrderItem" Role="OrderItem" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Product">
-              <PropertyRef Name="ProductID" />
-            </Principal>
-            <Dependent Role="OrderItem">
-              <PropertyRef Name="ProductId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_Product_Picture_Mapping_dbo_Product_ProductId">
-          <End Type="FasConModel.Product" Role="Product" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="FasConModel.Product_Picture_Mapping" Role="Product_Picture_Mapping" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Product">
-              <PropertyRef Name="ProductID" />
-            </Principal>
-            <Dependent Role="Product_Picture_Mapping">
-              <PropertyRef Name="ProductId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_ProductReview_dbo_Product_ProductId">
-          <End Type="FasConModel.Product" Role="Product" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="FasConModel.ProductReview" Role="ProductReview" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Product">
-              <PropertyRef Name="ProductID" />
-            </Principal>
-            <Dependent Role="ProductReview">
-              <PropertyRef Name="ProductId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Products_Stores">
-          <End Type="FasConModel.Store" Role="Store" Multiplicity="0..1" />
-          <End Type="FasConModel.Product" Role="Product" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Store">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Product">
-              <PropertyRef Name="StoreId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        </Schema>
+        </EntityContainer>
+      </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="FasConModelStoreContainer" CdmEntityContainer="FasConEntities">
+        <EntityContainerMapping StorageEntityContainer="DB_9CF878_fasconModelStoreContainer" CdmEntityContainer="FasConDBEntities">
           <EntitySetMapping Name="Addresses">
-            <EntityTypeMapping TypeName="FasConModel.Address">
+            <EntityTypeMapping TypeName="FasConDBModel.Address">
               <MappingFragment StoreEntitySet="Addresses">
                 <ScalarProperty Name="AddressId" ColumnName="AddressId" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
@@ -1700,7 +1685,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetRoles">
-            <EntityTypeMapping TypeName="FasConModel.AspNetRole">
+            <EntityTypeMapping TypeName="FasConDBModel.AspNetRole">
               <MappingFragment StoreEntitySet="AspNetRoles">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -1713,7 +1698,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetUserClaims">
-            <EntityTypeMapping TypeName="FasConModel.AspNetUserClaim">
+            <EntityTypeMapping TypeName="FasConDBModel.AspNetUserClaim">
               <MappingFragment StoreEntitySet="AspNetUserClaims">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
@@ -1723,7 +1708,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetUserLogins">
-            <EntityTypeMapping TypeName="FasConModel.AspNetUserLogin">
+            <EntityTypeMapping TypeName="FasConDBModel.AspNetUserLogin">
               <MappingFragment StoreEntitySet="AspNetUserLogins">
                 <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
                 <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
@@ -1732,7 +1717,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetUserRoles">
-            <EntityTypeMapping TypeName="FasConModel.AspNetUserRole">
+            <EntityTypeMapping TypeName="FasConDBModel.AspNetUserRole">
               <MappingFragment StoreEntitySet="AspNetUserRoles">
                 <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="RoleId" ColumnName="RoleId" />
@@ -1744,7 +1729,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetUsers">
-            <EntityTypeMapping TypeName="FasConModel.AspNetUser">
+            <EntityTypeMapping TypeName="FasConDBModel.AspNetUser">
               <MappingFragment StoreEntitySet="AspNetUsers">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
@@ -1768,8 +1753,32 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Categories">
+            <EntityTypeMapping TypeName="FasConDBModel.Category">
+              <MappingFragment StoreEntitySet="Categories">
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Alias" ColumnName="Alias" />
+                <ScalarProperty Name="MetaKeywords" ColumnName="MetaKeywords" />
+                <ScalarProperty Name="MetaDescription" ColumnName="MetaDescription" />
+                <ScalarProperty Name="MetaTitle" ColumnName="MetaTitle" />
+                <ScalarProperty Name="ParentCategoryId" ColumnName="ParentCategoryId" />
+                <ScalarProperty Name="PictureId" ColumnName="PictureId" />
+                <ScalarProperty Name="ShowOnHomePage" ColumnName="ShowOnHomePage" />
+                <ScalarProperty Name="Published" ColumnName="Published" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+                <ScalarProperty Name="CreatedOnUtc" ColumnName="CreatedOnUtc" />
+                <ScalarProperty Name="UpdatedOnUtc" ColumnName="UpdatedOnUtc" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="BottomDescription" ColumnName="BottomDescription" />
+                <ScalarProperty Name="Hits" ColumnName="Hits" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Customers">
-            <EntityTypeMapping TypeName="FasConModel.Customer">
+            <EntityTypeMapping TypeName="FasConDBModel.Customer">
               <MappingFragment StoreEntitySet="Customers">
                 <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -1777,7 +1786,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Districts">
-            <EntityTypeMapping TypeName="FasConModel.District">
+            <EntityTypeMapping TypeName="FasConDBModel.District">
               <MappingFragment StoreEntitySet="Districts">
                 <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -1788,25 +1797,21 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OrderItems">
-            <EntityTypeMapping TypeName="FasConModel.OrderItem">
+            <EntityTypeMapping TypeName="FasConDBModel.OrderItem">
               <MappingFragment StoreEntitySet="OrderItems">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="OrderItemGuid" ColumnName="OrderItemGuid" />
                 <ScalarProperty Name="OrderId" ColumnName="OrderId" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
                 <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="UnitPriceInclTax" ColumnName="UnitPriceInclTax" />
-                <ScalarProperty Name="UnitPriceExclTax" ColumnName="UnitPriceExclTax" />
-                <ScalarProperty Name="PriceInclTax" ColumnName="PriceInclTax" />
-                <ScalarProperty Name="PriceExclTax" ColumnName="PriceExclTax" />
-                <ScalarProperty Name="DiscountAmountInclTax" ColumnName="DiscountAmountInclTax" />
-                <ScalarProperty Name="DiscountAmountExclTax" ColumnName="DiscountAmountExclTax" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
                 <ScalarProperty Name="ProductCost" ColumnName="ProductCost" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OrderNotes">
-            <EntityTypeMapping TypeName="FasConModel.OrderNote">
+            <EntityTypeMapping TypeName="FasConDBModel.OrderNote">
               <MappingFragment StoreEntitySet="OrderNotes">
                 <ScalarProperty Name="OrderNoteId" ColumnName="OrderNoteId" />
                 <ScalarProperty Name="OrderId" ColumnName="OrderId" />
@@ -1817,7 +1822,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Orders">
-            <EntityTypeMapping TypeName="FasConModel.Order">
+            <EntityTypeMapping TypeName="FasConDBModel.Order">
               <MappingFragment StoreEntitySet="Orders">
                 <ScalarProperty Name="OrderId" ColumnName="OrderId" />
                 <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
@@ -1829,8 +1834,7 @@
                 <ScalarProperty Name="ShippingStatusId" ColumnName="ShippingStatusId" />
                 <ScalarProperty Name="PaymentStatusId" ColumnName="PaymentStatusId" />
                 <ScalarProperty Name="VatNumber" ColumnName="VatNumber" />
-                <ScalarProperty Name="OrderSubtotalInclTax" ColumnName="OrderSubtotalInclTax" />
-                <ScalarProperty Name="OrderSubtotalExclTax" ColumnName="OrderSubtotalExclTax" />
+                <ScalarProperty Name="OrderSubtotal" ColumnName="OrderSubtotal" />
                 <ScalarProperty Name="OrderTax" ColumnName="OrderTax" />
                 <ScalarProperty Name="OrderDiscount" ColumnName="OrderDiscount" />
                 <ScalarProperty Name="OrderTotal" ColumnName="OrderTotal" />
@@ -1838,7 +1842,6 @@
                 <ScalarProperty Name="PurchaseOrderNumber" ColumnName="PurchaseOrderNumber" />
                 <ScalarProperty Name="PaidDateUtc" ColumnName="PaidDateUtc" />
                 <ScalarProperty Name="ShippingMethod" ColumnName="ShippingMethod" />
-                <ScalarProperty Name="ShippingRateComputationMethodSystemName" ColumnName="ShippingRateComputationMethodSystemName" />
                 <ScalarProperty Name="Deleted" ColumnName="Deleted" />
                 <ScalarProperty Name="CreatedOnUtc" ColumnName="CreatedOnUtc" />
                 <ScalarProperty Name="UpdatedOnUtc" ColumnName="UpdatedOnUtc" />
@@ -1846,8 +1849,20 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Pictures">
+            <EntityTypeMapping TypeName="FasConDBModel.Picture">
+              <MappingFragment StoreEntitySet="Pictures">
+                <ScalarProperty Name="PictureId" ColumnName="PictureId" />
+                <ScalarProperty Name="PictureBinary" ColumnName="PictureBinary" />
+                <ScalarProperty Name="MimeType" ColumnName="MimeType" />
+                <ScalarProperty Name="SeoFilename" ColumnName="SeoFilename" />
+                <ScalarProperty Name="IsNew" ColumnName="IsNew" />
+                <ScalarProperty Name="OriginURL" ColumnName="OriginURL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Product_Picture_Mapping">
-            <EntityTypeMapping TypeName="FasConModel.Product_Picture_Mapping">
+            <EntityTypeMapping TypeName="FasConDBModel.Product_Picture_Mapping">
               <MappingFragment StoreEntitySet="Product_Picture_Mapping">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
@@ -1857,7 +1872,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ProductReviews">
-            <EntityTypeMapping TypeName="FasConModel.ProductReview">
+            <EntityTypeMapping TypeName="FasConDBModel.ProductReview">
               <MappingFragment StoreEntitySet="ProductReview">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
@@ -1869,8 +1884,65 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="FasConDBModel.Product">
+              <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="ProductSKU" ColumnName="ProductSKU" />
+                <ScalarProperty Name="Alias" ColumnName="Alias" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+                <ScalarProperty Name="FullDescription" ColumnName="FullDescription" />
+                <ScalarProperty Name="AdminComment" ColumnName="AdminComment" />
+                <ScalarProperty Name="ShowOnHomePage" ColumnName="ShowOnHomePage" />
+                <ScalarProperty Name="MetaKeywords" ColumnName="MetaKeywords" />
+                <ScalarProperty Name="MetaDescription" ColumnName="MetaDescription" />
+                <ScalarProperty Name="MetaTitle" ColumnName="MetaTitle" />
+                <ScalarProperty Name="AllowCustomerReviews" ColumnName="AllowCustomerReviews" />
+                <ScalarProperty Name="ApprovedRatingSum" ColumnName="ApprovedRatingSum" />
+                <ScalarProperty Name="NotApprovedRatingSum" ColumnName="NotApprovedRatingSum" />
+                <ScalarProperty Name="ApprovedTotalReviews" ColumnName="ApprovedTotalReviews" />
+                <ScalarProperty Name="NotApprovedTotalReviews" ColumnName="NotApprovedTotalReviews" />
+                <ScalarProperty Name="IsShipEnabled" ColumnName="IsShipEnabled" />
+                <ScalarProperty Name="IsFreeShipping" ColumnName="IsFreeShipping" />
+                <ScalarProperty Name="StockQuantity" ColumnName="StockQuantity" />
+                <ScalarProperty Name="DisplayStockAvailability" ColumnName="DisplayStockAvailability" />
+                <ScalarProperty Name="DisplayStockQuantity" ColumnName="DisplayStockQuantity" />
+                <ScalarProperty Name="MinStockQuantity" ColumnName="MinStockQuantity" />
+                <ScalarProperty Name="LowStockActivityId" ColumnName="LowStockActivityId" />
+                <ScalarProperty Name="NotifyAdminForQuantityBelow" ColumnName="NotifyAdminForQuantityBelow" />
+                <ScalarProperty Name="OrderMinimumQuantity" ColumnName="OrderMinimumQuantity" />
+                <ScalarProperty Name="OrderMaximumQuantity" ColumnName="OrderMaximumQuantity" />
+                <ScalarProperty Name="AllowedQuantities" ColumnName="AllowedQuantities" />
+                <ScalarProperty Name="DisableBuyButton" ColumnName="DisableBuyButton" />
+                <ScalarProperty Name="DisableWishlistButton" ColumnName="DisableWishlistButton" />
+                <ScalarProperty Name="CallForPrice" ColumnName="CallForPrice" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="OldPrice" ColumnName="OldPrice" />
+                <ScalarProperty Name="ProductCost" ColumnName="ProductCost" />
+                <ScalarProperty Name="SpecialPrice" ColumnName="SpecialPrice" />
+                <ScalarProperty Name="SpecialPriceStartDateTimeUtc" ColumnName="SpecialPriceStartDateTimeUtc" />
+                <ScalarProperty Name="SpecialPriceEndDateTimeUtc" ColumnName="SpecialPriceEndDateTimeUtc" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="Length" ColumnName="Length" />
+                <ScalarProperty Name="Width" ColumnName="Width" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="AvailableStartDateTimeUtc" ColumnName="AvailableStartDateTimeUtc" />
+                <ScalarProperty Name="AvailableEndDateTimeUtc" ColumnName="AvailableEndDateTimeUtc" />
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+                <ScalarProperty Name="Published" ColumnName="Published" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="CreatedOnUtc" ColumnName="CreatedOnUtc" />
+                <ScalarProperty Name="UpdatedOnUtc" ColumnName="UpdatedOnUtc" />
+                <ScalarProperty Name="ProductThumb" ColumnName="ProductThumb" />
+                <ScalarProperty Name="ProductImage" ColumnName="ProductImage" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="StateProvinces">
-            <EntityTypeMapping TypeName="FasConModel.StateProvince">
+            <EntityTypeMapping TypeName="FasConDBModel.StateProvince">
               <MappingFragment StoreEntitySet="StateProvinces">
                 <ScalarProperty Name="StateProvinceId" ColumnName="StateProvinceId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -1879,8 +1951,31 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Stores">
+            <EntityTypeMapping TypeName="FasConDBModel.Store">
+              <MappingFragment StoreEntitySet="Store">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="LogoPictureId" ColumnName="LogoPictureId" />
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="CreatedUserId" ColumnName="CreatedUserId" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="Actived" ColumnName="Actived" />
+                <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="FasConModel.User">
+            <EntityTypeMapping TypeName="FasConDBModel.User">
               <MappingFragment StoreEntitySet="Users">
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="AspNetUserID" ColumnName="AspNetUserID" />
@@ -1892,7 +1987,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="CustomerAddresses" TypeName="FasConModel.CustomerAddresses" StoreEntitySet="CustomerAddresses">
+          <AssociationSetMapping Name="CustomerAddresses" TypeName="FasConDBModel.CustomerAddresses" StoreEntitySet="CustomerAddresses">
             <EndProperty Name="Addresses">
               <ScalarProperty Name="AddressId" ColumnName="AddressId" />
             </EndProperty>
@@ -1900,124 +1995,6 @@
               <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
             </EndProperty>
           </AssociationSetMapping>
-          <EntitySetMapping Name="Stores">
-            <EntityTypeMapping TypeName="FasConModel.Store">
-              <MappingFragment StoreEntitySet="Store">
-                <ScalarProperty Name="Comment" ColumnName="Comment" />
-                <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
-                <ScalarProperty Name="Actived" ColumnName="Actived" />
-                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
-                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
-                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
-                <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
-                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
-                <ScalarProperty Name="CreatedUserId" ColumnName="CreatedUserId" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
-                <ScalarProperty Name="LogoPictureId" ColumnName="LogoPictureId" />
-                <ScalarProperty Name="Url" ColumnName="Url" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Categories">
-            <EntityTypeMapping TypeName="FasConModel.Category">
-              <MappingFragment StoreEntitySet="Categories">
-                <ScalarProperty Name="SEOURL" ColumnName="SEOURL" />
-                <ScalarProperty Name="Hits" ColumnName="Hits" />
-                <ScalarProperty Name="BottomDescription" ColumnName="BottomDescription" />
-                <ScalarProperty Name="FullName" ColumnName="FullName" />
-                <ScalarProperty Name="UpdatedOnUtc" ColumnName="UpdatedOnUtc" />
-                <ScalarProperty Name="CreatedOnUtc" ColumnName="CreatedOnUtc" />
-                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
-                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
-                <ScalarProperty Name="Published" ColumnName="Published" />
-                <ScalarProperty Name="ShowOnHomePage" ColumnName="ShowOnHomePage" />
-                <ScalarProperty Name="PictureId" ColumnName="PictureId" />
-                <ScalarProperty Name="ParentCategoryId" ColumnName="ParentCategoryId" />
-                <ScalarProperty Name="MetaTitle" ColumnName="MetaTitle" />
-                <ScalarProperty Name="MetaDescription" ColumnName="MetaDescription" />
-                <ScalarProperty Name="MetaKeywords" ColumnName="MetaKeywords" />
-                <ScalarProperty Name="Alias" ColumnName="Alias" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Pictures">
-            <EntityTypeMapping TypeName="FasConModel.Picture">
-              <MappingFragment StoreEntitySet="Pictures">
-                <ScalarProperty Name="OriginURL" ColumnName="OriginURL" />
-                <ScalarProperty Name="IsNew" ColumnName="IsNew" />
-                <ScalarProperty Name="SeoFilename" ColumnName="SeoFilename" />
-                <ScalarProperty Name="MimeType" ColumnName="MimeType" />
-                <ScalarProperty Name="PictureBinary" ColumnName="PictureBinary" />
-                <ScalarProperty Name="PictureId" ColumnName="PictureId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Products">
-            <EntityTypeMapping TypeName="FasConModel.Product">
-              <MappingFragment StoreEntitySet="Products">
-                <ScalarProperty Name="StoreId" ColumnName="StoreId" />
-                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
-                <ScalarProperty Name="ProductImage" ColumnName="ProductImage" />
-                <ScalarProperty Name="ProductThumb" ColumnName="ProductThumb" />
-                <ScalarProperty Name="UpdatedOnUtc" ColumnName="UpdatedOnUtc" />
-                <ScalarProperty Name="CreatedOnUtc" ColumnName="CreatedOnUtc" />
-                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
-                <ScalarProperty Name="Published" ColumnName="Published" />
-                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
-                <ScalarProperty Name="AvailableEndDateTimeUtc" ColumnName="AvailableEndDateTimeUtc" />
-                <ScalarProperty Name="AvailableStartDateTimeUtc" ColumnName="AvailableStartDateTimeUtc" />
-                <ScalarProperty Name="Height" ColumnName="Height" />
-                <ScalarProperty Name="Width" ColumnName="Width" />
-                <ScalarProperty Name="Length" ColumnName="Length" />
-                <ScalarProperty Name="Weight" ColumnName="Weight" />
-                <ScalarProperty Name="SpecialPriceEndDateTimeUtc" ColumnName="SpecialPriceEndDateTimeUtc" />
-                <ScalarProperty Name="SpecialPriceStartDateTimeUtc" ColumnName="SpecialPriceStartDateTimeUtc" />
-                <ScalarProperty Name="SpecialPrice" ColumnName="SpecialPrice" />
-                <ScalarProperty Name="ProductCost" ColumnName="ProductCost" />
-                <ScalarProperty Name="OldPrice" ColumnName="OldPrice" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="CallForPrice" ColumnName="CallForPrice" />
-                <ScalarProperty Name="DisableWishlistButton" ColumnName="DisableWishlistButton" />
-                <ScalarProperty Name="DisableBuyButton" ColumnName="DisableBuyButton" />
-                <ScalarProperty Name="AllowedQuantities" ColumnName="AllowedQuantities" />
-                <ScalarProperty Name="OrderMaximumQuantity" ColumnName="OrderMaximumQuantity" />
-                <ScalarProperty Name="OrderMinimumQuantity" ColumnName="OrderMinimumQuantity" />
-                <ScalarProperty Name="NotifyAdminForQuantityBelow" ColumnName="NotifyAdminForQuantityBelow" />
-                <ScalarProperty Name="LowStockActivityId" ColumnName="LowStockActivityId" />
-                <ScalarProperty Name="MinStockQuantity" ColumnName="MinStockQuantity" />
-                <ScalarProperty Name="DisplayStockQuantity" ColumnName="DisplayStockQuantity" />
-                <ScalarProperty Name="DisplayStockAvailability" ColumnName="DisplayStockAvailability" />
-                <ScalarProperty Name="StockQuantity" ColumnName="StockQuantity" />
-                <ScalarProperty Name="IsFreeShipping" ColumnName="IsFreeShipping" />
-                <ScalarProperty Name="IsShipEnabled" ColumnName="IsShipEnabled" />
-                <ScalarProperty Name="ManufacturerPartNumber" ColumnName="ManufacturerPartNumber" />
-                <ScalarProperty Name="NotApprovedTotalReviews" ColumnName="NotApprovedTotalReviews" />
-                <ScalarProperty Name="ApprovedTotalReviews" ColumnName="ApprovedTotalReviews" />
-                <ScalarProperty Name="NotApprovedRatingSum" ColumnName="NotApprovedRatingSum" />
-                <ScalarProperty Name="ApprovedRatingSum" ColumnName="ApprovedRatingSum" />
-                <ScalarProperty Name="AllowCustomerReviews" ColumnName="AllowCustomerReviews" />
-                <ScalarProperty Name="MetaTitle" ColumnName="MetaTitle" />
-                <ScalarProperty Name="MetaDescription" ColumnName="MetaDescription" />
-                <ScalarProperty Name="MetaKeywords" ColumnName="MetaKeywords" />
-                <ScalarProperty Name="ShowOnHomePage" ColumnName="ShowOnHomePage" />
-                <ScalarProperty Name="AdminComment" ColumnName="AdminComment" />
-                <ScalarProperty Name="FullDescription" ColumnName="FullDescription" />
-                <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
-                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-                <ScalarProperty Name="SEOURL" ColumnName="SEOURL" />
-                <ScalarProperty Name="ProductSKU" ColumnName="ProductSKU" />
-                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

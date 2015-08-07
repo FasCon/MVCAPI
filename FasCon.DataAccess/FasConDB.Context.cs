@@ -13,10 +13,10 @@ namespace FasCon.DataAccess
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class FasConEntities : DbContext
+    public partial class FasConDBEntities : DbContext
     {
-        public FasConEntities()
-            : base("name=FasConEntities")
+        public FasConDBEntities()
+            : base("name=FasConDBEntities")
         {
         }
     
@@ -31,18 +31,18 @@ namespace FasCon.DataAccess
         public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
         public virtual DbSet<AspNetUserRole> AspNetUserRoles { get; set; }
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
+        public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<District> Districts { get; set; }
         public virtual DbSet<OrderItem> OrderItems { get; set; }
         public virtual DbSet<OrderNote> OrderNotes { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<Picture> Pictures { get; set; }
         public virtual DbSet<Product_Picture_Mapping> Product_Picture_Mapping { get; set; }
         public virtual DbSet<ProductReview> ProductReviews { get; set; }
-        public virtual DbSet<StateProvince> StateProvinces { get; set; }
-        public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<Store> Stores { get; set; }
-        public virtual DbSet<Category> Categories { get; set; }
-        public virtual DbSet<Picture> Pictures { get; set; }
         public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<StateProvince> StateProvinces { get; set; }
+        public virtual DbSet<Store> Stores { get; set; }
+        public virtual DbSet<User> Users { get; set; }
     }
 }

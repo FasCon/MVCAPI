@@ -37,7 +37,6 @@ namespace FasCon.DataAccess
         public string FullName { get; set; }
         public string BottomDescription { get; set; }
         public Nullable<int> Hits { get; set; }
-        public string SEOURL { get; set; }
     
         public virtual Picture Picture { get; set; }
         public virtual ICollection<Product> Products { get; set; }

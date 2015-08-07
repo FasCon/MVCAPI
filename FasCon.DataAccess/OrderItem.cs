@@ -19,12 +19,8 @@ namespace FasCon.DataAccess
         public System.Guid OrderId { get; set; }
         public System.Guid ProductId { get; set; }
         public System.Guid Quantity { get; set; }
-        public decimal UnitPriceInclTax { get; set; }
-        public decimal UnitPriceExclTax { get; set; }
-        public decimal PriceInclTax { get; set; }
-        public decimal PriceExclTax { get; set; }
-        public decimal DiscountAmountInclTax { get; set; }
-        public decimal DiscountAmountExclTax { get; set; }
+        public decimal Price { get; set; }
+        public decimal DiscountAmount { get; set; }
         public decimal ProductCost { get; set; }
     
         public virtual Order Order { get; set; }

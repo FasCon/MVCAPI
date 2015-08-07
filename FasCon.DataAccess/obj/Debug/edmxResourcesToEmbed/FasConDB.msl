@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="FasConModelStoreContainer" CdmEntityContainer="FasConEntities">
+  <EntityContainerMapping StorageEntityContainer="DB_9CF878_fasconModelStoreContainer" CdmEntityContainer="FasConDBEntities">
     <EntitySetMapping Name="Addresses">
-      <EntityTypeMapping TypeName="FasConModel.Address">
+      <EntityTypeMapping TypeName="FasConDBModel.Address">
         <MappingFragment StoreEntitySet="Addresses">
           <ScalarProperty Name="AddressId" ColumnName="AddressId" />
           <ScalarProperty Name="FirstName" ColumnName="FirstName" />
@@ -19,7 +19,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="AspNetRoles">
-      <EntityTypeMapping TypeName="FasConModel.AspNetRole">
+      <EntityTypeMapping TypeName="FasConDBModel.AspNetRole">
         <MappingFragment StoreEntitySet="AspNetRoles">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -32,7 +32,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="AspNetUserClaims">
-      <EntityTypeMapping TypeName="FasConModel.AspNetUserClaim">
+      <EntityTypeMapping TypeName="FasConDBModel.AspNetUserClaim">
         <MappingFragment StoreEntitySet="AspNetUserClaims">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="UserId" ColumnName="UserId" />
@@ -42,7 +42,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="AspNetUserLogins">
-      <EntityTypeMapping TypeName="FasConModel.AspNetUserLogin">
+      <EntityTypeMapping TypeName="FasConDBModel.AspNetUserLogin">
         <MappingFragment StoreEntitySet="AspNetUserLogins">
           <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
           <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
@@ -51,7 +51,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="AspNetUserRoles">
-      <EntityTypeMapping TypeName="FasConModel.AspNetUserRole">
+      <EntityTypeMapping TypeName="FasConDBModel.AspNetUserRole">
         <MappingFragment StoreEntitySet="AspNetUserRoles">
           <ScalarProperty Name="UserId" ColumnName="UserId" />
           <ScalarProperty Name="RoleId" ColumnName="RoleId" />
@@ -63,7 +63,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="AspNetUsers">
-      <EntityTypeMapping TypeName="FasConModel.AspNetUser">
+      <EntityTypeMapping TypeName="FasConDBModel.AspNetUser">
         <MappingFragment StoreEntitySet="AspNetUsers">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="UserName" ColumnName="UserName" />
@@ -87,8 +87,32 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="FasConDBModel.Category">
+        <MappingFragment StoreEntitySet="Categories">
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Alias" ColumnName="Alias" />
+          <ScalarProperty Name="MetaKeywords" ColumnName="MetaKeywords" />
+          <ScalarProperty Name="MetaDescription" ColumnName="MetaDescription" />
+          <ScalarProperty Name="MetaTitle" ColumnName="MetaTitle" />
+          <ScalarProperty Name="ParentCategoryId" ColumnName="ParentCategoryId" />
+          <ScalarProperty Name="PictureId" ColumnName="PictureId" />
+          <ScalarProperty Name="ShowOnHomePage" ColumnName="ShowOnHomePage" />
+          <ScalarProperty Name="Published" ColumnName="Published" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+          <ScalarProperty Name="CreatedOnUtc" ColumnName="CreatedOnUtc" />
+          <ScalarProperty Name="UpdatedOnUtc" ColumnName="UpdatedOnUtc" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="BottomDescription" ColumnName="BottomDescription" />
+          <ScalarProperty Name="Hits" ColumnName="Hits" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Customers">
-      <EntityTypeMapping TypeName="FasConModel.Customer">
+      <EntityTypeMapping TypeName="FasConDBModel.Customer">
         <MappingFragment StoreEntitySet="Customers">
           <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -96,7 +120,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Districts">
-      <EntityTypeMapping TypeName="FasConModel.District">
+      <EntityTypeMapping TypeName="FasConDBModel.District">
         <MappingFragment StoreEntitySet="Districts">
           <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -107,25 +131,21 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="OrderItems">
-      <EntityTypeMapping TypeName="FasConModel.OrderItem">
+      <EntityTypeMapping TypeName="FasConDBModel.OrderItem">
         <MappingFragment StoreEntitySet="OrderItems">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="OrderItemGuid" ColumnName="OrderItemGuid" />
           <ScalarProperty Name="OrderId" ColumnName="OrderId" />
           <ScalarProperty Name="ProductId" ColumnName="ProductId" />
           <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-          <ScalarProperty Name="UnitPriceInclTax" ColumnName="UnitPriceInclTax" />
-          <ScalarProperty Name="UnitPriceExclTax" ColumnName="UnitPriceExclTax" />
-          <ScalarProperty Name="PriceInclTax" ColumnName="PriceInclTax" />
-          <ScalarProperty Name="PriceExclTax" ColumnName="PriceExclTax" />
-          <ScalarProperty Name="DiscountAmountInclTax" ColumnName="DiscountAmountInclTax" />
-          <ScalarProperty Name="DiscountAmountExclTax" ColumnName="DiscountAmountExclTax" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
           <ScalarProperty Name="ProductCost" ColumnName="ProductCost" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="OrderNotes">
-      <EntityTypeMapping TypeName="FasConModel.OrderNote">
+      <EntityTypeMapping TypeName="FasConDBModel.OrderNote">
         <MappingFragment StoreEntitySet="OrderNotes">
           <ScalarProperty Name="OrderNoteId" ColumnName="OrderNoteId" />
           <ScalarProperty Name="OrderId" ColumnName="OrderId" />
@@ -136,7 +156,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Orders">
-      <EntityTypeMapping TypeName="FasConModel.Order">
+      <EntityTypeMapping TypeName="FasConDBModel.Order">
         <MappingFragment StoreEntitySet="Orders">
           <ScalarProperty Name="OrderId" ColumnName="OrderId" />
           <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
@@ -148,8 +168,7 @@
           <ScalarProperty Name="ShippingStatusId" ColumnName="ShippingStatusId" />
           <ScalarProperty Name="PaymentStatusId" ColumnName="PaymentStatusId" />
           <ScalarProperty Name="VatNumber" ColumnName="VatNumber" />
-          <ScalarProperty Name="OrderSubtotalInclTax" ColumnName="OrderSubtotalInclTax" />
-          <ScalarProperty Name="OrderSubtotalExclTax" ColumnName="OrderSubtotalExclTax" />
+          <ScalarProperty Name="OrderSubtotal" ColumnName="OrderSubtotal" />
           <ScalarProperty Name="OrderTax" ColumnName="OrderTax" />
           <ScalarProperty Name="OrderDiscount" ColumnName="OrderDiscount" />
           <ScalarProperty Name="OrderTotal" ColumnName="OrderTotal" />
@@ -157,7 +176,6 @@
           <ScalarProperty Name="PurchaseOrderNumber" ColumnName="PurchaseOrderNumber" />
           <ScalarProperty Name="PaidDateUtc" ColumnName="PaidDateUtc" />
           <ScalarProperty Name="ShippingMethod" ColumnName="ShippingMethod" />
-          <ScalarProperty Name="ShippingRateComputationMethodSystemName" ColumnName="ShippingRateComputationMethodSystemName" />
           <ScalarProperty Name="Deleted" ColumnName="Deleted" />
           <ScalarProperty Name="CreatedOnUtc" ColumnName="CreatedOnUtc" />
           <ScalarProperty Name="UpdatedOnUtc" ColumnName="UpdatedOnUtc" />
@@ -165,8 +183,20 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Pictures">
+      <EntityTypeMapping TypeName="FasConDBModel.Picture">
+        <MappingFragment StoreEntitySet="Pictures">
+          <ScalarProperty Name="PictureId" ColumnName="PictureId" />
+          <ScalarProperty Name="PictureBinary" ColumnName="PictureBinary" />
+          <ScalarProperty Name="MimeType" ColumnName="MimeType" />
+          <ScalarProperty Name="SeoFilename" ColumnName="SeoFilename" />
+          <ScalarProperty Name="IsNew" ColumnName="IsNew" />
+          <ScalarProperty Name="OriginURL" ColumnName="OriginURL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Product_Picture_Mapping">
-      <EntityTypeMapping TypeName="FasConModel.Product_Picture_Mapping">
+      <EntityTypeMapping TypeName="FasConDBModel.Product_Picture_Mapping">
         <MappingFragment StoreEntitySet="Product_Picture_Mapping">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="ProductId" ColumnName="ProductId" />
@@ -176,7 +206,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="ProductReviews">
-      <EntityTypeMapping TypeName="FasConModel.ProductReview">
+      <EntityTypeMapping TypeName="FasConDBModel.ProductReview">
         <MappingFragment StoreEntitySet="ProductReview">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="ProductId" ColumnName="ProductId" />
@@ -188,8 +218,65 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="FasConDBModel.Product">
+        <MappingFragment StoreEntitySet="Products">
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="ProductSKU" ColumnName="ProductSKU" />
+          <ScalarProperty Name="Alias" ColumnName="Alias" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+          <ScalarProperty Name="FullDescription" ColumnName="FullDescription" />
+          <ScalarProperty Name="AdminComment" ColumnName="AdminComment" />
+          <ScalarProperty Name="ShowOnHomePage" ColumnName="ShowOnHomePage" />
+          <ScalarProperty Name="MetaKeywords" ColumnName="MetaKeywords" />
+          <ScalarProperty Name="MetaDescription" ColumnName="MetaDescription" />
+          <ScalarProperty Name="MetaTitle" ColumnName="MetaTitle" />
+          <ScalarProperty Name="AllowCustomerReviews" ColumnName="AllowCustomerReviews" />
+          <ScalarProperty Name="ApprovedRatingSum" ColumnName="ApprovedRatingSum" />
+          <ScalarProperty Name="NotApprovedRatingSum" ColumnName="NotApprovedRatingSum" />
+          <ScalarProperty Name="ApprovedTotalReviews" ColumnName="ApprovedTotalReviews" />
+          <ScalarProperty Name="NotApprovedTotalReviews" ColumnName="NotApprovedTotalReviews" />
+          <ScalarProperty Name="IsShipEnabled" ColumnName="IsShipEnabled" />
+          <ScalarProperty Name="IsFreeShipping" ColumnName="IsFreeShipping" />
+          <ScalarProperty Name="StockQuantity" ColumnName="StockQuantity" />
+          <ScalarProperty Name="DisplayStockAvailability" ColumnName="DisplayStockAvailability" />
+          <ScalarProperty Name="DisplayStockQuantity" ColumnName="DisplayStockQuantity" />
+          <ScalarProperty Name="MinStockQuantity" ColumnName="MinStockQuantity" />
+          <ScalarProperty Name="LowStockActivityId" ColumnName="LowStockActivityId" />
+          <ScalarProperty Name="NotifyAdminForQuantityBelow" ColumnName="NotifyAdminForQuantityBelow" />
+          <ScalarProperty Name="OrderMinimumQuantity" ColumnName="OrderMinimumQuantity" />
+          <ScalarProperty Name="OrderMaximumQuantity" ColumnName="OrderMaximumQuantity" />
+          <ScalarProperty Name="AllowedQuantities" ColumnName="AllowedQuantities" />
+          <ScalarProperty Name="DisableBuyButton" ColumnName="DisableBuyButton" />
+          <ScalarProperty Name="DisableWishlistButton" ColumnName="DisableWishlistButton" />
+          <ScalarProperty Name="CallForPrice" ColumnName="CallForPrice" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="OldPrice" ColumnName="OldPrice" />
+          <ScalarProperty Name="ProductCost" ColumnName="ProductCost" />
+          <ScalarProperty Name="SpecialPrice" ColumnName="SpecialPrice" />
+          <ScalarProperty Name="SpecialPriceStartDateTimeUtc" ColumnName="SpecialPriceStartDateTimeUtc" />
+          <ScalarProperty Name="SpecialPriceEndDateTimeUtc" ColumnName="SpecialPriceEndDateTimeUtc" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="Length" ColumnName="Length" />
+          <ScalarProperty Name="Width" ColumnName="Width" />
+          <ScalarProperty Name="Height" ColumnName="Height" />
+          <ScalarProperty Name="AvailableStartDateTimeUtc" ColumnName="AvailableStartDateTimeUtc" />
+          <ScalarProperty Name="AvailableEndDateTimeUtc" ColumnName="AvailableEndDateTimeUtc" />
+          <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+          <ScalarProperty Name="Published" ColumnName="Published" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="CreatedOnUtc" ColumnName="CreatedOnUtc" />
+          <ScalarProperty Name="UpdatedOnUtc" ColumnName="UpdatedOnUtc" />
+          <ScalarProperty Name="ProductThumb" ColumnName="ProductThumb" />
+          <ScalarProperty Name="ProductImage" ColumnName="ProductImage" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="StateProvinces">
-      <EntityTypeMapping TypeName="FasConModel.StateProvince">
+      <EntityTypeMapping TypeName="FasConDBModel.StateProvince">
         <MappingFragment StoreEntitySet="StateProvinces">
           <ScalarProperty Name="StateProvinceId" ColumnName="StateProvinceId" />
           <ScalarProperty Name="Name" ColumnName="Name" />
@@ -198,8 +285,31 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Stores">
+      <EntityTypeMapping TypeName="FasConDBModel.Store">
+        <MappingFragment StoreEntitySet="Store">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="LogoPictureId" ColumnName="LogoPictureId" />
+          <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="CreatedUserId" ColumnName="CreatedUserId" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="Actived" ColumnName="Actived" />
+          <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Users">
-      <EntityTypeMapping TypeName="FasConModel.User">
+      <EntityTypeMapping TypeName="FasConDBModel.User">
         <MappingFragment StoreEntitySet="Users">
           <ScalarProperty Name="UserID" ColumnName="UserID" />
           <ScalarProperty Name="AspNetUserID" ColumnName="AspNetUserID" />
@@ -211,7 +321,7 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="CustomerAddresses" TypeName="FasConModel.CustomerAddresses" StoreEntitySet="CustomerAddresses">
+    <AssociationSetMapping Name="CustomerAddresses" TypeName="FasConDBModel.CustomerAddresses" StoreEntitySet="CustomerAddresses">
       <EndProperty Name="Addresses">
         <ScalarProperty Name="AddressId" ColumnName="AddressId" />
       </EndProperty>
@@ -219,123 +329,5 @@
         <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
       </EndProperty>
     </AssociationSetMapping>
-    <EntitySetMapping Name="Stores">
-      <EntityTypeMapping TypeName="FasConModel.Store">
-        <MappingFragment StoreEntitySet="Store">
-          <ScalarProperty Name="Comment" ColumnName="Comment" />
-          <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
-          <ScalarProperty Name="Actived" ColumnName="Actived" />
-          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
-          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
-          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
-          <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
-          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
-          <ScalarProperty Name="CreatedUserId" ColumnName="CreatedUserId" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="Phone" ColumnName="Phone" />
-          <ScalarProperty Name="Address" ColumnName="Address" />
-          <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
-          <ScalarProperty Name="LogoPictureId" ColumnName="LogoPictureId" />
-          <ScalarProperty Name="Url" ColumnName="Url" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Categories">
-      <EntityTypeMapping TypeName="FasConModel.Category">
-        <MappingFragment StoreEntitySet="Categories">
-          <ScalarProperty Name="SEOURL" ColumnName="SEOURL" />
-          <ScalarProperty Name="Hits" ColumnName="Hits" />
-          <ScalarProperty Name="BottomDescription" ColumnName="BottomDescription" />
-          <ScalarProperty Name="FullName" ColumnName="FullName" />
-          <ScalarProperty Name="UpdatedOnUtc" ColumnName="UpdatedOnUtc" />
-          <ScalarProperty Name="CreatedOnUtc" ColumnName="CreatedOnUtc" />
-          <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
-          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
-          <ScalarProperty Name="Published" ColumnName="Published" />
-          <ScalarProperty Name="ShowOnHomePage" ColumnName="ShowOnHomePage" />
-          <ScalarProperty Name="PictureId" ColumnName="PictureId" />
-          <ScalarProperty Name="ParentCategoryId" ColumnName="ParentCategoryId" />
-          <ScalarProperty Name="MetaTitle" ColumnName="MetaTitle" />
-          <ScalarProperty Name="MetaDescription" ColumnName="MetaDescription" />
-          <ScalarProperty Name="MetaKeywords" ColumnName="MetaKeywords" />
-          <ScalarProperty Name="Alias" ColumnName="Alias" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Pictures">
-      <EntityTypeMapping TypeName="FasConModel.Picture">
-        <MappingFragment StoreEntitySet="Pictures">
-          <ScalarProperty Name="OriginURL" ColumnName="OriginURL" />
-          <ScalarProperty Name="IsNew" ColumnName="IsNew" />
-          <ScalarProperty Name="SeoFilename" ColumnName="SeoFilename" />
-          <ScalarProperty Name="MimeType" ColumnName="MimeType" />
-          <ScalarProperty Name="PictureBinary" ColumnName="PictureBinary" />
-          <ScalarProperty Name="PictureId" ColumnName="PictureId" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Products">
-      <EntityTypeMapping TypeName="FasConModel.Product">
-        <MappingFragment StoreEntitySet="Products">
-          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
-          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
-          <ScalarProperty Name="ProductImage" ColumnName="ProductImage" />
-          <ScalarProperty Name="ProductThumb" ColumnName="ProductThumb" />
-          <ScalarProperty Name="UpdatedOnUtc" ColumnName="UpdatedOnUtc" />
-          <ScalarProperty Name="CreatedOnUtc" ColumnName="CreatedOnUtc" />
-          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
-          <ScalarProperty Name="Published" ColumnName="Published" />
-          <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
-          <ScalarProperty Name="AvailableEndDateTimeUtc" ColumnName="AvailableEndDateTimeUtc" />
-          <ScalarProperty Name="AvailableStartDateTimeUtc" ColumnName="AvailableStartDateTimeUtc" />
-          <ScalarProperty Name="Height" ColumnName="Height" />
-          <ScalarProperty Name="Width" ColumnName="Width" />
-          <ScalarProperty Name="Length" ColumnName="Length" />
-          <ScalarProperty Name="Weight" ColumnName="Weight" />
-          <ScalarProperty Name="SpecialPriceEndDateTimeUtc" ColumnName="SpecialPriceEndDateTimeUtc" />
-          <ScalarProperty Name="SpecialPriceStartDateTimeUtc" ColumnName="SpecialPriceStartDateTimeUtc" />
-          <ScalarProperty Name="SpecialPrice" ColumnName="SpecialPrice" />
-          <ScalarProperty Name="ProductCost" ColumnName="ProductCost" />
-          <ScalarProperty Name="OldPrice" ColumnName="OldPrice" />
-          <ScalarProperty Name="Price" ColumnName="Price" />
-          <ScalarProperty Name="CallForPrice" ColumnName="CallForPrice" />
-          <ScalarProperty Name="DisableWishlistButton" ColumnName="DisableWishlistButton" />
-          <ScalarProperty Name="DisableBuyButton" ColumnName="DisableBuyButton" />
-          <ScalarProperty Name="AllowedQuantities" ColumnName="AllowedQuantities" />
-          <ScalarProperty Name="OrderMaximumQuantity" ColumnName="OrderMaximumQuantity" />
-          <ScalarProperty Name="OrderMinimumQuantity" ColumnName="OrderMinimumQuantity" />
-          <ScalarProperty Name="NotifyAdminForQuantityBelow" ColumnName="NotifyAdminForQuantityBelow" />
-          <ScalarProperty Name="LowStockActivityId" ColumnName="LowStockActivityId" />
-          <ScalarProperty Name="MinStockQuantity" ColumnName="MinStockQuantity" />
-          <ScalarProperty Name="DisplayStockQuantity" ColumnName="DisplayStockQuantity" />
-          <ScalarProperty Name="DisplayStockAvailability" ColumnName="DisplayStockAvailability" />
-          <ScalarProperty Name="StockQuantity" ColumnName="StockQuantity" />
-          <ScalarProperty Name="IsFreeShipping" ColumnName="IsFreeShipping" />
-          <ScalarProperty Name="IsShipEnabled" ColumnName="IsShipEnabled" />
-          <ScalarProperty Name="ManufacturerPartNumber" ColumnName="ManufacturerPartNumber" />
-          <ScalarProperty Name="NotApprovedTotalReviews" ColumnName="NotApprovedTotalReviews" />
-          <ScalarProperty Name="ApprovedTotalReviews" ColumnName="ApprovedTotalReviews" />
-          <ScalarProperty Name="NotApprovedRatingSum" ColumnName="NotApprovedRatingSum" />
-          <ScalarProperty Name="ApprovedRatingSum" ColumnName="ApprovedRatingSum" />
-          <ScalarProperty Name="AllowCustomerReviews" ColumnName="AllowCustomerReviews" />
-          <ScalarProperty Name="MetaTitle" ColumnName="MetaTitle" />
-          <ScalarProperty Name="MetaDescription" ColumnName="MetaDescription" />
-          <ScalarProperty Name="MetaKeywords" ColumnName="MetaKeywords" />
-          <ScalarProperty Name="ShowOnHomePage" ColumnName="ShowOnHomePage" />
-          <ScalarProperty Name="AdminComment" ColumnName="AdminComment" />
-          <ScalarProperty Name="FullDescription" ColumnName="FullDescription" />
-          <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
-          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-          <ScalarProperty Name="SEOURL" ColumnName="SEOURL" />
-          <ScalarProperty Name="ProductSKU" ColumnName="ProductSKU" />
-          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>
