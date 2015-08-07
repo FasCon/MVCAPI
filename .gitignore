@@ -219,3 +219,5 @@ Kopie von*
 src/SmartStoreNET.Packager.sln
 Log.txt
 /FasCon.DataModel/bin
+/FasCon.DataAccess/App.config
+/Fascon.DataAccess.Test/App.config
