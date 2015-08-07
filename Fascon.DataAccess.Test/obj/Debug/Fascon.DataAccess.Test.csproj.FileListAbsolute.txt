@@ -1,0 +1,16 @@
+C:\Working\AngularJSAuthentication\Fascon.DataAccess.Test\bin\Debug\Fascon.DataAccess.Test.exe.config
+C:\Working\AngularJSAuthentication\Fascon.DataAccess.Test\bin\Debug\Fascon.DataAccess.Test.exe
+C:\Working\AngularJSAuthentication\Fascon.DataAccess.Test\bin\Debug\Fascon.DataAccess.Test.pdb
+C:\Working\AngularJSAuthentication\Fascon.DataAccess.Test\bin\Debug\FasCon.DataAccess.dll
+C:\Working\AngularJSAuthentication\Fascon.DataAccess.Test\bin\Debug\FasCon.DataModel.dll
+C:\Working\AngularJSAuthentication\Fascon.DataAccess.Test\bin\Debug\EntityFramework.dll
+C:\Working\AngularJSAuthentication\Fascon.DataAccess.Test\bin\Debug\FasCon.DataAccess.pdb
+C:\Working\AngularJSAuthentication\Fascon.DataAccess.Test\bin\Debug\FasCon.DataModel.pdb
+C:\Working\AngularJSAuthentication\Fascon.DataAccess.Test\bin\Debug\EntityFramework.xml
+C:\Working\AngularJSAuthentication\Fascon.DataAccess.Test\obj\Debug\Fascon.DataAccess.Test.csprojResolveAssemblyReference.cache
+C:\Working\AngularJSAuthentication\Fascon.DataAccess.Test\obj\Debug\Fascon.DataAccess.Test.exe
+C:\Working\AngularJSAuthentication\Fascon.DataAccess.Test\obj\Debug\Fascon.DataAccess.Test.pdb
+C:\Working\AngularJSAuthentication\Fascon.DataAccess.Test\bin\Debug\AutoMapper.Net4.dll
+C:\Working\AngularJSAuthentication\Fascon.DataAccess.Test\bin\Debug\App.config
+C:\Working\AngularJSAuthentication\Fascon.DataAccess.Test\bin\Debug\EntityFramework.SqlServer.dll
+C:\Working\AngularJSAuthentication\Fascon.DataAccess.Test\bin\Debug\EntityFramework.SqlServer.xml

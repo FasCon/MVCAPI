@@ -1,0 +1,825 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FasConModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="FasConEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Addresses" EntityType="FasConModel.Address" />
+    <EntitySet Name="AspNetRoles" EntityType="FasConModel.AspNetRole" />
+    <EntitySet Name="AspNetUserClaims" EntityType="FasConModel.AspNetUserClaim" />
+    <EntitySet Name="AspNetUserLogins" EntityType="FasConModel.AspNetUserLogin" />
+    <EntitySet Name="AspNetUserRoles" EntityType="FasConModel.AspNetUserRole" />
+    <EntitySet Name="AspNetUsers" EntityType="FasConModel.AspNetUser" />
+    <EntitySet Name="Customers" EntityType="FasConModel.Customer" />
+    <EntitySet Name="Districts" EntityType="FasConModel.District" />
+    <EntitySet Name="OrderItems" EntityType="FasConModel.OrderItem" />
+    <EntitySet Name="OrderNotes" EntityType="FasConModel.OrderNote" />
+    <EntitySet Name="Orders" EntityType="FasConModel.Order" />
+    <EntitySet Name="Pictures" EntityType="FasConModel.Picture" />
+    <EntitySet Name="Product_Picture_Mapping" EntityType="FasConModel.Product_Picture_Mapping" />
+    <EntitySet Name="ProductReviews" EntityType="FasConModel.ProductReview" />
+    <EntitySet Name="Products" EntityType="FasConModel.Product" />
+    <EntitySet Name="StateProvinces" EntityType="FasConModel.StateProvince" />
+    <EntitySet Name="Stores" EntityType="FasConModel.Store" />
+    <EntitySet Name="Users" EntityType="FasConModel.User" />
+    <AssociationSet Name="FK_dbo_Address_dbo_Districts_DistrictId" Association="FasConModel.FK_dbo_Address_dbo_Districts_DistrictId">
+      <End Role="District" EntitySet="Districts" />
+      <End Role="Address" EntitySet="Addresses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Address_dbo_StateProvinces_StateProvinceId" Association="FasConModel.FK_dbo_Address_dbo_StateProvinces_StateProvinceId">
+      <End Role="StateProvince" EntitySet="StateProvinces" />
+      <End Role="Address" EntitySet="Addresses" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Order_dbo_Address_ShippingAddressId" Association="FasConModel.FK_dbo_Order_dbo_Address_ShippingAddressId">
+      <End Role="Address" EntitySet="Addresses" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AspNetUserRoles_AspNetRoles" Association="FasConModel.FK_AspNetUserRoles_AspNetRoles">
+      <End Role="AspNetRole" EntitySet="AspNetRoles" />
+      <End Role="AspNetUserRole" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AspNetUsers_AspNetRoles_Create" Association="FasConModel.FK_AspNetUsers_AspNetRoles_Create">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="AspNetRole" EntitySet="AspNetRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AspNetUsers_AspNetRoles_Update" Association="FasConModel.FK_AspNetUsers_AspNetRoles_Update">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="AspNetRole" EntitySet="AspNetRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AspNetUserClaims_AspNetUsers" Association="FasConModel.FK_AspNetUserClaims_AspNetUsers">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserClaim" EntitySet="AspNetUserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AspNetUserLogins_AspNetUsers" Association="FasConModel.FK_AspNetUserLogins_AspNetUsers">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserLogin" EntitySet="AspNetUserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AspNetUserRoles_AspNetUsers" Association="FasConModel.FK_AspNetUserRoles_AspNetUsers">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserRole" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AspNetUsers_AspNetUserRoles_Create" Association="FasConModel.FK_AspNetUsers_AspNetUserRoles_Create">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserRole" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AspNetUsers_AspNetUserRoles_Update" Association="FasConModel.FK_AspNetUsers_AspNetUserRoles_Update">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="AspNetUserRole" EntitySet="AspNetUserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AspNetUsers_AspNetUsers_Create" Association="FasConModel.FK_AspNetUsers_AspNetUsers_Create">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="AspNetUser1" EntitySet="AspNetUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AspNetUsers_AspNetUsers_Update" Association="FasConModel.FK_AspNetUsers_AspNetUsers_Update">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="AspNetUser1" EntitySet="AspNetUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AspNetUsers_Users" Association="FasConModel.FK_AspNetUsers_Users">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Order_dbo_Customer_CustomerId" Association="FasConModel.FK_dbo_Order_dbo_Customer_CustomerId">
+      <End Role="Customer" EntitySet="Customers" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Districts_StateProvinces" Association="FasConModel.FK_Districts_StateProvinces">
+      <End Role="StateProvince" EntitySet="StateProvinces" />
+      <End Role="District" EntitySet="Districts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_OrderItems_dbo_Orders_OrderId" Association="FasConModel.FK_dbo_OrderItems_dbo_Orders_OrderId">
+      <End Role="Order" EntitySet="Orders" />
+      <End Role="OrderItem" EntitySet="OrderItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_OrderItems_dbo_Products_ProductId" Association="FasConModel.FK_dbo_OrderItems_dbo_Products_ProductId">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="OrderItem" EntitySet="OrderItems" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_OrderNote_dbo_Orders_OrderId" Association="FasConModel.FK_dbo_OrderNote_dbo_Orders_OrderId">
+      <End Role="Order" EntitySet="Orders" />
+      <End Role="OrderNote" EntitySet="OrderNotes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Product_Picture_Mapping_dbo_Picture_PictureId" Association="FasConModel.FK_dbo_Product_Picture_Mapping_dbo_Picture_PictureId">
+      <End Role="Picture" EntitySet="Pictures" />
+      <End Role="Product_Picture_Mapping" EntitySet="Product_Picture_Mapping" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Product_Picture_Mapping_dbo_Product_ProductId" Association="FasConModel.FK_dbo_Product_Picture_Mapping_dbo_Product_ProductId">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="Product_Picture_Mapping" EntitySet="Product_Picture_Mapping" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_ProductReview_dbo_Product_ProductId" Association="FasConModel.FK_dbo_ProductReview_dbo_Product_ProductId">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="ProductReview" EntitySet="ProductReviews" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Users_Create" Association="FasConModel.FK_Users_Users_Create">
+      <End Role="User" EntitySet="Users" />
+      <End Role="User1" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Users_Update" Association="FasConModel.FK_Users_Users_Update">
+      <End Role="User" EntitySet="Users" />
+      <End Role="User1" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="CustomerAddresses" Association="FasConModel.CustomerAddresses">
+      <End Role="Address" EntitySet="Addresses" />
+      <End Role="Customer" EntitySet="Customers" />
+    </AssociationSet>
+    <EntitySet Name="Categories" EntityType="FasConModel.Category" />
+    <AssociationSet Name="FK_dbo_Category_dbo_Picture_PictureId" Association="FasConModel.FK_dbo_Category_dbo_Picture_PictureId">
+      <End Role="Picture" EntitySet="Pictures" />
+      <End Role="Category" EntitySet="Categories" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Products_Categories" Association="FasConModel.FK_Products_Categories">
+      <End Role="Category" EntitySet="Categories" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Address">
+    <Key>
+      <PropertyRef Name="AddressId" />
+    </Key>
+    <Property Name="AddressId" Type="Guid" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="Company" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="DistrictId" Type="Int32" />
+    <Property Name="StateProvinceId" Type="Int32" />
+    <Property Name="Address1" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="FaxNumber" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedOnUtc" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="District" Relationship="FasConModel.FK_dbo_Address_dbo_Districts_DistrictId" FromRole="Address" ToRole="District" />
+    <NavigationProperty Name="StateProvince" Relationship="FasConModel.FK_dbo_Address_dbo_StateProvinces_StateProvinceId" FromRole="Address" ToRole="StateProvince" />
+    <NavigationProperty Name="Orders" Relationship="FasConModel.FK_dbo_Order_dbo_Address_ShippingAddressId" FromRole="Address" ToRole="Order" />
+    <NavigationProperty Name="Customers" Relationship="FasConModel.CustomerAddresses" FromRole="Address" ToRole="Customer" />
+  </EntityType>
+  <EntityType Name="AspNetRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreateUserID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="UpdateUserID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUserRoles" Relationship="FasConModel.FK_AspNetUserRoles_AspNetRoles" FromRole="AspNetRole" ToRole="AspNetUserRole" />
+    <NavigationProperty Name="AspNetUser" Relationship="FasConModel.FK_AspNetUsers_AspNetRoles_Create" FromRole="AspNetRole" ToRole="AspNetUser" />
+    <NavigationProperty Name="AspNetUser1" Relationship="FasConModel.FK_AspNetUsers_AspNetRoles_Update" FromRole="AspNetRole" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="AspNetUserClaim">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="FasConModel.FK_AspNetUserClaims_AspNetUsers" FromRole="AspNetUserClaim" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="AspNetUserLogin">
+    <Key>
+      <PropertyRef Name="LoginProvider" />
+      <PropertyRef Name="ProviderKey" />
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetUser" Relationship="FasConModel.FK_AspNetUserLogins_AspNetUsers" FromRole="AspNetUserLogin" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="AspNetUserRole">
+    <Key>
+      <PropertyRef Name="UserId" />
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="RoleId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreateUserID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="UpdateUserID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetRole" Relationship="FasConModel.FK_AspNetUserRoles_AspNetRoles" FromRole="AspNetUserRole" ToRole="AspNetRole" />
+    <NavigationProperty Name="AspNetUser" Relationship="FasConModel.FK_AspNetUserRoles_AspNetUsers" FromRole="AspNetUserRole" ToRole="AspNetUser" />
+    <NavigationProperty Name="AspNetUser1" Relationship="FasConModel.FK_AspNetUsers_AspNetUserRoles_Create" FromRole="AspNetUserRole" ToRole="AspNetUser" />
+    <NavigationProperty Name="AspNetUser2" Relationship="FasConModel.FK_AspNetUsers_AspNetUserRoles_Update" FromRole="AspNetUserRole" ToRole="AspNetUser" />
+  </EntityType>
+  <EntityType Name="AspNetUser">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreateUserID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="UpdateUserID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AspNetRoles" Relationship="FasConModel.FK_AspNetUsers_AspNetRoles_Create" FromRole="AspNetUser" ToRole="AspNetRole" />
+    <NavigationProperty Name="AspNetRoles1" Relationship="FasConModel.FK_AspNetUsers_AspNetRoles_Update" FromRole="AspNetUser" ToRole="AspNetRole" />
+    <NavigationProperty Name="AspNetUserClaims" Relationship="FasConModel.FK_AspNetUserClaims_AspNetUsers" FromRole="AspNetUser" ToRole="AspNetUserClaim" />
+    <NavigationProperty Name="AspNetUserLogins" Relationship="FasConModel.FK_AspNetUserLogins_AspNetUsers" FromRole="AspNetUser" ToRole="AspNetUserLogin" />
+    <NavigationProperty Name="AspNetUserRoles" Relationship="FasConModel.FK_AspNetUserRoles_AspNetUsers" FromRole="AspNetUser" ToRole="AspNetUserRole" />
+    <NavigationProperty Name="AspNetUserRoles1" Relationship="FasConModel.FK_AspNetUsers_AspNetUserRoles_Create" FromRole="AspNetUser" ToRole="AspNetUserRole" />
+    <NavigationProperty Name="AspNetUserRoles2" Relationship="FasConModel.FK_AspNetUsers_AspNetUserRoles_Update" FromRole="AspNetUser" ToRole="AspNetUserRole" />
+    <NavigationProperty Name="AspNetUsers1" Relationship="FasConModel.FK_AspNetUsers_AspNetUsers_Create" FromRole="AspNetUser" ToRole="AspNetUser1" />
+    <NavigationProperty Name="AspNetUser1" Relationship="FasConModel.FK_AspNetUsers_AspNetUsers_Create" FromRole="AspNetUser1" ToRole="AspNetUser" />
+    <NavigationProperty Name="AspNetUsers11" Relationship="FasConModel.FK_AspNetUsers_AspNetUsers_Update" FromRole="AspNetUser" ToRole="AspNetUser1" />
+    <NavigationProperty Name="AspNetUser2" Relationship="FasConModel.FK_AspNetUsers_AspNetUsers_Update" FromRole="AspNetUser1" ToRole="AspNetUser" />
+    <NavigationProperty Name="Users" Relationship="FasConModel.FK_AspNetUsers_Users" FromRole="AspNetUser" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Customer">
+    <Key>
+      <PropertyRef Name="CustomerId" />
+    </Key>
+    <Property Name="CustomerId" Type="Guid" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Orders" Relationship="FasConModel.FK_dbo_Order_dbo_Customer_CustomerId" FromRole="Customer" ToRole="Order" />
+    <NavigationProperty Name="Addresses" Relationship="FasConModel.CustomerAddresses" FromRole="Customer" ToRole="Address" />
+  </EntityType>
+  <EntityType Name="District">
+    <Key>
+      <PropertyRef Name="DistrictId" />
+    </Key>
+    <Property Name="DistrictId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="StateProvinceId" Type="Int32" />
+    <Property Name="Published" Type="Boolean" Nullable="false" />
+    <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Addresses" Relationship="FasConModel.FK_dbo_Address_dbo_Districts_DistrictId" FromRole="District" ToRole="Address" />
+    <NavigationProperty Name="StateProvince" Relationship="FasConModel.FK_Districts_StateProvinces" FromRole="District" ToRole="StateProvince" />
+  </EntityType>
+  <EntityType Name="OrderItem">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="OrderItemGuid" Type="Guid" Nullable="false" />
+    <Property Name="OrderId" Type="Guid" Nullable="false" />
+    <Property Name="ProductId" Type="Guid" Nullable="false" />
+    <Property Name="Quantity" Type="Guid" Nullable="false" />
+    <Property Name="UnitPriceInclTax" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+    <Property Name="UnitPriceExclTax" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+    <Property Name="PriceInclTax" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+    <Property Name="PriceExclTax" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+    <Property Name="DiscountAmountInclTax" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+    <Property Name="DiscountAmountExclTax" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+    <Property Name="ProductCost" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+    <NavigationProperty Name="Order" Relationship="FasConModel.FK_dbo_OrderItems_dbo_Orders_OrderId" FromRole="OrderItem" ToRole="Order" />
+    <NavigationProperty Name="Product" Relationship="FasConModel.FK_dbo_OrderItems_dbo_Products_ProductId" FromRole="OrderItem" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="OrderNote">
+    <Key>
+      <PropertyRef Name="OrderNoteId" />
+    </Key>
+    <Property Name="OrderNoteId" Type="Guid" Nullable="false" />
+    <Property Name="OrderId" Type="Guid" Nullable="false" />
+    <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DisplayToCustomer" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedOnUtc" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Order" Relationship="FasConModel.FK_dbo_OrderNote_dbo_Orders_OrderId" FromRole="OrderNote" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="OrderId" />
+    </Key>
+    <Property Name="OrderId" Type="Guid" Nullable="false" />
+    <Property Name="OrderNumber" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="OrderGuid" Type="Guid" Nullable="false" />
+    <Property Name="StoreId" Type="Guid" Nullable="false" />
+    <Property Name="CustomerId" Type="Guid" Nullable="false" />
+    <Property Name="ShippingAddressId" Type="Guid" />
+    <Property Name="OrderStatusId" Type="Int32" Nullable="false" />
+    <Property Name="ShippingStatusId" Type="Int32" Nullable="false" />
+    <Property Name="PaymentStatusId" Type="Int32" Nullable="false" />
+    <Property Name="VatNumber" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="OrderSubtotalInclTax" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+    <Property Name="OrderSubtotalExclTax" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+    <Property Name="OrderTax" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+    <Property Name="OrderDiscount" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+    <Property Name="OrderTotal" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+    <Property Name="CustomerIp" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="PurchaseOrderNumber" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="PaidDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="ShippingMethod" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="ShippingRateComputationMethodSystemName" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="Deleted" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedOnUtc" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedOnUtc" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CustomerOrderComment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Address" Relationship="FasConModel.FK_dbo_Order_dbo_Address_ShippingAddressId" FromRole="Order" ToRole="Address" />
+    <NavigationProperty Name="Customer" Relationship="FasConModel.FK_dbo_Order_dbo_Customer_CustomerId" FromRole="Order" ToRole="Customer" />
+    <NavigationProperty Name="OrderItems" Relationship="FasConModel.FK_dbo_OrderItems_dbo_Orders_OrderId" FromRole="Order" ToRole="OrderItem" />
+    <NavigationProperty Name="OrderNotes" Relationship="FasConModel.FK_dbo_OrderNote_dbo_Orders_OrderId" FromRole="Order" ToRole="OrderNote" />
+  </EntityType>
+  <EntityType Name="Picture">
+    <Key>
+      <PropertyRef Name="PictureId" />
+    </Key>
+    <Property Name="PictureId" Type="Guid" Nullable="false" />
+    <Property Name="PictureBinary" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="MimeType" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="true" />
+    <Property Name="SeoFilename" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="IsNew" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Product_Picture_Mapping" Relationship="FasConModel.FK_dbo_Product_Picture_Mapping_dbo_Picture_PictureId" FromRole="Picture" ToRole="Product_Picture_Mapping" />
+    <NavigationProperty Name="Categories" Relationship="FasConModel.FK_dbo_Category_dbo_Picture_PictureId" FromRole="Picture" ToRole="Category" />
+  </EntityType>
+  <EntityType Name="Product_Picture_Mapping">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="ProductId" Type="Guid" Nullable="false" />
+    <Property Name="PictureId" Type="Guid" Nullable="false" />
+    <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Picture" Relationship="FasConModel.FK_dbo_Product_Picture_Mapping_dbo_Picture_PictureId" FromRole="Product_Picture_Mapping" ToRole="Picture" />
+    <NavigationProperty Name="Product" Relationship="FasConModel.FK_dbo_Product_Picture_Mapping_dbo_Product_ProductId" FromRole="Product_Picture_Mapping" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="ProductReview">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="ProductId" Type="Guid" Nullable="false" />
+    <Property Name="Title" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="ReviewText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Rating" Type="Int32" Nullable="false" />
+    <Property Name="HelpfulYesTotal" Type="Int32" Nullable="false" />
+    <Property Name="HelpfulNoTotal" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Product" Relationship="FasConModel.FK_dbo_ProductReview_dbo_Product_ProductId" FromRole="ProductReview" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="ProductID" Type="Guid" Nullable="false" />
+    <Property Name="ProductSKU" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="ShortDescription" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="FullDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AdminComment" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="ShowOnHomePage" Type="Boolean" Nullable="false" />
+    <Property Name="MetaKeywords" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="MetaDescription" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="MetaTitle" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="AllowCustomerReviews" Type="Boolean" Nullable="false" />
+    <Property Name="ApprovedRatingSum" Type="Int32" Nullable="false" />
+    <Property Name="NotApprovedRatingSum" Type="Int32" Nullable="false" />
+    <Property Name="ApprovedTotalReviews" Type="Int32" Nullable="false" />
+    <Property Name="NotApprovedTotalReviews" Type="Int32" Nullable="false" />
+    <Property Name="ManufacturerPartNumber" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="IsShipEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="IsFreeShipping" Type="Boolean" Nullable="false" />
+    <Property Name="StockQuantity" Type="Int32" Nullable="false" />
+    <Property Name="DisplayStockAvailability" Type="Boolean" Nullable="false" />
+    <Property Name="DisplayStockQuantity" Type="Boolean" Nullable="false" />
+    <Property Name="MinStockQuantity" Type="Int32" Nullable="false" />
+    <Property Name="LowStockActivityId" Type="Int32" Nullable="false" />
+    <Property Name="NotifyAdminForQuantityBelow" Type="Int32" Nullable="false" />
+    <Property Name="OrderMinimumQuantity" Type="Int32" Nullable="false" />
+    <Property Name="OrderMaximumQuantity" Type="Int32" Nullable="false" />
+    <Property Name="AllowedQuantities" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="DisableBuyButton" Type="Boolean" Nullable="false" />
+    <Property Name="DisableWishlistButton" Type="Boolean" Nullable="false" />
+    <Property Name="CallForPrice" Type="Boolean" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+    <Property Name="OldPrice" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+    <Property Name="ProductCost" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+    <Property Name="SpecialPrice" Type="Decimal" Precision="18" Scale="4" />
+    <Property Name="SpecialPriceStartDateTimeUtc" Type="DateTime" Precision="3" />
+    <Property Name="SpecialPriceEndDateTimeUtc" Type="DateTime" Precision="3" />
+    <Property Name="Weight" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+    <Property Name="Length" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+    <Property Name="Width" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+    <Property Name="Height" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+    <Property Name="AvailableStartDateTimeUtc" Type="DateTime" Precision="3" />
+    <Property Name="AvailableEndDateTimeUtc" Type="DateTime" Precision="3" />
+    <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+    <Property Name="Published" Type="Boolean" Nullable="false" />
+    <Property Name="Deleted" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedOnUtc" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdatedOnUtc" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ProductThumb" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ProductImage" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ProductCategoryID" Type="Guid" Nullable="false" />
+    <Property Name="StoreId" Type="Guid" />
+    <NavigationProperty Name="OrderItems" Relationship="FasConModel.FK_dbo_OrderItems_dbo_Products_ProductId" FromRole="Product" ToRole="OrderItem" />
+    <NavigationProperty Name="Product_Picture_Mapping" Relationship="FasConModel.FK_dbo_Product_Picture_Mapping_dbo_Product_ProductId" FromRole="Product" ToRole="Product_Picture_Mapping" />
+    <NavigationProperty Name="ProductReviews" Relationship="FasConModel.FK_dbo_ProductReview_dbo_Product_ProductId" FromRole="Product" ToRole="ProductReview" />
+    <NavigationProperty Name="Category" Relationship="FasConModel.FK_Products_Categories" FromRole="Product" ToRole="Category" />
+  </EntityType>
+  <EntityType Name="StateProvince">
+    <Key>
+      <PropertyRef Name="StateProvinceId" />
+    </Key>
+    <Property Name="StateProvinceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Published" Type="Boolean" Nullable="false" />
+    <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Addresses" Relationship="FasConModel.FK_dbo_Address_dbo_StateProvinces_StateProvinceId" FromRole="StateProvince" ToRole="Address" />
+    <NavigationProperty Name="Districts" Relationship="FasConModel.FK_Districts_StateProvinces" FromRole="StateProvince" ToRole="District" />
+  </EntityType>
+  <EntityType Name="Store">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Guid" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="Url" Type="String" Nullable="false" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="LogoPictureId" Type="Guid" />
+    <Property Name="DisplayOrder" Type="Int32" />
+    <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedUserId" Type="Guid" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateUserId" Type="Guid" />
+    <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+    <Property Name="StartDate" Type="DateTime" Precision="0" />
+    <Property Name="EndDate" Type="DateTime" Precision="0" />
+    <Property Name="Actived" Type="Boolean" />
+    <Property Name="OwnerId" Type="Guid" />
+    <Property Name="Comment" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Guid" Nullable="false" />
+    <Property Name="AspNetUserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CreateUserID" Type="Guid" Nullable="false" />
+    <Property Name="UpdateUserID" Type="Guid" Nullable="false" />
+    <NavigationProperty Name="AspNetUser" Relationship="FasConModel.FK_AspNetUsers_Users" FromRole="User" ToRole="AspNetUser" />
+    <NavigationProperty Name="Users1" Relationship="FasConModel.FK_Users_Users_Create" FromRole="User" ToRole="User1" />
+    <NavigationProperty Name="User1" Relationship="FasConModel.FK_Users_Users_Create" FromRole="User1" ToRole="User" />
+    <NavigationProperty Name="Users11" Relationship="FasConModel.FK_Users_Users_Update" FromRole="User" ToRole="User1" />
+    <NavigationProperty Name="User2" Relationship="FasConModel.FK_Users_Users_Update" FromRole="User1" ToRole="User" />
+  </EntityType>
+  <Association Name="FK_dbo_Address_dbo_Districts_DistrictId">
+    <End Type="FasConModel.District" Role="District" Multiplicity="0..1" />
+    <End Type="FasConModel.Address" Role="Address" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="District">
+        <PropertyRef Name="DistrictId" />
+      </Principal>
+      <Dependent Role="Address">
+        <PropertyRef Name="DistrictId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Address_dbo_StateProvinces_StateProvinceId">
+    <End Type="FasConModel.StateProvince" Role="StateProvince" Multiplicity="0..1" />
+    <End Type="FasConModel.Address" Role="Address" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StateProvince">
+        <PropertyRef Name="StateProvinceId" />
+      </Principal>
+      <Dependent Role="Address">
+        <PropertyRef Name="StateProvinceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Order_dbo_Address_ShippingAddressId">
+    <End Type="FasConModel.Address" Role="Address" Multiplicity="0..1" />
+    <End Type="FasConModel.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Address">
+        <PropertyRef Name="AddressId" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="ShippingAddressId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AspNetUserRoles_AspNetRoles">
+    <End Type="FasConModel.AspNetRole" Role="AspNetRole" Multiplicity="1" />
+    <End Type="FasConModel.AspNetUserRole" Role="AspNetUserRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetRole">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="AspNetUserRole">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AspNetUsers_AspNetRoles_Create">
+    <End Type="FasConModel.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+    <End Type="FasConModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="AspNetRole">
+        <PropertyRef Name="CreateUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AspNetUsers_AspNetRoles_Update">
+    <End Type="FasConModel.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+    <End Type="FasConModel.AspNetRole" Role="AspNetRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="AspNetRole">
+        <PropertyRef Name="UpdateUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AspNetUserClaims_AspNetUsers">
+    <End Type="FasConModel.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+    <End Type="FasConModel.AspNetUserClaim" Role="AspNetUserClaim" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="AspNetUserClaim">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AspNetUserLogins_AspNetUsers">
+    <End Type="FasConModel.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+    <End Type="FasConModel.AspNetUserLogin" Role="AspNetUserLogin" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="AspNetUserLogin">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AspNetUserRoles_AspNetUsers">
+    <End Type="FasConModel.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+    <End Type="FasConModel.AspNetUserRole" Role="AspNetUserRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="AspNetUserRole">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AspNetUsers_AspNetUserRoles_Create">
+    <End Type="FasConModel.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+    <End Type="FasConModel.AspNetUserRole" Role="AspNetUserRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="AspNetUserRole">
+        <PropertyRef Name="CreateUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AspNetUsers_AspNetUserRoles_Update">
+    <End Type="FasConModel.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+    <End Type="FasConModel.AspNetUserRole" Role="AspNetUserRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="AspNetUserRole">
+        <PropertyRef Name="UpdateUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AspNetUsers_AspNetUsers_Create">
+    <End Type="FasConModel.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+    <End Type="FasConModel.AspNetUser" Role="AspNetUser1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="AspNetUser1">
+        <PropertyRef Name="CreateUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AspNetUsers_AspNetUsers_Update">
+    <End Type="FasConModel.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+    <End Type="FasConModel.AspNetUser" Role="AspNetUser1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="AspNetUser1">
+        <PropertyRef Name="UpdateUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AspNetUsers_Users">
+    <End Type="FasConModel.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
+    <End Type="FasConModel.User" Role="User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="AspNetUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Order_dbo_Customer_CustomerId">
+    <End Type="FasConModel.Customer" Role="Customer" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="FasConModel.Order" Role="Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Customer">
+        <PropertyRef Name="CustomerId" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="CustomerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Districts_StateProvinces">
+    <End Type="FasConModel.StateProvince" Role="StateProvince" Multiplicity="0..1" />
+    <End Type="FasConModel.District" Role="District" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StateProvince">
+        <PropertyRef Name="StateProvinceId" />
+      </Principal>
+      <Dependent Role="District">
+        <PropertyRef Name="StateProvinceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_OrderItems_dbo_Orders_OrderId">
+    <End Type="FasConModel.Order" Role="Order" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="FasConModel.OrderItem" Role="OrderItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="OrderId" />
+      </Principal>
+      <Dependent Role="OrderItem">
+        <PropertyRef Name="OrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_OrderItems_dbo_Products_ProductId">
+    <End Type="FasConModel.Product" Role="Product" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="FasConModel.OrderItem" Role="OrderItem" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="OrderItem">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_OrderNote_dbo_Orders_OrderId">
+    <End Type="FasConModel.Order" Role="Order" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="FasConModel.OrderNote" Role="OrderNote" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order">
+        <PropertyRef Name="OrderId" />
+      </Principal>
+      <Dependent Role="OrderNote">
+        <PropertyRef Name="OrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Product_Picture_Mapping_dbo_Picture_PictureId">
+    <End Type="FasConModel.Picture" Role="Picture" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="FasConModel.Product_Picture_Mapping" Role="Product_Picture_Mapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Picture">
+        <PropertyRef Name="PictureId" />
+      </Principal>
+      <Dependent Role="Product_Picture_Mapping">
+        <PropertyRef Name="PictureId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Product_Picture_Mapping_dbo_Product_ProductId">
+    <End Type="FasConModel.Product" Role="Product" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="FasConModel.Product_Picture_Mapping" Role="Product_Picture_Mapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="Product_Picture_Mapping">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_ProductReview_dbo_Product_ProductId">
+    <End Type="FasConModel.Product" Role="Product" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="FasConModel.ProductReview" Role="ProductReview" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="ProductReview">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Users_Create">
+    <End Type="FasConModel.User" Role="User" Multiplicity="1" />
+    <End Type="FasConModel.User" Role="User1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="User1">
+        <PropertyRef Name="CreateUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Users_Update">
+    <End Type="FasConModel.User" Role="User" Multiplicity="1" />
+    <End Type="FasConModel.User" Role="User1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserID" />
+      </Principal>
+      <Dependent Role="User1">
+        <PropertyRef Name="UpdateUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CustomerAddresses">
+    <End Type="FasConModel.Address" Role="Address" Multiplicity="*" />
+    <End Type="FasConModel.Customer" Role="Customer" Multiplicity="*" />
+  </Association>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="CategoryId" />
+    </Key>
+    <Property Name="CategoryId" Type="Guid" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Alias" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MetaKeywords" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="MetaDescription" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+    <Property Name="MetaTitle" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="ParentCategoryId" Type="Guid" />
+    <Property Name="PictureId" Type="Guid" />
+    <Property Name="ShowOnHomePage" Type="Boolean" />
+    <Property Name="Published" Type="Boolean" />
+    <Property Name="Deleted" Type="Boolean" />
+    <Property Name="DisplayOrder" Type="Int32" />
+    <Property Name="CreatedOnUtc" Type="DateTime" Precision="3" />
+    <Property Name="UpdatedOnUtc" Type="DateTime" Precision="3" />
+    <Property Name="FullName" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+    <Property Name="BottomDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Hits" Type="Int32" />
+    <NavigationProperty Name="Picture" Relationship="FasConModel.FK_dbo_Category_dbo_Picture_PictureId" FromRole="Category" ToRole="Picture" />
+    <NavigationProperty Name="Products" Relationship="FasConModel.FK_Products_Categories" FromRole="Category" ToRole="Product" />
+  </EntityType>
+  <Association Name="FK_dbo_Category_dbo_Picture_PictureId">
+    <End Type="FasConModel.Picture" Role="Picture" Multiplicity="0..1" />
+    <End Type="FasConModel.Category" Role="Category" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Picture">
+        <PropertyRef Name="PictureId" />
+      </Principal>
+      <Dependent Role="Category">
+        <PropertyRef Name="PictureId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Products_Categories">
+    <End Type="FasConModel.Category" Role="Category" Multiplicity="1" />
+    <End Type="FasConModel.Product" Role="Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="CategoryId" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="ProductCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

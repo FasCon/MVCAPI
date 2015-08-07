@@ -1,0 +1,5 @@
+C:\Working\AngularJSAuthentication\FasCon.DataModel\bin\Debug\FasCon.DataModel.dll
+C:\Working\AngularJSAuthentication\FasCon.DataModel\bin\Debug\FasCon.DataModel.pdb
+C:\Working\AngularJSAuthentication\FasCon.DataModel\obj\Debug\FasCon.DataModel.dll
+C:\Working\AngularJSAuthentication\FasCon.DataModel\obj\Debug\FasCon.DataModel.pdb
+C:\Working\AngularJSAuthentication\FasCon.DataModel\obj\Debug\FasCon.DataModel.csprojResolveAssemblyReference.cache
