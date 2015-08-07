@@ -1,23 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="DB_9CF878_fasconModelStoreContainer" CdmEntityContainer="FasConDBEntities">
-    <EntitySetMapping Name="Addresses">
-      <EntityTypeMapping TypeName="FasConDBModel.Address">
-        <MappingFragment StoreEntitySet="Addresses">
-          <ScalarProperty Name="AddressId" ColumnName="AddressId" />
-          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-          <ScalarProperty Name="LastName" ColumnName="LastName" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="Company" ColumnName="Company" />
-          <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
-          <ScalarProperty Name="StateProvinceId" ColumnName="StateProvinceId" />
-          <ScalarProperty Name="Address1" ColumnName="Address" />
-          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-          <ScalarProperty Name="FaxNumber" ColumnName="FaxNumber" />
-          <ScalarProperty Name="CreatedOnUtc" ColumnName="CreatedOnUtc" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="AspNetRoles">
       <EntityTypeMapping TypeName="FasConDBModel.AspNetRole">
         <MappingFragment StoreEntitySet="AspNetRoles">
@@ -87,33 +70,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Categories">
-      <EntityTypeMapping TypeName="FasConDBModel.Category">
-        <MappingFragment StoreEntitySet="Categories">
-          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Description" ColumnName="Description" />
-          <ScalarProperty Name="Alias" ColumnName="Alias" />
-          <ScalarProperty Name="MetaKeywords" ColumnName="MetaKeywords" />
-          <ScalarProperty Name="MetaDescription" ColumnName="MetaDescription" />
-          <ScalarProperty Name="MetaTitle" ColumnName="MetaTitle" />
-          <ScalarProperty Name="ParentCategoryId" ColumnName="ParentCategoryId" />
-          <ScalarProperty Name="PictureId" ColumnName="PictureId" />
-          <ScalarProperty Name="ShowOnHomePage" ColumnName="ShowOnHomePage" />
-          <ScalarProperty Name="Published" ColumnName="Published" />
-          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
-          <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
-          <ScalarProperty Name="CreatedOnUtc" ColumnName="CreatedOnUtc" />
-          <ScalarProperty Name="UpdatedOnUtc" ColumnName="UpdatedOnUtc" />
-          <ScalarProperty Name="FullName" ColumnName="FullName" />
-          <ScalarProperty Name="BottomDescription" ColumnName="BottomDescription" />
-          <ScalarProperty Name="Hits" ColumnName="Hits" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Customers">
       <EntityTypeMapping TypeName="FasConDBModel.Customer">
         <MappingFragment StoreEntitySet="Customers">
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="UpdatedUserId" ColumnName="UpdatedUserId" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedUserId" ColumnName="CreatedUserId" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
           <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
           <ScalarProperty Name="Name" ColumnName="Name" />
         </MappingFragment>
@@ -321,12 +286,54 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="FasConDBModel.Category">
+        <MappingFragment StoreEntitySet="Categories">
+          <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+          <ScalarProperty Name="Hits" ColumnName="Hits" />
+          <ScalarProperty Name="BottomDescription" ColumnName="BottomDescription" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="UpdatedOnUtc" ColumnName="UpdatedOnUtc" />
+          <ScalarProperty Name="CreatedOnUtc" ColumnName="CreatedOnUtc" />
+          <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+          <ScalarProperty Name="Published" ColumnName="Published" />
+          <ScalarProperty Name="ShowOnHomePage" ColumnName="ShowOnHomePage" />
+          <ScalarProperty Name="PictureId" ColumnName="PictureId" />
+          <ScalarProperty Name="ParentCategoryId" ColumnName="ParentCategoryId" />
+          <ScalarProperty Name="MetaTitle" ColumnName="MetaTitle" />
+          <ScalarProperty Name="MetaDescription" ColumnName="MetaDescription" />
+          <ScalarProperty Name="MetaKeywords" ColumnName="MetaKeywords" />
+          <ScalarProperty Name="Alias" ColumnName="Alias" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Addresses">
+      <EntityTypeMapping TypeName="FasConDBModel.Address">
+        <MappingFragment StoreEntitySet="Addresses">
+          <ScalarProperty Name="CreatedOnUtc" ColumnName="CreatedOnUtc" />
+          <ScalarProperty Name="FaxNumber" ColumnName="FaxNumber" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="Street" ColumnName="Street" />
+          <ScalarProperty Name="StateProvinceId" ColumnName="StateProvinceId" />
+          <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+          <ScalarProperty Name="Company" ColumnName="Company" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="AddressId" ColumnName="AddressId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <AssociationSetMapping Name="CustomerAddresses" TypeName="FasConDBModel.CustomerAddresses" StoreEntitySet="CustomerAddresses">
-      <EndProperty Name="Addresses">
-        <ScalarProperty Name="AddressId" ColumnName="AddressId" />
-      </EndProperty>
-      <EndProperty Name="Customers">
+      <EndProperty Name="Customer">
         <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+      </EndProperty>
+      <EndProperty Name="Address">
+        <ScalarProperty Name="AddressId" ColumnName="AddressId" />
       </EndProperty>
     </AssociationSetMapping>
   </EntityContainerMapping>

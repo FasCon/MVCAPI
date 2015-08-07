@@ -126,6 +126,12 @@
           </Key>
           <Property Name="CustomerId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Deleted" Type="bit" />
+          <Property Name="CreatedUserId" Type="uniqueidentifier" />
+          <Property Name="CreatedDate" Type="date" />
+          <Property Name="UpdatedUserId" Type="uniqueidentifier" />
+          <Property Name="UpdatedDate" Type="date" />
+          <Property Name="StoreId" Type="uniqueidentifier" />
         </EntityType>
         <EntityType Name="Districts">
           <Key>
@@ -922,6 +928,12 @@
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Orders" Relationship="Self.FK_dbo_Order_dbo_Customer_CustomerId" FromRole="Customers" ToRole="Orders" />
           <NavigationProperty Name="Addresses" Relationship="FasConDBModel.CustomerAddresses" FromRole="Customer" ToRole="Address" />
+          <Property Name="Deleted" Type="Boolean" />
+          <Property Name="CreatedUserId" Type="Guid" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+          <Property Name="UpdatedUserId" Type="Guid" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="0" />
+          <Property Name="StoreId" Type="Guid" />
         </EntityType>
         <EntityType Name="District">
           <Key>
@@ -1740,6 +1752,12 @@
           <EntitySetMapping Name="Customers">
             <EntityTypeMapping TypeName="FasConDBModel.Customer">
               <MappingFragment StoreEntitySet="Customers">
+                <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedUserId" ColumnName="UpdatedUserId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedUserId" ColumnName="CreatedUserId" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
                 <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>

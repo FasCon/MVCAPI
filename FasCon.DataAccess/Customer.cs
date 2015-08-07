@@ -22,6 +22,12 @@ namespace FasCon.DataAccess
     
         public System.Guid CustomerId { get; set; }
         public string Name { get; set; }
+        public Nullable<bool> Deleted { get; set; }
+        public Nullable<System.Guid> CreatedUserId { get; set; }
+        public Nullable<System.DateTime> CreatedDate { get; set; }
+        public Nullable<System.Guid> UpdatedUserId { get; set; }
+        public Nullable<System.DateTime> UpdatedDate { get; set; }
+        public Nullable<System.Guid> StoreId { get; set; }
     
         public virtual ICollection<Order> Orders { get; set; }
         public virtual ICollection<Address> Addresses { get; set; }

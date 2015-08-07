@@ -39,10 +39,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddressModel.cs" />
+    <Compile Include="CategoryModel.cs" />
+    <Compile Include="CustomerModel.cs" />
+    <Compile Include="DistrictModel.cs" />
+    <Compile Include="OrderItemModel.cs" />
+    <Compile Include="OrderModel.cs" />
+    <Compile Include="OrderNoteModel.cs" />
     <Compile Include="PagingModel\PagingInputModel.cs" />
     <Compile Include="PagingModel\PagingResultModel.cs" />
+    <Compile Include="PictureModel.cs" />
     <Compile Include="ProductModel.cs" />
+    <Compile Include="ProductReviewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ShoppingCart\CartItemModel.cs" />
+    <Compile Include="ShoppingCart\ShippingAddressModel.cs" />
+    <Compile Include="StateProvinceModel.cs" />
+    <Compile Include="StoreModel.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
