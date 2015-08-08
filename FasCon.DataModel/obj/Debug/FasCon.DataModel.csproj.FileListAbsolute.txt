@@ -8,3 +8,8 @@ C:\Fascon\MVCAPI\FasCon.DataModel\bin\Debug\FasCon.DataModel.pdb
 C:\Fascon\MVCAPI\FasCon.DataModel\obj\Debug\FasCon.DataModel.csprojResolveAssemblyReference.cache
 C:\Fascon\MVCAPI\FasCon.DataModel\obj\Debug\FasCon.DataModel.dll
 C:\Fascon\MVCAPI\FasCon.DataModel\obj\Debug\FasCon.DataModel.pdb
+C:\wamp\www\MVCAPI\FasCon.DataModel\bin\Debug\FasCon.DataModel.dll
+C:\wamp\www\MVCAPI\FasCon.DataModel\bin\Debug\FasCon.DataModel.pdb
+C:\wamp\www\MVCAPI\FasCon.DataModel\obj\Debug\FasCon.DataModel.csprojResolveAssemblyReference.cache
+C:\wamp\www\MVCAPI\FasCon.DataModel\obj\Debug\FasCon.DataModel.dll
+C:\wamp\www\MVCAPI\FasCon.DataModel\obj\Debug\FasCon.DataModel.pdb
