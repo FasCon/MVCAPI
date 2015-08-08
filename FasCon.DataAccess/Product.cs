@@ -16,9 +16,9 @@ namespace FasCon.DataAccess
     {
         public Product()
         {
-            this.OrderItems = new HashSet<OrderItem>();
             this.Product_Picture_Mapping = new HashSet<Product_Picture_Mapping>();
             this.ProductReviews = new HashSet<ProductReview>();
+            this.OrderItems = new HashSet<OrderItem>();
         }
     
         public System.Guid ProductID { get; set; }
@@ -73,10 +73,10 @@ namespace FasCon.DataAccess
         public Nullable<System.Guid> CategoryID { get; set; }
         public Nullable<System.Guid> StoreId { get; set; }
     
-        public virtual ICollection<OrderItem> OrderItems { get; set; }
         public virtual ICollection<Product_Picture_Mapping> Product_Picture_Mapping { get; set; }
         public virtual ICollection<ProductReview> ProductReviews { get; set; }
         public virtual Store Store { get; set; }
         public virtual Category Category { get; set; }
+        public virtual ICollection<OrderItem> OrderItems { get; set; }
     }
 }

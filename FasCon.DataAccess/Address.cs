@@ -16,8 +16,8 @@ namespace FasCon.DataAccess
     {
         public Address()
         {
-            this.Orders = new HashSet<Order>();
             this.Customers = new HashSet<Customer>();
+            this.Orders = new HashSet<Order>();
         }
     
         public System.Guid AddressId { get; set; }
@@ -34,7 +34,7 @@ namespace FasCon.DataAccess
     
         public virtual District District { get; set; }
         public virtual StateProvince StateProvince { get; set; }
-        public virtual ICollection<Order> Orders { get; set; }
         public virtual ICollection<Customer> Customers { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

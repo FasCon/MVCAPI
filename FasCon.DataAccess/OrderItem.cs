@@ -15,13 +15,16 @@ namespace FasCon.DataAccess
     public partial class OrderItem
     {
         public System.Guid Id { get; set; }
-        public System.Guid OrderItemGuid { get; set; }
         public System.Guid OrderId { get; set; }
         public System.Guid ProductId { get; set; }
         public System.Guid Quantity { get; set; }
         public decimal Price { get; set; }
         public decimal DiscountAmount { get; set; }
         public decimal ProductCost { get; set; }
+        public Nullable<System.DateTime> CreatedDate { get; set; }
+        public Nullable<System.DateTime> UpdateDate { get; set; }
+        public Nullable<System.Guid> CreatedUserId { get; set; }
+        public Nullable<System.Guid> UpdateUserId { get; set; }
     
         public virtual Order Order { get; set; }
         public virtual Product Product { get; set; }

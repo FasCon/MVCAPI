@@ -148,13 +148,16 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="OrderItemGuid" Type="uniqueidentifier" Nullable="false" />
           <Property Name="OrderId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="ProductId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Quantity" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Price" Type="decimal" Precision="18" Scale="4" Nullable="false" />
           <Property Name="DiscountAmount" Type="decimal" Precision="18" Scale="4" Nullable="false" />
           <Property Name="ProductCost" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="CreatedDate" Type="date" />
+          <Property Name="UpdateDate" Type="date" />
+          <Property Name="CreatedUserId" Type="uniqueidentifier" />
+          <Property Name="UpdateUserId" Type="uniqueidentifier" />
         </EntityType>
         <EntityType Name="OrderNotes">
           <Key>
@@ -185,7 +188,6 @@
           <Property Name="OrderDiscount" Type="decimal" Precision="18" Scale="4" Nullable="false" />
           <Property Name="OrderTotal" Type="decimal" Precision="18" Scale="4" Nullable="false" />
           <Property Name="CustomerIp" Type="nvarchar" MaxLength="4000" />
-          <Property Name="PurchaseOrderNumber" Type="nvarchar" MaxLength="4000" />
           <Property Name="PaidDateUtc" Type="datetime" />
           <Property Name="ShippingMethod" Type="nvarchar" MaxLength="4000" />
           <Property Name="Deleted" Type="bit" Nullable="false" />
@@ -926,7 +928,6 @@
           </Key>
           <Property Name="CustomerId" Type="Guid" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Orders" Relationship="Self.FK_dbo_Order_dbo_Customer_CustomerId" FromRole="Customers" ToRole="Orders" />
           <NavigationProperty Name="Addresses" Relationship="FasConDBModel.CustomerAddresses" FromRole="Customer" ToRole="Address" />
           <Property Name="Deleted" Type="Boolean" />
           <Property Name="CreatedUserId" Type="Guid" />
@@ -934,6 +935,7 @@
           <Property Name="UpdatedUserId" Type="Guid" />
           <Property Name="UpdatedDate" Type="DateTime" Precision="0" />
           <Property Name="StoreId" Type="Guid" />
+          <NavigationProperty Name="Orders" Relationship="FasConDBModel.FK_dbo_Order_dbo_Customer_CustomerId" FromRole="Customer" ToRole="Order" />
         </EntityType>
         <EntityType Name="District">
           <Key>
@@ -947,21 +949,6 @@
           <NavigationProperty Name="StateProvince" Relationship="Self.FK_Districts_StateProvinces" FromRole="Districts" ToRole="StateProvinces" />
           <NavigationProperty Name="Addresses" Relationship="FasConDBModel.FK_dbo_Address_dbo_Districts_DistrictId" FromRole="District" ToRole="Address" />
         </EntityType>
-        <EntityType Name="OrderItem">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Guid" Nullable="false" />
-          <Property Name="OrderItemGuid" Type="Guid" Nullable="false" />
-          <Property Name="OrderId" Type="Guid" Nullable="false" />
-          <Property Name="ProductId" Type="Guid" Nullable="false" />
-          <Property Name="Quantity" Type="Guid" Nullable="false" />
-          <Property Name="Price" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
-          <Property Name="DiscountAmount" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
-          <Property Name="ProductCost" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
-          <NavigationProperty Name="Order" Relationship="Self.FK_dbo_OrderItems_dbo_Orders_OrderId" FromRole="OrderItems" ToRole="Orders" />
-          <NavigationProperty Name="Product" Relationship="Self.FK_dbo_OrderItems_dbo_Products_ProductId" FromRole="OrderItems" ToRole="Products" />
-        </EntityType>
         <EntityType Name="OrderNote">
           <Key>
             <PropertyRef Name="OrderNoteId" />
@@ -971,38 +958,7 @@
           <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="DisplayToCustomer" Type="Boolean" Nullable="false" />
           <Property Name="CreatedOnUtc" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="Order" Relationship="Self.FK_dbo_OrderNote_dbo_Orders_OrderId" FromRole="OrderNotes" ToRole="Orders" />
-        </EntityType>
-        <EntityType Name="Order">
-          <Key>
-            <PropertyRef Name="OrderId" />
-          </Key>
-          <Property Name="OrderId" Type="Guid" Nullable="false" />
-          <Property Name="OrderNumber" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="OrderGuid" Type="Guid" Nullable="false" />
-          <Property Name="StoreId" Type="Guid" Nullable="false" />
-          <Property Name="CustomerId" Type="Guid" Nullable="false" />
-          <Property Name="ShippingAddressId" Type="Guid" />
-          <Property Name="OrderStatusId" Type="Int32" Nullable="false" />
-          <Property Name="ShippingStatusId" Type="Int32" Nullable="false" />
-          <Property Name="PaymentStatusId" Type="Int32" Nullable="false" />
-          <Property Name="VatNumber" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="OrderSubtotal" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
-          <Property Name="OrderTax" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
-          <Property Name="OrderDiscount" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
-          <Property Name="OrderTotal" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
-          <Property Name="CustomerIp" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="PurchaseOrderNumber" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="PaidDateUtc" Type="DateTime" Precision="3" />
-          <Property Name="ShippingMethod" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <Property Name="Deleted" Type="Boolean" Nullable="false" />
-          <Property Name="CreatedOnUtc" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdatedOnUtc" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CustomerOrderComment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Customer" Relationship="Self.FK_dbo_Order_dbo_Customer_CustomerId" FromRole="Orders" ToRole="Customers" />
-          <NavigationProperty Name="OrderItems" Relationship="Self.FK_dbo_OrderItems_dbo_Orders_OrderId" FromRole="Orders" ToRole="OrderItems" />
-          <NavigationProperty Name="OrderNotes" Relationship="Self.FK_dbo_OrderNote_dbo_Orders_OrderId" FromRole="Orders" ToRole="OrderNotes" />
-          <NavigationProperty Name="Address" Relationship="FasConDBModel.FK_dbo_Order_dbo_Address_ShippingAddressId" FromRole="Order" ToRole="Address" />
+          <NavigationProperty Name="Order" Relationship="FasConDBModel.FK_dbo_OrderNote_dbo_Orders_OrderId" FromRole="OrderNote" ToRole="Order" />
         </EntityType>
         <EntityType Name="Picture">
           <Key>
@@ -1096,11 +1052,11 @@
           <Property Name="ProductImage" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="CategoryID" Type="Guid" />
           <Property Name="StoreId" Type="Guid" />
-          <NavigationProperty Name="OrderItems" Relationship="Self.FK_dbo_OrderItems_dbo_Products_ProductId" FromRole="Products" ToRole="OrderItems" />
           <NavigationProperty Name="Product_Picture_Mapping" Relationship="Self.FK_dbo_Product_Picture_Mapping_dbo_Product_ProductId" FromRole="Products" ToRole="Product_Picture_Mapping" />
           <NavigationProperty Name="ProductReviews" Relationship="Self.FK_dbo_ProductReview_dbo_Product_ProductId" FromRole="Products" ToRole="ProductReview" />
           <NavigationProperty Name="Store" Relationship="Self.FK_Products_Stores" FromRole="Products" ToRole="Store" />
           <NavigationProperty Name="Category" Relationship="FasConDBModel.FK_Products_Categories" FromRole="Product" ToRole="Category" />
+          <NavigationProperty Name="OrderItems" Relationship="FasConDBModel.FK_dbo_OrderItems_dbo_Products_ProductId" FromRole="Product" ToRole="OrderItem" />
         </EntityType>
         <EntityType Name="StateProvince">
           <Key>
@@ -1285,20 +1241,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_dbo_Order_dbo_Customer_CustomerId">
-          <End Role="Customers" Type="Self.Customer" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="Orders" Type="Self.Order" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Customers">
-              <PropertyRef Name="CustomerId" />
-            </Principal>
-            <Dependent Role="Orders">
-              <PropertyRef Name="CustomerId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Districts_StateProvinces">
           <End Role="StateProvinces" Type="Self.StateProvince" Multiplicity="0..1" />
           <End Role="Districts" Type="Self.District" Multiplicity="*" />
@@ -1308,48 +1250,6 @@
             </Principal>
             <Dependent Role="Districts">
               <PropertyRef Name="StateProvinceId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_OrderItems_dbo_Orders_OrderId">
-          <End Role="Orders" Type="Self.Order" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="OrderItems" Type="Self.OrderItem" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Orders">
-              <PropertyRef Name="OrderId" />
-            </Principal>
-            <Dependent Role="OrderItems">
-              <PropertyRef Name="OrderId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_OrderItems_dbo_Products_ProductId">
-          <End Role="Products" Type="Self.Product" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="OrderItems" Type="Self.OrderItem" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Products">
-              <PropertyRef Name="ProductID" />
-            </Principal>
-            <Dependent Role="OrderItems">
-              <PropertyRef Name="ProductId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_OrderNote_dbo_Orders_OrderId">
-          <End Role="Orders" Type="Self.Order" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="OrderNotes" Type="Self.OrderNote" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Orders">
-              <PropertyRef Name="OrderId" />
-            </Principal>
-            <Dependent Role="OrderNotes">
-              <PropertyRef Name="OrderId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1439,9 +1339,7 @@
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
           <EntitySet Name="Customers" EntityType="Self.Customer" />
           <EntitySet Name="Districts" EntityType="Self.District" />
-          <EntitySet Name="OrderItems" EntityType="Self.OrderItem" />
           <EntitySet Name="OrderNotes" EntityType="Self.OrderNote" />
-          <EntitySet Name="Orders" EntityType="Self.Order" />
           <EntitySet Name="Pictures" EntityType="Self.Picture" />
           <EntitySet Name="Product_Picture_Mapping" EntityType="Self.Product_Picture_Mapping" />
           <EntitySet Name="ProductReviews" EntityType="Self.ProductReview" />
@@ -1493,25 +1391,9 @@
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
-          <AssociationSet Name="FK_dbo_Order_dbo_Customer_CustomerId" Association="Self.FK_dbo_Order_dbo_Customer_CustomerId">
-            <End Role="Customers" EntitySet="Customers" />
-            <End Role="Orders" EntitySet="Orders" />
-          </AssociationSet>
           <AssociationSet Name="FK_Districts_StateProvinces" Association="Self.FK_Districts_StateProvinces">
             <End Role="StateProvinces" EntitySet="StateProvinces" />
             <End Role="Districts" EntitySet="Districts" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_OrderItems_dbo_Orders_OrderId" Association="Self.FK_dbo_OrderItems_dbo_Orders_OrderId">
-            <End Role="Orders" EntitySet="Orders" />
-            <End Role="OrderItems" EntitySet="OrderItems" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_OrderItems_dbo_Products_ProductId" Association="Self.FK_dbo_OrderItems_dbo_Products_ProductId">
-            <End Role="Products" EntitySet="Products" />
-            <End Role="OrderItems" EntitySet="OrderItems" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_OrderNote_dbo_Orders_OrderId" Association="Self.FK_dbo_OrderNote_dbo_Orders_OrderId">
-            <End Role="Orders" EntitySet="Orders" />
-            <End Role="OrderNotes" EntitySet="OrderNotes" />
           </AssociationSet>
           <AssociationSet Name="FK_dbo_Product_Picture_Mapping_dbo_Picture_PictureId" Association="Self.FK_dbo_Product_Picture_Mapping_dbo_Picture_PictureId">
             <End Role="Pictures" EntitySet="Pictures" />
@@ -1555,13 +1437,31 @@
             <End Role="StateProvince" EntitySet="StateProvinces" />
             <End Role="Address" EntitySet="Addresses" />
           </AssociationSet>
+          <AssociationSet Name="CustomerAddresses" Association="FasConDBModel.CustomerAddresses">
+            <End Role="Address" EntitySet="Addresses" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <EntitySet Name="Orders" EntityType="FasConDBModel.Order" />
           <AssociationSet Name="FK_dbo_Order_dbo_Address_ShippingAddressId" Association="FasConDBModel.FK_dbo_Order_dbo_Address_ShippingAddressId">
             <End Role="Address" EntitySet="Addresses" />
             <End Role="Order" EntitySet="Orders" />
           </AssociationSet>
-          <AssociationSet Name="CustomerAddresses" Association="FasConDBModel.CustomerAddresses">
-            <End Role="Address" EntitySet="Addresses" />
+          <AssociationSet Name="FK_dbo_Order_dbo_Customer_CustomerId" Association="FasConDBModel.FK_dbo_Order_dbo_Customer_CustomerId">
             <End Role="Customer" EntitySet="Customers" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_OrderNote_dbo_Orders_OrderId" Association="FasConDBModel.FK_dbo_OrderNote_dbo_Orders_OrderId">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="OrderNote" EntitySet="OrderNotes" />
+          </AssociationSet>
+          <EntitySet Name="OrderItems" EntityType="FasConDBModel.OrderItem" />
+          <AssociationSet Name="FK_dbo_OrderItems_dbo_Orders_OrderId" Association="FasConDBModel.FK_dbo_OrderItems_dbo_Orders_OrderId">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="OrderItem" EntitySet="OrderItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_OrderItems_dbo_Products_ProductId" Association="FasConDBModel.FK_dbo_OrderItems_dbo_Products_ProductId">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="OrderItem" EntitySet="OrderItems" />
           </AssociationSet>
           </EntityContainer>
         <EntityType Name="Category">
@@ -1631,8 +1531,8 @@
           <Property Name="CreatedOnUtc" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="District" Relationship="FasConDBModel.FK_dbo_Address_dbo_Districts_DistrictId" FromRole="Address" ToRole="District" />
           <NavigationProperty Name="StateProvince" Relationship="FasConDBModel.FK_dbo_Address_dbo_StateProvinces_StateProvinceId" FromRole="Address" ToRole="StateProvince" />
-          <NavigationProperty Name="Orders" Relationship="FasConDBModel.FK_dbo_Order_dbo_Address_ShippingAddressId" FromRole="Address" ToRole="Order" />
           <NavigationProperty Name="Customers" Relationship="FasConDBModel.CustomerAddresses" FromRole="Address" ToRole="Customer" />
+          <NavigationProperty Name="Orders" Relationship="FasConDBModel.FK_dbo_Order_dbo_Address_ShippingAddressId" FromRole="Address" ToRole="Order" />
         </EntityType>
         <Association Name="FK_dbo_Address_dbo_Districts_DistrictId">
           <End Type="FasConDBModel.District" Role="District" Multiplicity="0..1" />
@@ -1658,6 +1558,40 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="CustomerAddresses">
+          <End Type="FasConDBModel.Address" Role="Address" Multiplicity="*" />
+          <End Type="FasConDBModel.Customer" Role="Customer" Multiplicity="*" />
+        </Association>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="Guid" Nullable="false" />
+          <Property Name="OrderNumber" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="OrderGuid" Type="Guid" Nullable="false" />
+          <Property Name="StoreId" Type="Guid" Nullable="false" />
+          <Property Name="CustomerId" Type="Guid" Nullable="false" />
+          <Property Name="ShippingAddressId" Type="Guid" />
+          <Property Name="OrderStatusId" Type="Int32" Nullable="false" />
+          <Property Name="ShippingStatusId" Type="Int32" Nullable="false" />
+          <Property Name="PaymentStatusId" Type="Int32" Nullable="false" />
+          <Property Name="VatNumber" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="OrderSubtotal" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+          <Property Name="OrderTax" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+          <Property Name="OrderDiscount" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+          <Property Name="OrderTotal" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+          <Property Name="CustomerIp" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="PaidDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="ShippingMethod" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="Deleted" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedOnUtc" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedOnUtc" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CustomerOrderComment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Address" Relationship="FasConDBModel.FK_dbo_Order_dbo_Address_ShippingAddressId" FromRole="Order" ToRole="Address" />
+          <NavigationProperty Name="Customer" Relationship="FasConDBModel.FK_dbo_Order_dbo_Customer_CustomerId" FromRole="Order" ToRole="Customer" />
+          <NavigationProperty Name="OrderNotes" Relationship="FasConDBModel.FK_dbo_OrderNote_dbo_Orders_OrderId" FromRole="Order" ToRole="OrderNote" />
+          <NavigationProperty Name="OrderItems" Relationship="FasConDBModel.FK_dbo_OrderItems_dbo_Orders_OrderId" FromRole="Order" ToRole="OrderItem" />
+        </EntityType>
         <Association Name="FK_dbo_Order_dbo_Address_ShippingAddressId">
           <End Type="FasConDBModel.Address" Role="Address" Multiplicity="0..1" />
           <End Type="FasConDBModel.Order" Role="Order" Multiplicity="*" />
@@ -1670,9 +1604,79 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="CustomerAddresses">
-          <End Type="FasConDBModel.Address" Role="Address" Multiplicity="*" />
-          <End Type="FasConDBModel.Customer" Role="Customer" Multiplicity="*" />
+        <Association Name="FK_dbo_Order_dbo_Customer_CustomerId">
+          <End Type="FasConDBModel.Customer" Role="Customer" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="FasConDBModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="CustomerId" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="CustomerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_OrderNote_dbo_Orders_OrderId">
+          <End Type="FasConDBModel.Order" Role="Order" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="FasConDBModel.OrderNote" Role="OrderNote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="OrderNote">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="OrderItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="OrderId" Type="Guid" Nullable="false" />
+          <Property Name="ProductId" Type="Guid" Nullable="false" />
+          <Property Name="Quantity" Type="Guid" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+          <Property Name="DiscountAmount" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+          <Property Name="ProductCost" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="0" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="0" />
+          <Property Name="CreatedUserId" Type="Guid" />
+          <Property Name="UpdateUserId" Type="Guid" />
+          <NavigationProperty Name="Order" Relationship="FasConDBModel.FK_dbo_OrderItems_dbo_Orders_OrderId" FromRole="OrderItem" ToRole="Order" />
+          <NavigationProperty Name="Product" Relationship="FasConDBModel.FK_dbo_OrderItems_dbo_Products_ProductId" FromRole="OrderItem" ToRole="Product" />
+        </EntityType>
+        <Association Name="FK_dbo_OrderItems_dbo_Orders_OrderId">
+          <End Type="FasConDBModel.Order" Role="Order" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="FasConDBModel.OrderItem" Role="OrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="OrderItem">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_OrderItems_dbo_Products_ProductId">
+          <End Type="FasConDBModel.Product" Role="Product" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="FasConDBModel.OrderItem" Role="OrderItem" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="OrderItem">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
         </Association>
         </Schema>
     </edmx:ConceptualModels>
@@ -1774,20 +1778,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="OrderItems">
-            <EntityTypeMapping TypeName="FasConDBModel.OrderItem">
-              <MappingFragment StoreEntitySet="OrderItems">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="OrderItemGuid" ColumnName="OrderItemGuid" />
-                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
-                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
-                <ScalarProperty Name="ProductCost" ColumnName="ProductCost" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="OrderNotes">
             <EntityTypeMapping TypeName="FasConDBModel.OrderNote">
               <MappingFragment StoreEntitySet="OrderNotes">
@@ -1796,34 +1786,6 @@
                 <ScalarProperty Name="Note" ColumnName="Note" />
                 <ScalarProperty Name="DisplayToCustomer" ColumnName="DisplayToCustomer" />
                 <ScalarProperty Name="CreatedOnUtc" ColumnName="CreatedOnUtc" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Orders">
-            <EntityTypeMapping TypeName="FasConDBModel.Order">
-              <MappingFragment StoreEntitySet="Orders">
-                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
-                <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
-                <ScalarProperty Name="OrderGuid" ColumnName="OrderGuid" />
-                <ScalarProperty Name="StoreId" ColumnName="StoreId" />
-                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
-                <ScalarProperty Name="ShippingAddressId" ColumnName="ShippingAddressId" />
-                <ScalarProperty Name="OrderStatusId" ColumnName="OrderStatusId" />
-                <ScalarProperty Name="ShippingStatusId" ColumnName="ShippingStatusId" />
-                <ScalarProperty Name="PaymentStatusId" ColumnName="PaymentStatusId" />
-                <ScalarProperty Name="VatNumber" ColumnName="VatNumber" />
-                <ScalarProperty Name="OrderSubtotal" ColumnName="OrderSubtotal" />
-                <ScalarProperty Name="OrderTax" ColumnName="OrderTax" />
-                <ScalarProperty Name="OrderDiscount" ColumnName="OrderDiscount" />
-                <ScalarProperty Name="OrderTotal" ColumnName="OrderTotal" />
-                <ScalarProperty Name="CustomerIp" ColumnName="CustomerIp" />
-                <ScalarProperty Name="PurchaseOrderNumber" ColumnName="PurchaseOrderNumber" />
-                <ScalarProperty Name="PaidDateUtc" ColumnName="PaidDateUtc" />
-                <ScalarProperty Name="ShippingMethod" ColumnName="ShippingMethod" />
-                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
-                <ScalarProperty Name="CreatedOnUtc" ColumnName="CreatedOnUtc" />
-                <ScalarProperty Name="UpdatedOnUtc" ColumnName="UpdatedOnUtc" />
-                <ScalarProperty Name="CustomerOrderComment" ColumnName="CustomerOrderComment" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2015,6 +1977,50 @@
               <ScalarProperty Name="AddressId" ColumnName="AddressId" />
             </EndProperty>
           </AssociationSetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="FasConDBModel.Order">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="CustomerOrderComment" ColumnName="CustomerOrderComment" />
+                <ScalarProperty Name="UpdatedOnUtc" ColumnName="UpdatedOnUtc" />
+                <ScalarProperty Name="CreatedOnUtc" ColumnName="CreatedOnUtc" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="ShippingMethod" ColumnName="ShippingMethod" />
+                <ScalarProperty Name="PaidDateUtc" ColumnName="PaidDateUtc" />
+                <ScalarProperty Name="CustomerIp" ColumnName="CustomerIp" />
+                <ScalarProperty Name="OrderTotal" ColumnName="OrderTotal" />
+                <ScalarProperty Name="OrderDiscount" ColumnName="OrderDiscount" />
+                <ScalarProperty Name="OrderTax" ColumnName="OrderTax" />
+                <ScalarProperty Name="OrderSubtotal" ColumnName="OrderSubtotal" />
+                <ScalarProperty Name="VatNumber" ColumnName="VatNumber" />
+                <ScalarProperty Name="PaymentStatusId" ColumnName="PaymentStatusId" />
+                <ScalarProperty Name="ShippingStatusId" ColumnName="ShippingStatusId" />
+                <ScalarProperty Name="OrderStatusId" ColumnName="OrderStatusId" />
+                <ScalarProperty Name="ShippingAddressId" ColumnName="ShippingAddressId" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+                <ScalarProperty Name="OrderGuid" ColumnName="OrderGuid" />
+                <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderItems">
+            <EntityTypeMapping TypeName="FasConDBModel.OrderItem">
+              <MappingFragment StoreEntitySet="OrderItems">
+                <ScalarProperty Name="UpdateUserId" ColumnName="UpdateUserId" />
+                <ScalarProperty Name="CreatedUserId" ColumnName="CreatedUserId" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ProductCost" ColumnName="ProductCost" />
+                <ScalarProperty Name="DiscountAmount" ColumnName="DiscountAmount" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

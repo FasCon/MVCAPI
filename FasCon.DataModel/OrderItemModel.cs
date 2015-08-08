@@ -16,5 +16,9 @@ namespace FasCon.DataModel
         public decimal Price { get; set; }
         public decimal DiscountAmount { get; set; }
         public decimal ProductCost { get; set; }
+        public Nullable<System.DateTime> CreatedDate { get; set; }
+        public Nullable<System.DateTime> UpdateDate { get; set; }
+        public Nullable<System.Guid> CreatedUserId { get; set; }
+        public Nullable<System.Guid> UpdateUserId { get; set; }
     }
 }

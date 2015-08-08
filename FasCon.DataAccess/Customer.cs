@@ -16,8 +16,8 @@ namespace FasCon.DataAccess
     {
         public Customer()
         {
-            this.Orders = new HashSet<Order>();
             this.Addresses = new HashSet<Address>();
+            this.Orders = new HashSet<Order>();
         }
     
         public System.Guid CustomerId { get; set; }
@@ -29,7 +29,7 @@ namespace FasCon.DataAccess
         public Nullable<System.DateTime> UpdatedDate { get; set; }
         public Nullable<System.Guid> StoreId { get; set; }
     
-        public virtual ICollection<Order> Orders { get; set; }
         public virtual ICollection<Address> Addresses { get; set; }
+        public virtual ICollection<Order> Orders { get; set; }
     }
 }

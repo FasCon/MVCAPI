@@ -32,9 +32,7 @@ namespace FasCon.DataAccess
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<District> Districts { get; set; }
-        public virtual DbSet<OrderItem> OrderItems { get; set; }
         public virtual DbSet<OrderNote> OrderNotes { get; set; }
-        public virtual DbSet<Order> Orders { get; set; }
         public virtual DbSet<Picture> Pictures { get; set; }
         public virtual DbSet<Product_Picture_Mapping> Product_Picture_Mapping { get; set; }
         public virtual DbSet<ProductReview> ProductReviews { get; set; }
@@ -44,5 +42,7 @@ namespace FasCon.DataAccess
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Address> Addresses { get; set; }
+        public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<OrderItem> OrderItems { get; set; }
     }
 }

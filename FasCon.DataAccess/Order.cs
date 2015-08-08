@@ -16,8 +16,8 @@ namespace FasCon.DataAccess
     {
         public Order()
         {
-            this.OrderItems = new HashSet<OrderItem>();
             this.OrderNotes = new HashSet<OrderNote>();
+            this.OrderItems = new HashSet<OrderItem>();
         }
     
         public System.Guid OrderId { get; set; }
@@ -35,7 +35,6 @@ namespace FasCon.DataAccess
         public decimal OrderDiscount { get; set; }
         public decimal OrderTotal { get; set; }
         public string CustomerIp { get; set; }
-        public string PurchaseOrderNumber { get; set; }
         public Nullable<System.DateTime> PaidDateUtc { get; set; }
         public string ShippingMethod { get; set; }
         public bool Deleted { get; set; }
@@ -43,9 +42,9 @@ namespace FasCon.DataAccess
         public System.DateTime UpdatedOnUtc { get; set; }
         public string CustomerOrderComment { get; set; }
     
-        public virtual Customer Customer { get; set; }
-        public virtual ICollection<OrderItem> OrderItems { get; set; }
-        public virtual ICollection<OrderNote> OrderNotes { get; set; }
         public virtual Address Address { get; set; }
+        public virtual Customer Customer { get; set; }
+        public virtual ICollection<OrderNote> OrderNotes { get; set; }
+        public virtual ICollection<OrderItem> OrderItems { get; set; }
     }
 }
