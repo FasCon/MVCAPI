@@ -11,13 +11,11 @@
         <EntityTypeShape EntityType="FasConDBModel.AspNetUserRole" Width="1.5" PointX="5.25" PointY="6.5" IsExpanded="true" />
         <EntityTypeShape EntityType="FasConDBModel.AspNetUser" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="FasConDBModel.Customer" Width="1.5" PointX="10" PointY="20.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="FasConDBModel.District" Width="1.5" PointX="7.75" PointY="16.5" IsExpanded="true" />
         <EntityTypeShape EntityType="FasConDBModel.OrderNote" Width="1.5" PointX="14.5" PointY="17.875" IsExpanded="true" />
         <EntityTypeShape EntityType="FasConDBModel.Picture" Width="1.5" PointX="7.75" PointY="7.75" IsExpanded="true" />
         <EntityTypeShape EntityType="FasConDBModel.Product_Picture_Mapping" Width="1.5" PointX="17.5" PointY="7.875" IsExpanded="true" />
         <EntityTypeShape EntityType="FasConDBModel.ProductReview" Width="1.5" PointX="14.5" PointY="14.375" IsExpanded="true" />
         <EntityTypeShape EntityType="FasConDBModel.Product" Width="1.5" PointX="12.25" PointY="3.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="FasConDBModel.StateProvince" Width="1.5" PointX="5.5" PointY="16.625" IsExpanded="true" />
         <EntityTypeShape EntityType="FasConDBModel.Store" Width="1.5" PointX="10" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="FasConDBModel.User" Width="1.5" PointX="3" PointY="12.125" IsExpanded="true" />
         <AssociationConnector Association="FasConDBModel.FK_AspNetUserRoles_AspNetRoles" ManuallyRouted="false" />
@@ -31,7 +29,6 @@
         <AssociationConnector Association="FasConDBModel.FK_AspNetUsers_AspNetUsers_Create" ManuallyRouted="false" />
         <AssociationConnector Association="FasConDBModel.FK_AspNetUsers_AspNetUsers_Update" ManuallyRouted="false" />
         <AssociationConnector Association="FasConDBModel.FK_AspNetUsers_Users" ManuallyRouted="false" />
-        <AssociationConnector Association="FasConDBModel.FK_Districts_StateProvinces" ManuallyRouted="false" />
         <AssociationConnector Association="FasConDBModel.FK_dbo_Product_Picture_Mapping_dbo_Picture_PictureId" ManuallyRouted="false" />
         <AssociationConnector Association="FasConDBModel.FK_dbo_Product_Picture_Mapping_dbo_Product_ProductId" ManuallyRouted="false" />
         <AssociationConnector Association="FasConDBModel.FK_dbo_ProductReview_dbo_Product_ProductId" ManuallyRouted="false" />
@@ -42,8 +39,6 @@
         <AssociationConnector Association="FasConDBModel.FK_dbo_Category_dbo_Picture_PictureId" />
         <AssociationConnector Association="FasConDBModel.FK_Products_Categories" />
         <EntityTypeShape EntityType="FasConDBModel.Address" Width="1.5" PointX="10" PointY="15.75" />
-        <AssociationConnector Association="FasConDBModel.FK_dbo_Address_dbo_Districts_DistrictId" />
-        <AssociationConnector Association="FasConDBModel.FK_dbo_Address_dbo_StateProvinces_StateProvinceId" />
         <AssociationConnector Association="FasConDBModel.CustomerAddresses" />
         <EntityTypeShape EntityType="FasConDBModel.Order" Width="1.5" PointX="12.25" PointY="16.625" />
         <AssociationConnector Association="FasConDBModel.FK_dbo_Order_dbo_Address_ShippingAddressId" />
@@ -52,6 +47,11 @@
         <EntityTypeShape EntityType="FasConDBModel.OrderItem" Width="1.5" PointX="14.5" PointY="10" />
         <AssociationConnector Association="FasConDBModel.FK_dbo_OrderItems_dbo_Orders_OrderId" />
         <AssociationConnector Association="FasConDBModel.FK_dbo_OrderItems_dbo_Products_ProductId" />
+        <EntityTypeShape EntityType="FasConDBModel.District" Width="1.5" PointX="7.75" PointY="16.625" />
+        <EntityTypeShape EntityType="FasConDBModel.StateProvince" Width="1.5" PointX="5.5" PointY="16.75" />
+        <AssociationConnector Association="FasConDBModel.FK_dbo_Address_dbo_Districts_DistrictId" />
+        <AssociationConnector Association="FasConDBModel.FK_dbo_Address_dbo_StateProvinces_StateProvinceId" />
+        <AssociationConnector Association="FasConDBModel.FK_Districts_StateProvinces" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
