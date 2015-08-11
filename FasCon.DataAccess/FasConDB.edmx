@@ -141,7 +141,6 @@
           <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="StateProvinceId" Type="int" />
           <Property Name="Published" Type="bit" Nullable="false" />
-          <Property Name="DisplayOrder" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="OrderItems">
           <Key>
@@ -150,7 +149,7 @@
           <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
           <Property Name="OrderId" Type="uniqueidentifier" Nullable="false" />
           <Property Name="ProductId" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="Quantity" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Quantity" Type="int" />
           <Property Name="Price" Type="decimal" Precision="18" Scale="4" Nullable="false" />
           <Property Name="DiscountAmount" Type="decimal" Precision="18" Scale="4" Nullable="false" />
           <Property Name="ProductCost" Type="decimal" Precision="18" Scale="4" Nullable="false" />
@@ -290,7 +289,6 @@
           <Property Name="StateProvinceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Published" Type="bit" Nullable="false" />
-          <Property Name="DisplayOrder" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Store">
           <Key>
@@ -937,18 +935,6 @@
           <Property Name="StoreId" Type="Guid" />
           <NavigationProperty Name="Orders" Relationship="FasConDBModel.FK_dbo_Order_dbo_Customer_CustomerId" FromRole="Customer" ToRole="Order" />
         </EntityType>
-        <EntityType Name="District">
-          <Key>
-            <PropertyRef Name="DistrictId" />
-          </Key>
-          <Property Name="DistrictId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="StateProvinceId" Type="Int32" />
-          <Property Name="Published" Type="Boolean" Nullable="false" />
-          <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="StateProvince" Relationship="Self.FK_Districts_StateProvinces" FromRole="Districts" ToRole="StateProvinces" />
-          <NavigationProperty Name="Addresses" Relationship="FasConDBModel.FK_dbo_Address_dbo_Districts_DistrictId" FromRole="District" ToRole="Address" />
-        </EntityType>
         <EntityType Name="OrderNote">
           <Key>
             <PropertyRef Name="OrderNoteId" />
@@ -1057,17 +1043,6 @@
           <NavigationProperty Name="Store" Relationship="Self.FK_Products_Stores" FromRole="Products" ToRole="Store" />
           <NavigationProperty Name="Category" Relationship="FasConDBModel.FK_Products_Categories" FromRole="Product" ToRole="Category" />
           <NavigationProperty Name="OrderItems" Relationship="FasConDBModel.FK_dbo_OrderItems_dbo_Products_ProductId" FromRole="Product" ToRole="OrderItem" />
-        </EntityType>
-        <EntityType Name="StateProvince">
-          <Key>
-            <PropertyRef Name="StateProvinceId" />
-          </Key>
-          <Property Name="StateProvinceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Published" Type="Boolean" Nullable="false" />
-          <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Districts" Relationship="Self.FK_Districts_StateProvinces" FromRole="StateProvinces" ToRole="Districts" />
-          <NavigationProperty Name="Addresses" Relationship="FasConDBModel.FK_dbo_Address_dbo_StateProvinces_StateProvinceId" FromRole="StateProvince" ToRole="Address" />
         </EntityType>
         <EntityType Name="Store">
           <Key>
@@ -1241,18 +1216,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Districts_StateProvinces">
-          <End Role="StateProvinces" Type="Self.StateProvince" Multiplicity="0..1" />
-          <End Role="Districts" Type="Self.District" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="StateProvinces">
-              <PropertyRef Name="StateProvinceId" />
-            </Principal>
-            <Dependent Role="Districts">
-              <PropertyRef Name="StateProvinceId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_dbo_Product_Picture_Mapping_dbo_Picture_PictureId">
           <End Role="Pictures" Type="Self.Picture" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -1338,13 +1301,11 @@
           <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRole" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
           <EntitySet Name="Customers" EntityType="Self.Customer" />
-          <EntitySet Name="Districts" EntityType="Self.District" />
           <EntitySet Name="OrderNotes" EntityType="Self.OrderNote" />
           <EntitySet Name="Pictures" EntityType="Self.Picture" />
           <EntitySet Name="Product_Picture_Mapping" EntityType="Self.Product_Picture_Mapping" />
           <EntitySet Name="ProductReviews" EntityType="Self.ProductReview" />
           <EntitySet Name="Products" EntityType="Self.Product" />
-          <EntitySet Name="StateProvinces" EntityType="Self.StateProvince" />
           <EntitySet Name="Stores" EntityType="Self.Store" />
           <EntitySet Name="Users" EntityType="Self.User" />
           <AssociationSet Name="FK_AspNetUserRoles_AspNetRoles" Association="Self.FK_AspNetUserRoles_AspNetRoles">
@@ -1391,10 +1352,6 @@
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
-          <AssociationSet Name="FK_Districts_StateProvinces" Association="Self.FK_Districts_StateProvinces">
-            <End Role="StateProvinces" EntitySet="StateProvinces" />
-            <End Role="Districts" EntitySet="Districts" />
-          </AssociationSet>
           <AssociationSet Name="FK_dbo_Product_Picture_Mapping_dbo_Picture_PictureId" Association="Self.FK_dbo_Product_Picture_Mapping_dbo_Picture_PictureId">
             <End Role="Pictures" EntitySet="Pictures" />
             <End Role="Product_Picture_Mapping" EntitySet="Product_Picture_Mapping" />
@@ -1429,14 +1386,6 @@
             <End Role="Product" EntitySet="Products" />
           </AssociationSet>
           <EntitySet Name="Addresses" EntityType="FasConDBModel.Address" />
-          <AssociationSet Name="FK_dbo_Address_dbo_Districts_DistrictId" Association="FasConDBModel.FK_dbo_Address_dbo_Districts_DistrictId">
-            <End Role="District" EntitySet="Districts" />
-            <End Role="Address" EntitySet="Addresses" />
-          </AssociationSet>
-          <AssociationSet Name="FK_dbo_Address_dbo_StateProvinces_StateProvinceId" Association="FasConDBModel.FK_dbo_Address_dbo_StateProvinces_StateProvinceId">
-            <End Role="StateProvince" EntitySet="StateProvinces" />
-            <End Role="Address" EntitySet="Addresses" />
-          </AssociationSet>
           <AssociationSet Name="CustomerAddresses" Association="FasConDBModel.CustomerAddresses">
             <End Role="Address" EntitySet="Addresses" />
             <End Role="Customer" EntitySet="Customers" />
@@ -1453,6 +1402,20 @@
           <AssociationSet Name="FK_dbo_OrderNote_dbo_Orders_OrderId" Association="FasConDBModel.FK_dbo_OrderNote_dbo_Orders_OrderId">
             <End Role="Order" EntitySet="Orders" />
             <End Role="OrderNote" EntitySet="OrderNotes" />
+          </AssociationSet>
+          <EntitySet Name="Districts" EntityType="FasConDBModel.District" />
+          <EntitySet Name="StateProvinces" EntityType="FasConDBModel.StateProvince" />
+          <AssociationSet Name="FK_dbo_Address_dbo_Districts_DistrictId" Association="FasConDBModel.FK_dbo_Address_dbo_Districts_DistrictId">
+            <End Role="District" EntitySet="Districts" />
+            <End Role="Address" EntitySet="Addresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_Address_dbo_StateProvinces_StateProvinceId" Association="FasConDBModel.FK_dbo_Address_dbo_StateProvinces_StateProvinceId">
+            <End Role="StateProvince" EntitySet="StateProvinces" />
+            <End Role="Address" EntitySet="Addresses" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Districts_StateProvinces" Association="FasConDBModel.FK_Districts_StateProvinces">
+            <End Role="StateProvince" EntitySet="StateProvinces" />
+            <End Role="District" EntitySet="Districts" />
           </AssociationSet>
           <EntitySet Name="OrderItems" EntityType="FasConDBModel.OrderItem" />
           <AssociationSet Name="FK_dbo_OrderItems_dbo_Orders_OrderId" Association="FasConDBModel.FK_dbo_OrderItems_dbo_Orders_OrderId">
@@ -1529,35 +1492,11 @@
           <Property Name="PhoneNumber" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
           <Property Name="FaxNumber" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
           <Property Name="CreatedOnUtc" Type="DateTime" Nullable="false" Precision="3" />
-          <NavigationProperty Name="District" Relationship="FasConDBModel.FK_dbo_Address_dbo_Districts_DistrictId" FromRole="Address" ToRole="District" />
-          <NavigationProperty Name="StateProvince" Relationship="FasConDBModel.FK_dbo_Address_dbo_StateProvinces_StateProvinceId" FromRole="Address" ToRole="StateProvince" />
           <NavigationProperty Name="Customers" Relationship="FasConDBModel.CustomerAddresses" FromRole="Address" ToRole="Customer" />
           <NavigationProperty Name="Orders" Relationship="FasConDBModel.FK_dbo_Order_dbo_Address_ShippingAddressId" FromRole="Address" ToRole="Order" />
+          <NavigationProperty Name="District" Relationship="FasConDBModel.FK_dbo_Address_dbo_Districts_DistrictId" FromRole="Address" ToRole="District" />
+          <NavigationProperty Name="StateProvince" Relationship="FasConDBModel.FK_dbo_Address_dbo_StateProvinces_StateProvinceId" FromRole="Address" ToRole="StateProvince" />
         </EntityType>
-        <Association Name="FK_dbo_Address_dbo_Districts_DistrictId">
-          <End Type="FasConDBModel.District" Role="District" Multiplicity="0..1" />
-          <End Type="FasConDBModel.Address" Role="Address" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="District">
-              <PropertyRef Name="DistrictId" />
-            </Principal>
-            <Dependent Role="Address">
-              <PropertyRef Name="DistrictId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_dbo_Address_dbo_StateProvinces_StateProvinceId">
-          <End Type="FasConDBModel.StateProvince" Role="StateProvince" Multiplicity="0..1" />
-          <End Type="FasConDBModel.Address" Role="Address" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="StateProvince">
-              <PropertyRef Name="StateProvinceId" />
-            </Principal>
-            <Dependent Role="Address">
-              <PropertyRef Name="StateProvinceId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="CustomerAddresses">
           <End Type="FasConDBModel.Address" Role="Address" Multiplicity="*" />
           <End Type="FasConDBModel.Customer" Role="Customer" Multiplicity="*" />
@@ -1632,6 +1571,63 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="District">
+          <Key>
+            <PropertyRef Name="DistrictId" />
+          </Key>
+          <Property Name="DistrictId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="StateProvinceId" Type="Int32" />
+          <Property Name="Published" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Addresses" Relationship="FasConDBModel.FK_dbo_Address_dbo_Districts_DistrictId" FromRole="District" ToRole="Address" />
+          <NavigationProperty Name="StateProvince" Relationship="FasConDBModel.FK_Districts_StateProvinces" FromRole="District" ToRole="StateProvince" />
+        </EntityType>
+        <EntityType Name="StateProvince">
+          <Key>
+            <PropertyRef Name="StateProvinceId" />
+          </Key>
+          <Property Name="StateProvinceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Published" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Addresses" Relationship="FasConDBModel.FK_dbo_Address_dbo_StateProvinces_StateProvinceId" FromRole="StateProvince" ToRole="Address" />
+          <NavigationProperty Name="Districts" Relationship="FasConDBModel.FK_Districts_StateProvinces" FromRole="StateProvince" ToRole="District" />
+        </EntityType>
+        <Association Name="FK_dbo_Address_dbo_Districts_DistrictId">
+          <End Type="FasConDBModel.District" Role="District" Multiplicity="0..1" />
+          <End Type="FasConDBModel.Address" Role="Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="District">
+              <PropertyRef Name="DistrictId" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="DistrictId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_Address_dbo_StateProvinces_StateProvinceId">
+          <End Type="FasConDBModel.StateProvince" Role="StateProvince" Multiplicity="0..1" />
+          <End Type="FasConDBModel.Address" Role="Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StateProvince">
+              <PropertyRef Name="StateProvinceId" />
+            </Principal>
+            <Dependent Role="Address">
+              <PropertyRef Name="StateProvinceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Districts_StateProvinces">
+          <End Type="FasConDBModel.StateProvince" Role="StateProvince" Multiplicity="0..1" />
+          <End Type="FasConDBModel.District" Role="District" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="StateProvince">
+              <PropertyRef Name="StateProvinceId" />
+            </Principal>
+            <Dependent Role="District">
+              <PropertyRef Name="StateProvinceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityType Name="OrderItem">
           <Key>
             <PropertyRef Name="Id" />
@@ -1639,7 +1635,7 @@
           <Property Name="Id" Type="Guid" Nullable="false" />
           <Property Name="OrderId" Type="Guid" Nullable="false" />
           <Property Name="ProductId" Type="Guid" Nullable="false" />
-          <Property Name="Quantity" Type="Guid" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" />
           <Property Name="Price" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
           <Property Name="DiscountAmount" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
           <Property Name="ProductCost" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
@@ -1767,17 +1763,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Districts">
-            <EntityTypeMapping TypeName="FasConDBModel.District">
-              <MappingFragment StoreEntitySet="Districts">
-                <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="StateProvinceId" ColumnName="StateProvinceId" />
-                <ScalarProperty Name="Published" ColumnName="Published" />
-                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="OrderNotes">
             <EntityTypeMapping TypeName="FasConDBModel.OrderNote">
               <MappingFragment StoreEntitySet="OrderNotes">
@@ -1878,16 +1863,6 @@
                 <ScalarProperty Name="ProductImage" ColumnName="ProductImage" />
                 <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
                 <ScalarProperty Name="StoreId" ColumnName="StoreId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="StateProvinces">
-            <EntityTypeMapping TypeName="FasConDBModel.StateProvince">
-              <MappingFragment StoreEntitySet="StateProvinces">
-                <ScalarProperty Name="StateProvinceId" ColumnName="StateProvinceId" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Published" ColumnName="Published" />
-                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -2001,6 +1976,25 @@
                 <ScalarProperty Name="OrderGuid" ColumnName="OrderGuid" />
                 <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
                 <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Districts">
+            <EntityTypeMapping TypeName="FasConDBModel.District">
+              <MappingFragment StoreEntitySet="Districts">
+                <ScalarProperty Name="Published" ColumnName="Published" />
+                <ScalarProperty Name="StateProvinceId" ColumnName="StateProvinceId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DistrictId" ColumnName="DistrictId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StateProvinces">
+            <EntityTypeMapping TypeName="FasConDBModel.StateProvince">
+              <MappingFragment StoreEntitySet="StateProvinces">
+                <ScalarProperty Name="Published" ColumnName="Published" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="StateProvinceId" ColumnName="StateProvinceId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

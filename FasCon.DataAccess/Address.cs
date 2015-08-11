@@ -32,9 +32,9 @@ namespace FasCon.DataAccess
         public string FaxNumber { get; set; }
         public System.DateTime CreatedOnUtc { get; set; }
     
-        public virtual District District { get; set; }
-        public virtual StateProvince StateProvince { get; set; }
         public virtual ICollection<Customer> Customers { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
+        public virtual District District { get; set; }
+        public virtual StateProvince StateProvince { get; set; }
     }
 }

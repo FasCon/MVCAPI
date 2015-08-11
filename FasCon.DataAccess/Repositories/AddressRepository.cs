@@ -19,6 +19,28 @@ namespace FasCon.DataAccess.Repositories
         {
             using (var db = new FasConDBEntities())
             {
+                var address = db.Addresses.Where(p => p.AddressId == addressModel.AddressId).FirstOrDefault();
+                bool isNew = false;
+                if (address == null)
+                {
+                    isNew = true;
+                    address = new Address();
+                    address.AddressId = Guid.NewGuid();
+                }
+                address.FullName = addressModel.FullName;
+                address.Email = addressModel.Email;
+                address.Company = addressModel.Company;
+                address.DistrictId = addressModel.DistrictId;
+                address.StateProvinceId = addressModel.StateProvinceId;
+                address.Street = addressModel.Street;
+                address.PhoneNumber = addressModel.PhoneNumber;
+                address.FaxNumber = addressModel.FaxNumber;
+                address.CreatedOnUtc = addressModel.CreatedOnUtc;
+                if(isNew)
+                db.Addresses.Add(address);
+
+                db.SaveChanges();
+
                  
                 
             }

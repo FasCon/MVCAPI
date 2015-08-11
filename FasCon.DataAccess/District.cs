@@ -23,9 +23,8 @@ namespace FasCon.DataAccess
         public string Name { get; set; }
         public Nullable<int> StateProvinceId { get; set; }
         public bool Published { get; set; }
-        public int DisplayOrder { get; set; }
     
-        public virtual StateProvince StateProvince { get; set; }
         public virtual ICollection<Address> Addresses { get; set; }
+        public virtual StateProvince StateProvince { get; set; }
     }
 }

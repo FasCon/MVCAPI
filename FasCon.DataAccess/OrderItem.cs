@@ -17,7 +17,7 @@ namespace FasCon.DataAccess
         public System.Guid Id { get; set; }
         public System.Guid OrderId { get; set; }
         public System.Guid ProductId { get; set; }
-        public System.Guid Quantity { get; set; }
+        public Nullable<int> Quantity { get; set; }
         public decimal Price { get; set; }
         public decimal DiscountAmount { get; set; }
         public decimal ProductCost { get; set; }

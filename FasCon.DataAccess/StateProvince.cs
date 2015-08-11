@@ -16,16 +16,15 @@ namespace FasCon.DataAccess
     {
         public StateProvince()
         {
-            this.Districts = new HashSet<District>();
             this.Addresses = new HashSet<Address>();
+            this.Districts = new HashSet<District>();
         }
     
         public int StateProvinceId { get; set; }
         public string Name { get; set; }
         public bool Published { get; set; }
-        public int DisplayOrder { get; set; }
     
-        public virtual ICollection<District> Districts { get; set; }
         public virtual ICollection<Address> Addresses { get; set; }
+        public virtual ICollection<District> Districts { get; set; }
     }
 }

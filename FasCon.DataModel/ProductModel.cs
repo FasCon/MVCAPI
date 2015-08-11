@@ -10,7 +10,7 @@ namespace FasCon.DataModel
     {
         public Guid ProductID { get; set; }
         public string ProductSKU { get; set; }
-        public string SEOURL { get; set; }
+        public string Alias { get; set; }
         public string ProductName { get; set; }
         public string ShortDescription { get; set; }
         public string FullDescription { get; set; }

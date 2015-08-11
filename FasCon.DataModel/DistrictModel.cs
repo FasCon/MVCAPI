@@ -12,6 +12,5 @@ namespace FasCon.DataModel
         public string Name { get; set; }
         public Nullable<int> StateProvinceId { get; set; }
         public bool Published { get; set; }
-        public int DisplayOrder { get; set; }
     }
 }

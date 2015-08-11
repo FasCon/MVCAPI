@@ -38,20 +38,20 @@
         <EntityTypeShape EntityType="FasConDBModel.Category" Width="1.5" PointX="10" PointY="6.5" />
         <AssociationConnector Association="FasConDBModel.FK_dbo_Category_dbo_Picture_PictureId" />
         <AssociationConnector Association="FasConDBModel.FK_Products_Categories" />
-        <EntityTypeShape EntityType="FasConDBModel.Address" Width="1.5" PointX="10" PointY="15.75" />
-        <AssociationConnector Association="FasConDBModel.CustomerAddresses" />
         <EntityTypeShape EntityType="FasConDBModel.Order" Width="1.5" PointX="12.25" PointY="16.625" />
-        <AssociationConnector Association="FasConDBModel.FK_dbo_Order_dbo_Address_ShippingAddressId" />
         <AssociationConnector Association="FasConDBModel.FK_dbo_Order_dbo_Customer_CustomerId" />
         <AssociationConnector Association="FasConDBModel.FK_dbo_OrderNote_dbo_Orders_OrderId" />
+        <EntityTypeShape EntityType="FasConDBModel.District" Width="1.5" PointX="7.75" PointY="16.625" />
+        <EntityTypeShape EntityType="FasConDBModel.StateProvince" Width="1.5" PointX="5.5" PointY="16.75" />
+        <AssociationConnector Association="FasConDBModel.FK_Districts_StateProvinces" />
         <EntityTypeShape EntityType="FasConDBModel.OrderItem" Width="1.5" PointX="14.5" PointY="10" />
         <AssociationConnector Association="FasConDBModel.FK_dbo_OrderItems_dbo_Orders_OrderId" />
         <AssociationConnector Association="FasConDBModel.FK_dbo_OrderItems_dbo_Products_ProductId" />
-        <EntityTypeShape EntityType="FasConDBModel.District" Width="1.5" PointX="7.75" PointY="16.625" />
-        <EntityTypeShape EntityType="FasConDBModel.StateProvince" Width="1.5" PointX="5.5" PointY="16.75" />
+        <EntityTypeShape EntityType="FasConDBModel.Address" Width="1.5" PointX="10" PointY="15.875" />
         <AssociationConnector Association="FasConDBModel.FK_dbo_Address_dbo_Districts_DistrictId" />
         <AssociationConnector Association="FasConDBModel.FK_dbo_Address_dbo_StateProvinces_StateProvinceId" />
-        <AssociationConnector Association="FasConDBModel.FK_Districts_StateProvinces" />
+        <AssociationConnector Association="FasConDBModel.FK_dbo_Order_dbo_Address_ShippingAddressId" />
+        <AssociationConnector Association="FasConDBModel.CustomerAddresses" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

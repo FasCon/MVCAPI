@@ -12,7 +12,7 @@ namespace FasCon.DataModel
         public System.Guid OrderItemGuid { get; set; }
         public System.Guid OrderId { get; set; }
         public System.Guid ProductId { get; set; }
-        public System.Guid Quantity { get; set; }
+        public int Quantity { get; set; }
         public decimal Price { get; set; }
         public decimal DiscountAmount { get; set; }
         public decimal ProductCost { get; set; }
