@@ -13,3 +13,14 @@ C:\wamp\www\MVCAPI\FasCon.DataModel\bin\Debug\FasCon.DataModel.pdb
 C:\wamp\www\MVCAPI\FasCon.DataModel\obj\Debug\FasCon.DataModel.csprojResolveAssemblyReference.cache
 C:\wamp\www\MVCAPI\FasCon.DataModel\obj\Debug\FasCon.DataModel.dll
 C:\wamp\www\MVCAPI\FasCon.DataModel\obj\Debug\FasCon.DataModel.pdb
+C:\Users\Hang\Desktop\MVCAPI\FasCon.DataModel\bin\Debug\FasCon.DataModel.dll
+C:\Users\Hang\Desktop\MVCAPI\FasCon.DataModel\bin\Debug\FasCon.DataModel.pdb
+C:\Users\Hang\Desktop\MVCAPI\FasCon.DataModel\bin\Debug\mscorlib.dll
+C:\Users\Hang\Desktop\MVCAPI\FasCon.DataModel\bin\Debug\normidna.nlp
+C:\Users\Hang\Desktop\MVCAPI\FasCon.DataModel\bin\Debug\normnfc.nlp
+C:\Users\Hang\Desktop\MVCAPI\FasCon.DataModel\bin\Debug\normnfd.nlp
+C:\Users\Hang\Desktop\MVCAPI\FasCon.DataModel\bin\Debug\normnfkc.nlp
+C:\Users\Hang\Desktop\MVCAPI\FasCon.DataModel\bin\Debug\normnfkd.nlp
+C:\Users\Hang\Desktop\MVCAPI\FasCon.DataModel\obj\Debug\FasCon.DataModel.csprojResolveAssemblyReference.cache
+C:\Users\Hang\Desktop\MVCAPI\FasCon.DataModel\obj\Debug\FasCon.DataModel.dll
+C:\Users\Hang\Desktop\MVCAPI\FasCon.DataModel\obj\Debug\FasCon.DataModel.pdb
